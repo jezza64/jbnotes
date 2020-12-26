@@ -4,5 +4,15 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"markdownlint.config": {
+			"MD013": false,
+			"MD045": false,
+			"MO022": false,
+			"MD400": false,
+			"MD034": false,
+			"MD041": false,
+			"MD033": false
+		}
+	}
 }

@@ -12,5 +12,8 @@
         "phpmyadmin",
         "quantile"
     ],
-    "python.pythonPath": "C:\\software\\miniconda3\\envs\\jbconda1\\python.exe"
+    "python.pythonPath": "C:\\software\\miniconda3\\envs\\jbconda1\\python.exe",
+    "markdownlint.config": {
+    
+    }
 }
