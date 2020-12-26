@@ -1,0 +1,2 @@
+# jbnotes
+Jeremys learning notes
