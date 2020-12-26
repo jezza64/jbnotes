@@ -1,0 +1,403 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Applied Machine Learning</h1>
+<h2>Key concepts</h2>
+<p>Classifier: predict a category</p>
+<p>Regression: predict a value, continuous quantities</p>
+<p>Supervised learning: you know the target value on the learning set.
+Initial target values generally from human input, crowdsourcing (e.g.
+Crowdflower) for paid people to classify. Maybe get implicit values from
+user actions, e.g. happy with search results when don't come back to to
+a search.</p>
+<p>Unsupervised: find structure where no labels known. Clustering,
+unsupervised outlier detection.</p>
+<p>Workflow:</p>
+<ol>
+<li>
+<p>Representation (choose features, type of classifier). Features are
+columns of the dataframe. Feature extraction.</p>
+</li>
+<li>
+<p>Evaluation (choose criterion, e.g. % of target variables correctly
+predicted on test set)</p>
+</li>
+<li>
+<p>Optimisation (how to get the best parameters, e.g. try a range of K
+values in Knn).</p>
+</li>
+</ol>
+<h2>Scikit learn</h2>
+<p>Score gives matches.</p>
+<p>Predict gets values</p>
+<p>Sklearn values ending with _ are model derived values from training
+data.</p>
+<h2>Supervised learning</h2>
+<p>For maths see Andrew Ngs machine learning course on coursera.</p>
+<p>Instance or sample are the rows. Features are the columns. Convention is
+X for the matrix of data.</p>
+<p>Target value is label (classification) or continuous value (regression).
+Convention is y.</p>
+<p>Default split for train / test is 75%</p>
+<p>Train test split function returns the partitioning of X, y into
+X_train, X_test, y_train, y_test.</p>
+<p>Model fitting uses the scikit learn estimator to set the parameters for
+the model. Updates internal state of the model.</p>
+<p>Evaluation methods.</p>
+<p>Score method</p>
+<p>Predict method for new instances.</p>
+<p>Binary classification has 2 outputs, normally 0 and 1 (eg credit card
+fraud). Multi class classification gives more complex classification
+(e.g. label for fruit, each has only one label). Multi-label
+classification where there are multiple target values applicable, e.g.
+classifier for the multiple things that a web page is about with
+different strengths. Continuous value means regression problem.</p>
+<p>Some models have both regression and classification applications e.g.
+SVM.</p>
+<p>Unstable predictions mean that small changes to the training data can
+produce different predictions.</p>
+<p>Overfitting: Relationship between model complexity and model accuracy.
+Overfitting is detrimental to new data predictions.</p>
+<p><img src="./jbnotes_images/image1.png" alt="">{width=&quot;4.791666666666667in&quot;
+height=&quot;2.721790244969379in&quot;}</p>
+<p>Model is the mathematical representation which translates the input
+variables to the output variables.</p>
+<p>Language: Independent variables / dependent variables in stats, Features
+/ target values in ML.</p>
+<h3>Least squares</h3>
+<p>For each training point, take the difference between the predicted y and
+the known y. Square.</p>
+<p>Known as RSS, residual sum of squares. Often this is the objective
+function being minimized.</p>
+<p><img src="./jbnotes_images/image2.png" alt="">{width=&quot;4.707503280839895in&quot;
+height=&quot;2.65625in&quot;}</p>
+<p><img src="./jbnotes_images/image3.png" alt="">{width=&quot;4.726061898512686in&quot;
+height=&quot;2.65625in&quot;}</p>
+<p><img src="./jbnotes_images/image4.png" alt="">{width=&quot;4.706944444444445in&quot;
+height=&quot;2.6486340769903762in&quot;}</p>
+<p><img src="./jbnotes_images/image5.png" alt="">{width=&quot;4.708333333333333in&quot;
+height=&quot;2.659847987751531in&quot;}</p>
+<p><img src="./jbnotes_images/image6.png" alt="">{width=&quot;4.614583333333333in&quot;
+height=&quot;2.617623578302712in&quot;}</p>
+<h3>Normalization</h3>
+<p>transform input features so all are on the same scale. Necessary when
+using ridge regression. Feature normalization is generally done.</p>
+<p><img src="./jbnotes_images/image7.png" alt="">{width=&quot;4.385416666666667in&quot;
+height=&quot;2.4764534120734907in&quot;}</p>
+<h3>Min Max scaling</h3>
+<p>get range, get difference between a value and the min, divide by the
+range. Gets 0 for min, and 1 for max.</p>
+<p>Need to apply the same scaling object to training and test sets. Fit the
+scaler to the training data only, otherwise get data leakage from the
+test data to the training data. Model may be harder to interpret after
+scaling.</p>
+<p><img src="./jbnotes_images/image8.png" alt="">{width=&quot;4.479166666666667in&quot;
+height=&quot;2.515003280839895in&quot;}</p>
+<h3>Overfitting</h3>
+<p>Memorise the data -&gt; 100% accuracy.</p>
+<p>Generalise well: Ability to perform well on held out test set.
+Assumption that the future test set is drawn from the same population as
+the training set.</p>
+<p>Inadequate amount of training data means overfitting, and doesn't
+generalise well.</p>
+<p>Underfit: don't match the complexity of the data well. Linear model on a
+curve.</p>
+<p>Overfit: too much memorising, doesn't generalise well. E.g. Highly
+polynomial for smooth curve. Not enough data to regognise the global
+trend. Captures too many fluctuations in the training data.</p>
+<p>Knn: with a low value of K, get highly granular decision boundaries, so
+higher risk of overfitting. With high value, doesn't capture enough
+features.</p>
+<p>Data sets with many features are common in real world (high dimensions).</p>
+<h3>Regularisation</h3>
+<p>This penalises complexity, reduces overfitting. E.g. the penalty factors
+in ridge regression.</p>
+<h3>Knn</h3>
+<p>Knn memorises whole training set, gets the k nearest neighbours for a
+new point, takes vote of the outcomes. Higher k gives lower model
+complexity. Can be used on non binary classifiers, and regression. For
+regression, takes k values nearest to the test point and averages (or
+other measure e.g. weights) to get target variables. Not good model for
+large number of features</p>
+<p>R-squared regression score (also called coefficient of regression) gives
+1 for perfect prediction.</p>
+<p>Get training set R squared, and test set r squared. Get the graph of
+model complexity vs model accuracy.</p>
+<p>Distance function: Euclidean is default.</p>
+<h3>Linear regression</h3>
+<p>Sum of weighted variables. Training means estimate the parameters for
+the model to minimise the error. Strong assumption that there's a linear
+relationship.</p>
+<p>B term is y intercept, also called the bias term.</p>
+<p><img src="./jbnotes_images/image9.png" alt="">{width=&quot;4.5in&quot;
+height=&quot;2.509250874890639in&quot;}</p>
+<p>Least squares is square of the difference between the model predicted
+value and the training points set. Sum of squared differences is RSS
+(residual sum of squares).</p>
+<p>Maximise the objective function. Typically this is some kind of loss
+function of the predicted target values vs actual target values.
+Learning algorithm sets the parameters to minimuse the objective
+function. Simple case this is to minimise the RSS.</p>
+<p>No params for model complexity, just a straight line using all training
+data.</p>
+<p>Sklearn.linear_model.LimearRegression. Coefficients are in
+linreg.coef_ and linreg.intercept_ values.</p>
+<p>Use linreg.score to get RSS.</p>
+<p><img src="./jbnotes_images/image10.png" alt="">{width=&quot;4.75in&quot;
+height=&quot;2.67496719160105in&quot;}</p>
+<h3>Ridge regression</h3>
+<p>Ridge regression adds a penalty for high weights (w) to the function
+being optimised. This penalises complexity, reduces overfitting, called
+<strong>Reglularisation.</strong> Good when lots of features. Linear_model.Ridge
+class, and specify alpha parameter. Need to normalise first.</p>
+<p>Regularisation is useful when small amounts of training data relative to
+number of features. Less useful when large amounts of training data. As
+change alpha, get the usual overfitting vs complexity trade off, with a
+value of alpha that is a good trade off between complexity and
+overfitting.</p>
+<p><img src="./jbnotes_images/image11.png" alt="">{width=&quot;4.8125in&quot;
+height=&quot;2.679238845144357in&quot;}</p>
+<h3>Lasso regression</h3>
+<p>Penalty is L1, sum of the mods of the w's. Model is easier to interpret.
+Forces unimportant factors to zero. Good when a few features have a
+large effect. This is a sparse solution, automatically selects features.</p>
+<p><img src="./jbnotes_images/image12.png" alt="">{width=&quot;4.856826334208224in&quot;
+height=&quot;2.7604166666666665in&quot;}</p>
+<p>Use lasso:</p>
+<p><img src="./jbnotes_images/image13.png" alt="">{width=&quot;4.947916666666667in&quot;
+height=&quot;2.79080927384077in&quot;}</p>
+<h3>Polynomial regression</h3>
+<p>Artificially take combinations of the factors (squares, x~0~x~1~ etc)
+and get factors for these. Treat as a linear regression, and minimise
+RSS. Degree of polynomial says the combinations. Still a linear model.</p>
+<p><img src="./jbnotes_images/image14.png" alt="">{width=&quot;4.933021653543307in&quot;
+height=&quot;2.8020833333333335in&quot;}</p>
+<p><img src="./jbnotes_images/image15.png" alt="">{width=&quot;4.447916666666667in&quot;
+height=&quot;2.5526487314085737in&quot;}</p>
+<p><img src="./jbnotes_images/image16.png" alt="">{width=&quot;4.5in&quot;
+height=&quot;2.541159230096238in&quot;}</p>
+<p><img src="./jbnotes_images/image17.png" alt="">{width=&quot;4.5in&quot;
+height=&quot;2.5471412948381453in&quot;}</p>
+<h3>Logistic regression</h3>
+<p>Used to produce a binary outcome, not continuous. Standard linear, but
+apply the logistic expression to compress the output to a range 0 -&gt; 1.
+Can also be multi class, non binary. Same as linear but runs it through
+the sigma function. This compresses the result to 0 or 1.</p>
+<p><img src="./jbnotes_images/image18.png" alt="">{width=&quot;4.489583333333333in&quot;
+height=&quot;2.529805336832896in&quot;}</p>
+<p>With 2 features, 3d view sort of looks like this.</p>
+<p><img src="./jbnotes_images/image19.png" alt="">{width=&quot;4.489583333333333in&quot;
+height=&quot;2.5442300962379703in&quot;}</p>
+<p><img src="./jbnotes_images/image20.png" alt="">{width=&quot;4.489583333333333in&quot;
+height=&quot;2.5472145669291337in&quot;}</p>
+<p><img src="./jbnotes_images/image21.png" alt="">{width=&quot;4.40625in&quot;
+height=&quot;2.508721566054243in&quot;}</p>
+<p>Output value is the probability of belonging to the class.</p>
+<p>Regularisation (penalty for complexity) is on by default. Controlled
+with parameter C, defaults to 1. Higher C is less regularisation. Small
+C, tries to find coefficients closer to zero even if fit is worse. Power
+of regularisation only really visible with higher number of features.</p>
+<h3>Linear classifiers: support vector machines</h3>
+<p>Take output of linear function and apply sign function to get +1 or -1.</p>
+<p>Classier is good if get a broad decision boundary. Best is maximum
+margin. SVM can have linear or non linear model behind them. Kernel.</p>
+<p><img src="./jbnotes_images/image22.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.561111111111111in&quot;}</p>
+<p><img src="./jbnotes_images/image23.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.561111111111111in&quot;}</p>
+<p>Trade off between wide decision boundary and misclassifying some points,
+controlled by Regularisation parameter C, set to 1 by default. Small C
+means more regularisation, so large decision boundary, even if more
+points are misclassified.</p>
+<p><img src="./jbnotes_images/image24.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5347222222222223in&quot;}</p>
+<h3>Multi Class classifiers</h3>
+<p>Real world is multi category output. Scikit learn converts to series of
+binary problems. Categorical items turned into binary for each class. 4
+fruits -&gt; 4 binary classifiers. Runs against each classifier in tern,
+and the highest one is the result.</p>
+<p><img src="./jbnotes_images/image25.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.517361111111111in&quot;}</p>
+<h3>Kernelised support vector machines</h3>
+<p>Linear SVM good for simple where close to linearly separable. E.g.</p>
+<p><img src="./jbnotes_images/image26.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.53125in&quot;}</p>
+<p>SVMs can do more complex classification and regression -- but this
+lecture is just classification.</p>
+<p>SVMs take feature space and transform to higher dimension space, and
+then use a linear classifier. Add e.g. a square feature. Bit like
+polynomial features to linear model.</p>
+<p><img src="./jbnotes_images/image27.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.154166666666667in&quot;}</p>
+<p><img src="./jbnotes_images/image28.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.83125in&quot;}</p>
+<p><img src="./jbnotes_images/image29.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.553472222222222in&quot;}</p>
+<p>Linear classifier works well when have this extra dimension.</p>
+<p>Create additional dimension and then use linear. When transform back to
+1D, you get a parabolic decision boundary.</p>
+<p><img src="./jbnotes_images/image30.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5520833333333335in&quot;}</p>
+<p>With more features: add 1 -- (x~0~^2^ + x~1~^2^)</p>
+<p><img src="./jbnotes_images/image31.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.573611111111111in&quot;}</p>
+<p>Moving back to original dimensions, get a parabola.</p>
+<p><img src="./jbnotes_images/image32.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5618055555555554in&quot;}</p>
+<p>Several different possible transformations. E.g. RBF kernel, polynomial
+kernel.</p>
+<p><img src="./jbnotes_images/image33.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5569444444444445in&quot;}</p>
+<p><img src="./jbnotes_images/image34.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5256944444444445in&quot;}</p>
+<p>For the radial basis function kernel, the similarity between two points
+and the transformed feature space is an exponentially decaying function
+of the distance between the vectors and the original input space as
+shown by the formula here.</p>
+<p>SVM makes the linear boundary with maximum margin in the transformed
+feature space. In the original space, it's curved.</p>
+<p>Kernel Trick: internally doesn't need to really transform the data
+points. Just needs to do similarity calculations between points. So
+works OK for different data and many dimensions.</p>
+<p><img src="./jbnotes_images/image35.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.55625in&quot;}</p>
+<p><img src="./jbnotes_images/image36.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.5194444444444444in&quot;}</p>
+<p>Polynomial kernel: different function. Takes degree parameter to affect
+complexity and cost.</p>
+<p>RBF has parameter Gamma. Small gives larger similarity radius.</p>
+<p>Small values of gamma give broader, smoother decision regions. While
+larger values of gamma give smaller, more complex decision regions.</p>
+<p>You can set the gamma parameter when creating the SVC object to control
+the kernel width in this way, as shown in this code.</p>
+<p><img src="./jbnotes_images/image37.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.551388888888889in&quot;}</p>
+<p><img src="./jbnotes_images/image38.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.0972222222222223in&quot;}</p>
+<p>You may have noticed that the RBF kernel has a parameter gamma.</p>
+<p>Gamma controls how far the influence of a single trending example
+reaches, which in turn affects how tightly the decision boundaries end
+up surrounding points in the input space.</p>
+<p>Small gamma means a larger similarity radius. So that points farther
+apart are considered similar. Which results in more points being group
+together and smoother decision boundaries.</p>
+<p>On the other hand for larger values of gamma, the kernel value to K is
+more quickly and points have to be very close to be considered
+similar. This results in more complex, tightly constrained decision
+boundaries.You can see the effect of increasing gamma that is sharpening
+the kernel</p>
+<p>in this example from the notebook.</p>
+<p>Small values of gamma give broader, smoother decision regions. While
+larger values of gamma give smaller, more complex decision regions.You
+can set the gamma parameter when creating the SVC object to control the
+kernel width in this way, as shown in this code.</p>
+<p>You may recall from linear SVMs that SVMs also have a regularization
+parameter, C, that controls the tradeoff between satisfying the maximum
+margin criterion to find the simple decision boundary, and avoiding
+misclassification errors on the training set. The C parameter is also an
+important one for kernelized SVMs, and it interacts with the gamma
+parameter.</p>
+<p>This example from the notebook shows the effect of varying C and gamma
+together.</p>
+<p>If gamma is large, then C will have little to no effect. Well, if gamma
+is small, the model is much more constrained and the effective C will be
+similar to how it would affect a linear classifier.</p>
+<p>Typically, gamma and C are tuned together, with the optimal combination
+typically in an intermediate range of values. For example, gamma between
+0.0001 and</p>
+<p>10 and see between 0.1 and 100. Though the specifically optimal values
+will depend on your application.</p>
+<p>Kernelized SVMs are pretty sensitive to settings of gamma. The most
+important thing to remember when applying SVMs is that it's important
+to normalize the input data, so that all the features have comparable
+units that are on the same scale. We saw this earlier with some other
+learning methods like regularized regression.</p>
+<p><img src="./jbnotes_images/image39.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.4444444444444446in&quot;}</p>
+<p><img src="./jbnotes_images/image40.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.548611111111111in&quot;}</p>
+<p>Kernel type defaults to RBF. Kernel has specific parameters, RBF very
+sensitive to gamma. C regularisation applies to all, typically tuned
+together with gamma.</p>
+<h3>Cross Validation</h3>
+<p>Used to evaluate model, not tune.</p>
+<p>Single train test split to get estimate for how well the model will
+genaralise to unseen data. Test set drawn from the same distribution as
+the training set.</p>
+<p>Cross validation means multiple train test splits. Train test split
+gives different results based on initial seed. Cross validation gets rid
+of this.</p>
+<p>K-fold validation: e.g. 5 fold</p>
+<p><img src="./jbnotes_images/image41.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.55in&quot;}</p>
+<p>Get 5 accuracy values.</p>
+<p>Use cross_val_score to implement.</p>
+<p><img src="./jbnotes_images/image42.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5395833333333333in&quot;}</p>
+<p>Different accuracy values tell you how sensitive the model is to
+different training sets, understand range of performance.</p>
+<p><img src="./jbnotes_images/image43.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.553472222222222in&quot;}</p>
+<p><img src="./jbnotes_images/image44.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.55in&quot;}</p>
+<p>Scikit learn does stratified cross validation by default for
+classification. For regression, does standard.</p>
+<p>Leave-one-out cross validation: test by leaving out just one sample for
+each training set.</p>
+<p><img src="./jbnotes_images/image45.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.55in&quot;}</p>
+<p><img src="./jbnotes_images/image46.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5284722222222222in&quot;}</p>
+<h3>Decision trees</h3>
+<p>Regression and classification</p>
+<p>Good to find influential features in dataset.</p>
+<p>Have the most informative questions at the start.</p>
+<p>Root node at the top, leaf nodes at the bottom. Route determined by yes
+/ no answers. Decision tree for predicting the class. Get to accurate
+classification quickly.</p>
+<p><img src="./jbnotes_images/image47.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5520833333333335in&quot;}</p>
+<p>Iris, continuous values for features.</p>
+<p><img src="./jbnotes_images/image48.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.53125in&quot;}</p>
+<p>Each feature splits into 2 branches. Choose a split point for the value
+of the feature. Aim is to put the split at the point which gets the most
+information gain. If leaf is all one classification, then it's a pure
+node.</p>
+<p><img src="./jbnotes_images/image49.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5256944444444445in&quot;}</p>
+<p><img src="./jbnotes_images/image50.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.529861111111111in&quot;}</p>
+<p>Can use for regression also.</p>
+<p><img src="./jbnotes_images/image51.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.14375in&quot;}</p>
+<p>Overfitting control: can use pre-pruning with to stop the growth of
+complexity. Or post pruning: let it grow then prune back to simpler
+form. Scikit learn only does pre-pruning, using max_leaf_node, and
+max_depth. Plus Min_samples_leaf parameter.</p>
+<p><img src="./jbnotes_images/image52.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.467361111111111in&quot;}</p>
+<p>Visualizing decision tree:</p>
+<p><img src="./jbnotes_images/image53.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.9097222222222223in&quot;}</p>
+<p>Plot_decision_tree is own function, Calls export graph vis function in
+scikit learn.</p>
+<p>Useful to see the nodes being most informative. Feature importance
+calculation. How important is the feature to overall prediction
+accuracy. 0 means irrelevant, 1 means perfectly predicts. Numbers are
+normalised. Stored in feature_unimportances_</p>
+<p><img src="./jbnotes_images/image54.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.529861111111111in&quot;}</p>
+<p><img src="./jbnotes_images/image55.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5340277777777778in&quot;}</p>
+<p><img src="./jbnotes_images/image56.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.5520833333333335in&quot;}</p>
+<p>Good for initial feature selection. Can use without normalisiation as
+each feature runs independently. Good where different feature types
+(binary, continuous, categorical).</p>
+<p>Key parameters. Generally adjusting one is enough.</p>
+<p><img src="./jbnotes_images/image57.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.529166666666667in&quot;}</p>
+<h3>Useful things to know</h3>
+<p>Domingos, P. (2012). <a href="https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf">A few useful things to know about machine
+learning</a>. <em>Communications
+of the ACM</em>, 55(10), 78. doi:10.1145/2347736.2347755</p>

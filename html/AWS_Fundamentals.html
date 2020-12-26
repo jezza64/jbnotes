@@ -1,0 +1,132 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>AWS Fundamentals</h1>
+<h2>Migration process</h2>
+<p>normal journey is project, foundation, migration, retire tech debt, reinvention</p>
+<h2>Compute</h2>
+<h3>Regions</h3>
+<p>local laws for
+select to minimise latency with customers
+products vary by region
+costs different by region</p>
+<h3>Availability zone</h3>
+<p>unit of resilience
+multiple within a region
+Low latency networks</p>
+<h3>EC2 elastic cloud compute</h3>
+<p>Elasticity: Can schedule elasticity, or dynamic.
+Control: start up and shut down
+Flexibility: big or small amount of resource
+Integrated: storage, ML, etc
+reliable
+security: built in
+inexpensive: don't own.</p>
+<p>Virtual servers. Scalable.</p>
+<p><em>AMI:</em> Amazon machine images (templates for machine setup)
+<em>Instance store volume:</em> temporary data that's deleted when you stop / terminate the running instance
+<em>EBS volumes:</em> Elastic block store. Persistent storage
+<em>Regions and availability zones</em>: physical locations.
+<em>Security groups:</em> You specific the protocols, ports, IP ranges to allow to access your instances.
+<em>Elastic IP addresses:</em> static IP
+<em>Tags:</em> Instance metadata</p>
+<p>Platform choice: e.g. Red hat linux, amazon linux, windows etc
+EC2 instance types are optimise for different use cases, workloads, and come in multiple sizes.
+e.g. compute organize, memory optimise.</p>
+<h3>Lightsail</h3>
+<p>Amazon Lightsail is the basic option.
+Choose an operating system, and apps if you want.
+choose region and zone.
+Basically a computer with cpu, memory, disk, network.
+Pay $3.50 per month, first month free.
+chose 512 MB RAM, 1 vCPU, 20 GB SSD
+https://lightsail.aws.amazon.com/ls/webapp/home/instances</p>
+<h3>AWS Spot</h3>
+<p>Unused capacity at 90% discount.
+Amazon hibernates when amazon needs them.
+Good for Big data stateless, batch.</p>
+<h2>Storage options</h2>
+<h3>Amazon EBS: Elastic block store</h3>
+<p>persistent storage for instances
+different drive types, e.g. SSD or hard disk.
+scale up ot down in minutes
+pay for what you provision
+snapshot, encryption etc</p>
+<h3>S3</h3>
+<p>data stored as objects in buckets. not a file system.
+key based access to objects
+e.g camera system storing to S3 bucket.
+not just a bucket: have versioning, requestor pays, hosting static website, object lifecycle management.</p>
+<p>$0.10 per allocated GB per month</p>
+<p>Buckets infinite capacity, objects 5Tb max.
+Permissions for upload / download.
+Good for Rest and Soap interfaces.</p>
+<p>Address with https://bucketname.s3.region.amazonaws.com/folder/file.</p>
+<p>Used for access control, charging, account, namespace.
+Can auto handle versions.</p>
+<p>Object are data plus metadata.</p>
+<p>Key plus version uniquely identifies version of object within the bucket.</p>
+<p>bucket + key + version -&gt; object.</p>
+<p>Put does a commit but takes time to replicate across servers, so possible to get an old copy with a get.</p>
+<p>2 simultaneous puts the request with latest timestamp wins.</p>
+<p>API: REst interface returns metadata in HTTP headers.
+Soap deprecated.
+AWS sdk is the alternate.</p>
+<p>AWS SDK wraps the Rest interface.</p>
+<p>Charges based on what you use. No setup fees, just month;y usage charges.</p>
+<h2>snapshots</h2>
+<p>These are backups.
+Can transfer from lightsail (basic) to EC2 (more features)</p>
+<h3>S3 glacier</h3>
+<p>long term archiving and backup
+configure S3 to move here after a time
+Good for e.g. scientific storage, media assets, magnetic tape replacement, digital preservation
+Glacier vault lock: good for keeping regulatory controlled data for a period of time.</p>
+<p><img src="jbnotes_images/2020-03-19-11-04-36.png" alt=""></p>
+<p>region: grouping of availability zones
+each AZ has one or more data center.</p>
+<h3>Security groups for Amazon virtual private cloud</h3>
+<p>Aim is to allow corp people ot access database and services, customers just to access
+public subnet for internet access, private subnet for corporate access linked to own datacentre.
+security groups specify the ip addresses and ports that you can use to access it.</p>
+<p><img src="jbnotes_images/2020-03-19-11-11-39.png" alt=""></p>
+<h2>Monitoring</h2>
+<p>Use cloudwatch to monitor
+look at all metrics, set alerts, look for optimisations.</p>
+<h2>Databases</h2>
+<p>Host on EC2, or better use Amazon RDS: choose amazon aurora, oracle, MS SQL server etc.
+Easily scalable, automated patches etc.
+Aurora is MySQL compatible.
+Relational
+NoSQL - Amazon Dynamo BD: sed for horizontal scaling. Good for low latency.  Used for microservices, mobile backends, gaming, IOT.
+Amazon redshift for data warehouse
+AWM database migration service to migrate.
+MySQl is $15pm</p>
+<h2>Automated deployment</h2>
+<p>AWS cloud formation: create repeatable cloud deployment.</p>
+<h2>Route 53 (DNS)</h2>
+<p>Create alias records, register domains.
+Translates domain name to Ip address
+Priced based on users.</p>
+<h2>Cloudfront</h2>
+<p>Content delivery network: network of edge servers, automatically distribute content to closest location to requestors to help performance.</p>
+<h2>Networking</h2>
+<p>Can add static ip, load balancer, dns end point
+Connect with browser client on the instances page.
+IP address changes every reboot, so create static if you want.</p>
+<p>Then can connect using your own ssh client.
+When you connect with your client, you will also need the private key.
+Mine uses default key pair
+download default private key.</p>
+<p>Safer to use private i addresses for comms inside AWS between services.
+ip addresses are Private or public
+static means a public ip address doesn't change.</p>
+<h3>VPC (Virtual private cloud)</h3>
+<p>Virtual network dedicated you your account.
+Use to connect AWS resources e.g. database to EC2.
+VPC created by default, isolated to the region unless you enable.</p>
+<h3>SSH setup</h3>
+<p>Lightsail has browser based SSH client which manages ssh keys for you.
+AwS keys are regional.
+Can upload your own key for the region, or use the default key.
+If use default, can download the key for safekeeping.
+AWS stores the public key, you store the private key.</p>

@@ -1,0 +1,97 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Markdown notes</h1>
+<h2>Markdown</h2>
+<p><a href="https://www.markdownguide.org/">Markdown guide</a></p>
+<p><a href="https://code.visualstudio.com/docs/languages/markdown">Compiling Markdown</a></p>
+<h2>cheatsheet</h2>
+<h3>code blocks</h3>
+<pre><code>for code blocks
+</code></pre>
+<p>With syntax highlighting:</p>
+<pre><code class="language-python">var = a
+print a
+</code></pre>
+<h3>Blockquotes</h3>
+<blockquote>
+<p>this is a blockquote<br>
+with line 2</p>
+</blockquote>
+<p>quote break</p>
+<blockquote>
+<p>and another quote.</p>
+</blockquote>
+<h3>Rule</h3>
+<p>Three or more</p>
+<hr>
+<hr>
+<h3>line breaks</h3>
+<p>use 2 spaces for lines<br>
+next line</p>
+<p>2 returns for paragraph.</p>
+<p>2nd paragraph</p>
+<h2>Using MS Visual Studio Code</h2>
+<p>In terminal window, run</p>
+<blockquote>
+<p>py -3 --version</p>
+</blockquote>
+<p>To edit a file from ubuntu in VS Code, in the ubuntu folder type</p>
+<blockquote>
+<p><code>code .</code><br>
+Or go in to vs code and navigate to it.</p>
+</blockquote>
+<h2>installation and setup</h2>
+<p>need  markdown-it, so needed to iunstall more packaged to get it.
+installed nodejs on ubuntu
+installed npm on ubuntu
+installed markdown-it on ubuntu
+that automatically got python 2.7 onto my machine ubuntu environment.</p>
+<blockquote>
+<p><code>sudo apt install nodejs</code>
+<code>sudo apt install npm</code>
+<code>npm install -g markdown-it</code></p>
+</blockquote>
+<h3>settings files</h3>
+<p>User settings in settings.json file, or UI.
+Workspace settings in the .vscode folder</p>
+<h3>To snapshot images</h3>
+<p>using &quot;Paste Image&quot; extension from Mushan
+copy to clipboard (start+shift+s)
+paste to markdown window (ctrl+alt+v)</p>
+<p>I've set this up so images go into \jbnotes_images subfolder, with no prefix, and the datetime as the file name</p>
+<h2>Compiling with markdown-it</h2>
+<ol>
+<li>ubuntu
+created directory markdown_notes under ~
+create sample.md file with simple markdown.</li>
+</ol>
+<p>Simple example:</p>
+<blockquote>
+<p><code>markdown-it git.md -o git.html</code></p>
+</blockquote>
+<ol start="2">
+<li>Create tasks.json<br>
+Use VSCode to create a template to access markdown-it from vs code. Add a label, and command</li>
+</ol>
+<blockquote>
+<p><code>&quot;command&quot;: &quot;markdown-it sample.md -o sample.html&quot;</code></p>
+</blockquote>
+<p>Puts tasks.json in vsCode subdir.</p>
+<ol start="3">
+<li>Run the build<br>
+in VSCode, Terminal -&gt; run task
+puts output in the same folder.</li>
+</ol>
+<h2>Alternative MD compiler: pandoc</h2>
+<p><a href="https://thisdavej.com/build-an-amazing-markdown-editor-using-visual-studio-code-and-pandoc/">Pandoc tips</a></p>
+<h2>Deployment to AWS</h2>
+<ol>
+<li>run compile_all_md.sh</li>
+<li>copy the html folder to S3 bucket</li>
+</ol>
+<h2>Style for HTML</h2>
+<p>Add to each file:</p>
+<blockquote>
+<p><code>&lt;LINK href=&quot;air_style_sheet.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;</code>
+Source style sheets from e.g. https://markdowncss.github.io/</p>
+</blockquote>

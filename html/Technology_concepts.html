@@ -1,0 +1,471 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Technology concepts</h1>
+<h2>Web Frameworks for python</h2>
+<p>Modules to write web applications.</p>
+<p>Mainly just server side. Hnadles the low level comms, can just use
+conventions and get services. Interpret requests, parameters, handle
+cookies, sessions. Responses as HTML or other, store data, etc. Can be
+full service or less.</p>
+<p>A web application may use a combination of a base HTTP application
+server, a storage mechanism such as a database, a template engine, a
+request dispatcher, an authentication module and an AJAX toolkit. These
+can be individual components or be provided together in a high-level
+framework.</p>
+<p>Django, TurboGears, Web2py are high level full stack.</p>
+<p>Less popular: Grok, pylons</p>
+<p>Less complete: CherryPy, Flask, Hug, Pyramid.</p>
+<p>Basically use Django for full facilities, Flask for solid foundation
+with less features.</p>
+<p><a href="https://palletsprojects.com/p/flask/">https://palletsprojects.com/p/flask/</a></p>
+<h2>Rest API</h2>
+<p>Api: talk to objects methods. Expose methods.</p>
+<p>Web service: api over the web.</p>
+<p>Rest API follows rules of Rest spec.</p>
+<p>Rest = &quot;Representational state transfer&quot;</p>
+<p>HTTP is a way to send a receive messages over a network. Get method,
+post method, headers.</p>
+<p>Rest is for distributed systems.</p>
+<p>Rest is a way to implement HTTP.</p>
+<p>Roy Feilding defined rules for best practice. requests and responses,
+type of messages</p>
+<ol>
+<li>
+<p>Client tells service provider which operation to perform. Expressed
+in HTTP verb. E.g. use the DELETE http verb, not just a GET request
+(not restful)</p>
+</li>
+<li>
+<p>Client tells service provider what data to operate on (scoping
+information). Scoping information should go in the URI / URL.
+Scoping info is parameter in URI.</p>
+</li>
+</ol>
+<p>GET for get data, POST for creating, DELETE for deleting etc.</p>
+<p>Common data formats for data (basically JSON)</p>
+<p>Communication is stateless</p>
+<p>Service consumer calls service priovider with HTTP request, verb plus
+data as JSON.</p>
+<h2>URL / URI / URN</h2>
+<p>URI: uniform resourse identifier. Have Name and location.</p>
+<p>URL: uniform resourse locator. Just the location. Needs to have Protocol
+(http, ftp etc) and domain (<a href="http://www.me.com">www.me.com</a>).</p>
+<p>Optional are port (which door into the service), default is 80 for http.
+Path.</p>
+<p>URN: uniform resourse name. Just the name. 2 can have same name, so
+better to use URL.</p>
+<p>Both the URL and URN are types of URI's</p>
+<p>Query strings: proceeded by ?, key value pairs.</p>
+<p>Fragments: #fragment. Used for location in document.</p>
+<h2>HTTP</h2>
+<p>Http is connectionless. After making request, dies. No state. Any sort
+of data transferred. Stateless, so client and server only know about
+eachother during request. Created to fetch HTML and return to the
+client.</p>
+<p>Web request:</p>
+<p>TCPIP handles the connection.</p>
+<p>HTTP established connection, sends HTTP message, disconnects.</p>
+<p>Server processes request, prepares response, established connection,
+sends message.</p>
+<p>Http message:</p>
+<p>Start line, headers, body. Plain text.</p>
+<p>Request:</p>
+<p>Start line with method (command: these are POST, PUT, DELETE), URI
+(domain, path), HTTP version</p>
+<p>Headers: Host (server), language, accept (mime type)</p>
+<p>Response:</p>
+<p>http version</p>
+<p>status code (200 for OK, 404 for file not found)</p>
+<p>body (file data)</p>
+<h2>Microservices + events + Docker</h2>
+<p><a href="https://www.youtube.com/watch?v=sSm2dRarhPo">https://www.youtube.com/watch?v=sSm2dRarhPo</a></p>
+<p>Monolithic: modules packaged to one or more JARs. Problem is that it
+grows endlessly. When you have a large app like this you can't be agile.
+Deployment is painful. No autonomy between teams. Complex merging,
+integration testing.</p>
+<p>Microservice architecture:</p>
+<p>Functional decomposition. Separate modules in application into
+standalone separately deployable application. Each has it's own
+database. Api gateway in between the clients and the multiple services,
+acts as a façade.</p>
+<p><img src="./jbnotes_images/image58.png" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.8333333333333335in&quot;}</p>
+<p>Book: the art of scalability, written by ebay people.</p>
+<p>Advantages: Enables agile, continuous deployment, deployment
+independently. Allows teams less interaction, new technologies.</p>
+<p>Disadvnatages: complexity of developing distributed systems, so
+interprocess communication, not just function call. Need to handle
+partial failure (service down or slow..). Complexity of transactions
+which need to span multiple databases. Complexity of testing with
+dependencies. Deployment complex. Not 3 copies of big app, but 100
+versions of different modules (use Docker). Develop and deploy across
+multiple teams.</p>
+<p>There are solutions.</p>
+<p>Questions and answers:</p>
+<ul>
+<li>
+<p>How to deply the services? Use docker.</p>
+</li>
+<li>
+<p>How do the services communicate</p>
+</li>
+<li>
+<p>How to clients communicate with services</p>
+</li>
+<li>
+<p>How to partition the system into services</p>
+</li>
+<li>
+<p>How to deal with distributed data management: use &quot;events&quot;</p>
+</li>
+</ul>
+<p>Shared Database issue: in monolithic app, modules generally have their
+own tables in the shared database, but also need to access common
+tables, customer data. Decreases autonomy, lack of knowledge of who
+accesses each table. Distributed transactions over multiple databases
+are not practical.</p>
+<p>Event driven architecture is solution to this. Chain events and
+transactions. Order service creates order in a pending state. Publishes
+event. Consumed by Customer service, which checks credit line and
+returns an event for success of credit check. Consumed by Order service
+to commit the order.</p>
+<p><img src="./jbnotes_images/image59.png" alt="">{width=&quot;6.239583333333333in&quot;
+height=&quot;4.46875in&quot;}</p>
+<p>Event log: Hard to guarantee that the db update and the message are
+delivered, but ways around this. E.g. event log. Use an events table,
+insert event to say order created, another even to say approved. Other
+services poll the event table to see the current state.</p>
+<p><img src="./jbnotes_images/image60.png" alt="">{width=&quot;6.229166666666667in&quot;
+height=&quot;4.21875in&quot;}</p>
+<p>Benefits: Gives reliable event publishing mechanism, solves data
+consistency issue, helps with NOSQL databases where there's no
+transaction control. Store events with simple structure with state
+changes. Audit log. Temporal queries. Can replay.</p>
+<p>Drawbacks: needs application rewrite. Weird way to structure business
+logic. Stuck with bad history if badly designed events. Querying event
+store can be difficult to get current status.</p>
+<p>Microservice drawbacks:</p>
+<p>Different databases so hard to do BI queries.</p>
+<p>Docker: solution to deploy the 10s or 100s of services. Challenges are
+lots of services need to be deployed and monitored. Multi languages,
+frameworks, versions of languages, scalability. Services need to be
+independent and balanced. Deployment reliable and cost effective.
+Container based approach. Service packaged as container image. At
+runtime each container runs on a VM. Good isolation, manageability, low
+overhead to machine layer, fast to deploy, efficient resource
+utilisation.</p>
+<p>Simplifies development: less work getting development environment
+because this info is in the resourse file. Integration testing easy
+because can use docker compose to set up environment. Build docker
+image.</p>
+<h2>Docker</h2>
+<p>Docker install: download for windows.</p>
+<p>Easy to configure environments and deploy on any platform. Good for
+scaling, each environment can have many instances, scales easily. Can
+e.g. run bash in wondows cmd prompt by telling docker to run bash
+instance.</p>
+<h2>NoSQl Database</h2>
+<p>e.g. MongoDb.</p>
+<p>Good for lost of data unstructured. Collections with documents.
+Documents are the rows in the tables, but they can have any schema. So
+rows have different schemas.</p>
+<p>Downside is you don't control the data on the way in, upside is you can
+add anything.</p>
+<p>You can kind of relate the multiple collections, but that's not the
+idea. Instead you put all the orders in one collection, with key data.
+It's denormalised. Less relation merging, all the data's in one table,
+May have another table of products. You may need to update the orders
+when you change the products.</p>
+<p>Good for different purposes.</p>
+<p>SQL good for schemas, control, relationships which change frequently,
+scaling is limited.</p>
+<p>Horizontal scaling: add more servers. Not good for SQL, easy for Mongo.</p>
+<p>Vertical scaling: a more powerful computer. Good for SQL but gets
+limited.</p>
+<h2>Blockchain</h2>
+<p>Ledger: record money in / out / balance.</p>
+<p>Bank: you believe their balancledger.</p>
+<p>Decentralised: everyone has a ledger. Which one do you believe?
+Blockchain answers this.</p>
+<p>Blockchain: update the ledger every 10 mins. Miners compete for the
+right to do the update. Solve a maths problem.</p>
+<p>After 10 mins, first person solves. If more than 50% of the other miners
+agree, then the update happens. New transactions arrive, in a block.
+Going form this address to that address. Good for transparency,
+authentication, accuracy.</p>
+<p>Banking:</p>
+<h2>Hive / Hadoop</h2>
+<p>Both built by apache.</p>
+<p>Hadoop good for storing data from IOT, social media on commodity
+hardware. Uses map reduce. Good for unstructured data. Volume, variety
+and velocity = big data. Schema-on-read: just push it into a data lake,
+without worrying about the format or how it's going to be used.</p>
+<p>Runs on clusters like Cloudera.</p>
+<p>Hive is built on top of Hadoop for providing summary, qruey, analysus.
+SQL like interface. HQL.</p>
+<p>Cloudera manager is a tool to use Hive.</p>
+<p>Hadoop good for batch systems. Lots of latency to access data.</p>
+<p><strong>Downsides:</strong></p>
+<p>Because don't need to define what you are writing, people wrote all
+sorts into data lakes. No governance over the linerage of data, contents
+of data lake. Data not ready to be consumed, lose faith, turns into data
+swamp.</p>
+<p>Many open source compute engines e.g. Hive, these are too many and too
+complex to configure. Specialised skills.</p>
+<p>Data lakes not really used to build business applications. They store
+data, do reporting, feed other systems. But not business applications.
+Lots of complexity just for reports.</p>
+<p>Solutiuon is to modernise a business application to get it to access the
+data lake with SQL.</p>
+<p>It's easier now to run analytics and OLTP on the same data.</p>
+<p>You want to get the models working in the OLTP so they can dynamiocally
+react to changes and make in the moment decisions. ML needs to be built
+in at the database level so updated data is always available to the
+models.</p>
+<h2>Translytical data platform providers</h2>
+<p>A unified database that supports transactions, analytics, and other
+workloads and access patterns in real time without sacrificing
+transactional integrity, performance, or scalability. No data movement.</p>
+<p>14 most significant ones --- Actian, Aerospike, GigaSpaces, GridGain
+Systems, IBM, InterSystems, MemSQL, Microsoft, MongoDB, Oracle, Redis
+Labs, SAP, Splice Machine, and VoltDB</p>
+<p>Have the OLTP and analysis and data science all using one data source.</p>
+<p>Microsoft's solution for unified OLTP and OLAP workloads is ramping up.
+Although Microsoft has been offering multiple database engines for
+online transaction processing (OLTP) and online analytical processing
+(OLAP), its upcoming SQL Server 2016 release will deliver a single
+unified database for these workloads. In SQL Server 2012, Microsoft
+delivered an in-memory column-store for data warehousing to support
+faster business intelligence, analytics, and predictive analytics. And
+SQL Server 2014 provided an in-memory OLTP database platform to support
+high-performance transactional applications requiring minimal changes to
+the application. With SQL Server 2016, Microsoft offers the capability
+to use in-memory column store with in-memory OLTP for in-memory
+performance and real-time operational analytics</p>
+<p>VoltDB offers a viable translytical database platform. VoltDB is an
+in-memory database platform that combines streaming analytics with
+transactions in a single integrated platform. It supports ACID
+compliance, high performance, and low-latency data access in a scalable
+distributed shared-nothing in-memory database. VoltDB relies on
+horizontal partitioning of data to scale out on commodity hardware and
+the public cloud. It also supports synchronous replication within the
+database cluster to support high availability. Unlike other vendors,
+VoltDB is available as open source software under the Affero General
+Public License (AGPL) as well as under a commercial license. Typically,
+customers use VoltDB to support real-time analytics and low-latency
+transactional and operational applications across the telecom, financial
+services, energy, advertising, security, and gaming industries.</p>
+<h2>SQL Server 2016</h2>
+<p>Gartner magic qualdant. Good for experience and value, admin.</p>
+<p>Cosmos is a non relational DB</p>
+<p>Non relational DBMS are only 1% of the market. MS growning quickly.</p>
+<p>Security: encryption built in. &quot;Always encrypted&quot; only application has
+the key.</p>
+<p>Operational analytics: in memory OLTP and in memory analytics. One
+datastore for OLTP and analysis.</p>
+<h2>Microsoft PowerBI:</h2>
+<p>Access easily, cloud or local. Easily manipulate. Reports and
+dashboards.</p>
+<p>Ask questions in English</p>
+<p>Good on web or mobile, good visualisations.</p>
+<p>BA's use power BI desktop to build visualisations. Can build custom
+visualisations.</p>
+<p>Easy Excel integration. Can bring in data model from Excel.</p>
+<p>It's free!! PowerBI.com and download free version. Included in Office
+365.</p>
+<p>Try power BI on German spreadsheet?</p>
+<p>One version of the data. Fragmentation is poisonous. Unified platform:
+one platform for access, for data lake, AI.</p>
+<p>Builds on SQL Server heritage and interaction.</p>
+<p>Good governance and control.</p>
+<p>Power BI desktop has a good ER modelling tool.</p>
+<p>Can cache data in memory in Power BI, at aggregated level. Can still
+drill down to the core data level by sending a query to the underlying
+system.</p>
+<p>Can link into multiple databases for analysis without moving the data.</p>
+<p>Data flow to clean data, not tied to a specific report or table. Uses
+power query. Lots of datasources, and transformation types.</p>
+<p>Drag and drop data science.</p>
+<p>R and Python directly integrated.</p>
+<h2>Github</h2>
+<p>Lifecycle:</p>
+<ul>
+<li>
+<p>Create a repository</p>
+</li>
+<li>
+<p>Put some files in it</p>
+</li>
+</ul>
+<p>To edit</p>
+<ul>
+<li>
+<p>Create a branch</p>
+</li>
+<li>
+<p>Edit and commit changes to branch</p>
+</li>
+<li>
+<p>Open a pull request for others to pull your changes into their code
+and comment</p>
+</li>
+<li>
+<p>Merge branch into the master</p>
+</li>
+</ul>
+<p><a href="https://github.com/jezza64/hello-world">https://github.com/jezza64/hello-world</a></p>
+<h1>Chararcter encoding</h1>
+<p>Words and sentences in text are created from <strong>characters</strong>. Examples of
+characters include the Latin
+letter <a href="https://www.w3.org/International/questions/qa-what-is-encoding-data/225.png">á</a> or
+the Chinese
+ideograph <a href="https://www.w3.org/International/questions/qa-what-is-encoding-data/35531.png">請</a> or
+the Devanagari
+character <a href="https://www.w3.org/International/questions/qa-what-is-encoding-data/2361.png">ह</a>.</p>
+<p>Characters that are needed for a specific purpose are grouped into a
+character set (also called a repertoire). (To refer to characters in an
+unambiguous way, each character is associated with a number, called a
+code point.)</p>
+<p>The characters are stored in the computer as one or more bytes.</p>
+<p>Basically, you can visualise this by assuming that all characters are
+stored in computers using a special code, like the ciphers used in
+espionage. A character encoding provides a key to unlock (ie. crack) the
+code. It is a set of mappings between the bytes in the computer and the
+characters in the character set. Without the key, the data looks like
+garbage.</p>
+<p>A font is a collection of glyph definitions, ie. definitions of the
+shapes used to display characters.</p>
+<p>Once your browser or app has worked out what characters it is dealing
+with, it will then look in the font for glyphs it can use to display or
+print those characters. (Of course, if the encoding information was
+wrong, it will be looking up glyphs for the wrong characters.)</p>
+<p>A given font will usually cover a single character set, or in the case
+of a large character set like Unicode, just a subset of all the
+characters in the set. If your font doesn't have a glyph for a
+particular character, some browsers or software applications will look
+for the missing glyphs in other fonts on your system (which will mean
+that the glyph will look different from the surrounding text, like a
+ransom note). Otherwise you will typically see a square box, a question
+mark or some other character instead. For example:</p>
+<p><img src="./jbnotes_images/image104.gif" alt="mojibake3.gif">{width=&quot;5.479166666666667in&quot;
+height=&quot;0.5520833333333334in&quot;}</p>
+<p>As a content author or developer, you should nowadays always choose the
+UTF-8 character encoding for your content or data. This Unicode encoding
+is a good choice because you can use a single character encoding to
+handle any character you are likely to need. This greatly simplifies
+things. Using Unicode throughout your system also removes the need to
+track and convert between various character encodings.</p>
+<p>In the coded character set called ISO 8859-1 (also known as Latin1) the
+decimal code point value for the letter é is 233. However, in ISO
+8859-5, the same code point represents the Cyrillic character щ.</p>
+<p>These character sets contain fewer than 256 characters and map code
+points to byte values directly, so a code point with the value 233 is
+represented by a single byte with a value of 233. Note that it is only
+the context that determines whether that byte represents either é or щ.</p>
+<h1>Vba</h1>
+<p>Alt + F11 to open VBA editor</p>
+<p>Functions: take multiple named arguments, set a variable to the name of
+the fuction to return it.</p>
+<p>Function DISCOUNT(quantity, price)<br>
+If quantity &gt;=100 Then<br>
+DISCOUNT = quantity * price * 0.1<br>
+Else<br>
+DISCOUNT = 0<br>
+End If<br>
+<br>
+DISCOUNT = Application.Round(Discount, 2)<br>
+End Function</p>
+<p>Can't take action in a function (use a macro), but can do calculations.</p>
+<p>Comment with apostrophie.</p>
+<p>To use a custom function, the workbook containing the module in which
+you created the function must be open. If that workbook is not open, you
+get a #NAME? error when you try to use the function. If you reference
+the function in a different workbook, you must precede the function name
+with the name of the workbook in which the function resides. For
+example, if you create a function called DISCOUNT in a workbook called
+Personal.xlsb and you call that function from another workbook, you must
+type <strong>=personal.xlsb!discount()</strong>, not simply <strong>=discount()</strong>.</p>
+<p>An easier way to make your custom functions available at all times is to
+store them in a separate workbook and then save that workbook as an
+add-in. You can then make the add-in available whenever you run Excel.</p>
+<p>Ranges:</p>
+<p>Function J_ENTROPY(r As Range)</p>
+<p>For Each c In r.Cells</p>
+<p>Total = Total + c.Value</p>
+<p>Next</p>
+<p>J_ENTROPY = Total</p>
+<p>End Function</p>
+<p>Array passing to functions:</p>
+<p>You may have noticed that the static array StaticArray in AAATest has
+the same data type (Long) as the array Arr declared in the parameter
+list to PopulatePassedArray . This is no coincidence.  The rule here is
+that the data type of the array declared in the calling
+procedure <em><strong>must</strong></em> match the data type declared in the called
+procedure's parameter list.   While you can declare a simple
+parameter As Variantto accept a parameter to be of any data type, this
+does** *not *<strong>work for arrays.</strong> **It is a very common misconception
+that declaring the function parameter As Variant() will allow you to
+accept an array of any type. This is flat wrong.</p>
+<p>Use dynamic arrays, pass by reference to functions which then redim the
+array.</p>
+<p>ReDIM PRESERVE IS EXPENSIVE, SO USE A MAX SIZED ARRAY AND REDIM AT THE
+END.</p>
+<p>To pass an array of any type to a procedure, don't declare the
+parameter as an array. Instead, declare it as a Variant (not an array of
+Variants).  A single Variant variable may contain an array.  This is
+illustrated in the code below.</p>
+<h1>Google sheets</h1>
+<p><a href="https://www.benlcollins.com/spreadsheets/how-to-use-google-sheets/">https://www.benlcollins.com/spreadsheets/how-to-use-google-sheets/</a></p>
+<p>This is my number 1 productivity tip in Google Sheets. To remove all
+formatting from a cell (or range of cells), hit Cmd + \ on a Mac or
+Ctrl + \ on a PC.</p>
+<p>Datatypes: ust numbers (dates, numbers) or text (left aligned). If you
+want to force something to be stored as text, you can prepend a single
+quote, ' before the cell contents.</p>
+<p>Code with Apps Script.</p>
+<p>Apps script hints:</p>
+<p>// for commnet</p>
+<p><strong>Ctrl + / to comment / uncomment a block</strong></p>
+<p><strong>Alt + up / down to move a code block</strong></p>
+<p><strong>Highlight and press tab to clear up indentation</strong></p>
+<p><strong>Ctrl + space to bring up auto complete</strong></p>
+<p><strong>Use logger.log() to debug steps</strong></p>
+<p>Variables are any type. E.g. var counter = 0</p>
+<p>Arrays use square brackets:</p>
+<p>var fruitsArray = [ &quot;apple&quot;, &quot;banana&quot;, &quot;pear&quot; ];</p>
+<p>Objects use curly brackets and store key / value pairs:</p>
+<p>var book = {<br>
+  &quot;title&quot;: &quot;Apps Script Book&quot;,<br>
+  &quot;author&quot;: &quot;Ben Collins&quot;<br>
+}</p>
+<p>For loop:</p>
+<p>for (var i = 0; i &lt; 10; i++) {<br>
+    Logger.log(i);<br>
+}</p>
+<p>Foreach loop: Basically it grabs all the data from your array and loops
+over each item in turn. You can do something, by applying a function, to
+each item during each loop of the array.</p>
+<p>array.forEach(function(item) {<br>
+    Logger.log(item);<br>
+});</p>
+<p>Data transfer</p>
+<p>Calculations in Google Sheets are done in your browser and are fast.
+Similarly, calculations done in Apps Script on the Google servers are
+lightning fast. But passing data back and forth from Sheet to Apps
+Script or vice versa, oh boy! That's slow in comparison. (We're still
+talking seconds or minutes here, but that's slow in computing terms.)</p>
+<p>Try to minimize the number of calls you make between your Apps Script
+and your Google Sheets.</p>
+<p>The <a href="https://developers.google.com/apps-script/">Apps Script
+documentation</a> is your
+friend.</p>
+<p><a href="https://stackoverflow.com/questions/tagged/google-apps-script">Stack Overflow Apps Script
+Tag</a></p>
+<p><a href="https://groups.google.com/forum/#!forum/google-apps-script-community">Google Apps Script Community
+Group</a></p>
+<h2>Facebook</h2>
+<ul>
+<li>Marketing manager gives you the detials of campaigns, ad sets, ads.</li>
+<li>Define the audience based on interests, location etc.</li>
+<li>pixel data is the cookie data. Tracking you via shared cookies.</li>
+</ul>

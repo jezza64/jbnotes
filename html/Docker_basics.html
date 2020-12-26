@@ -1,0 +1,104 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Docker</h1>
+<h2>Concepts</h2>
+<p>Bit like a VM, but independent of operating system. instances transferrable between linux and windows.</p>
+<p>VMs virtualise hardware. Containers virtualise the oerating system.</p>
+<p>covers Code, runtime env, libraries, config.</p>
+<p>Advantantages:</p>
+<ul>
+<li>consistent environment</li>
+<li>cross platform</li>
+<li>dependencies managed</li>
+<li>scale</li>
+<li>reuse of images</li>
+</ul>
+<h2>Terms</h2>
+<p><strong>Docker image</strong><br>
+is the read only template which defines the container. Image contains the code that will run, including libraries and dependencies. Read only binary template, plus metadata describing abilities and dependencies. Images shared via repository.</p>
+<p><strong>Docker container</strong>
+encapsulated running environment. it's a running docker image.</p>
+<p><strong>Docker Daemon</strong>
+is a persistent background process mandaing images, contaners, networks, storeage volumes. Listens for API requests and processes.</p>
+<p><strong>Docker Engine Rest API</strong>
+Http client can access this to interact with daemon</p>
+<p><strong>Docker CLI</strong>
+command line for Daemon to manage instances.</p>
+<p><strong>Docker client</strong>
+local or remote.
+gives a CLI to give build, pull, run, stop commands to Docker daemon.</p>
+<p><strong>Docker Host</strong>
+Comprises daemon, images, containers, storage, networks.
+Daemon processes commands from the client and pulls, builds, etc.</p>
+<p><strong>Build file</strong>
+Goes with image</p>
+<h2>Networking</h2>
+<p>Some abstraction. either default Docker network, or user defined. Each has 3 flavours:</p>
+<ul>
+<li>None:</li>
+<li>bridge: no need for port forwarding. for containers to communicate with eachother.</li>
+<li>host</li>
+</ul>
+<h2>AWS</h2>
+<p><strong>Amazon ECR: Amazon Elastic container registry</strong><br>
+is an image registry for storing docker images.</p>
+<p><strong>Amazon ECS: Amazon elastic container services</strong>
+When you're running lots of containers, need an orchestration tool. (e.g. Kubernetes, ECS, docker swarm). Start stop monitor thousands of containers.
+Kubernetes is popular free open source.
+Amazon EKS is Kubernertes on AWS with integration.</p>
+<p>supports both</p>
+<ul>
+<li>Community edition (open source, free)</li>
+<li>Enterprise edition (subscription)</li>
+</ul>
+<p>install on EC2 instance.</p>
+<h2>Docker installation</h2>
+<p>Needs windows pro
+installed the lunix version from <a href="https://docs.docker.com/install/linux/docker-ce/ubuntu/">https://docs.docker.com/install/linux/docker-ce/ubuntu/</a>
+installed via Docker repositories</p>
+<p>Update the apt package index:</p>
+<blockquote>
+<p><code>$ sudo apt-get update</code></p>
+</blockquote>
+<p>Install packages to allow apt to use a repository over HTTPS:</p>
+<pre><code class="language-bash">$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent \ software-properties-common
+</code></pre>
+<p>Add Docker’s official GPG key:</p>
+<blockquote>
+<p><code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</code></p>
+</blockquote>
+<p>Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88, by searching for the last 8 characters of the fingerprint.</p>
+<blockquote>
+<p><code>$ sudo apt-key fingerprint 0EBFCD88</code></p>
+</blockquote>
+<pre><code class="language-bash">pub   rsa4096 2017-02-22 [SCEA]
+      9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid           [ unknown] Docker Release (CE deb) &lt;docker@docker.com&gt;
+sub   rsa4096 2017-02-22 [S]
+
+# get stable release
+$ sudo add-apt-repository \
+   &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable&quot;
+
+# install
+$ sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+#Verify that Docker Engine - Community is installed correctly by running the hello-world image.
+$ sudo docker run hello-world
+</code></pre>
+<p>Docker Engine - Community is installed and running. The docker group is created but no users are added to it. You need to use sudo to run Docker commands. Continue to Linux postinstall to allow non-privileged users to run Docker commands and for other optional configuration steps.</p>
+<p>linux post install
+<a href="https://docs.docker.com/install/linux/linux-postinstall/">https://docs.docker.com/install/linux/linux-postinstall/</a></p>
+<p>This looks like a better docker on windows / linux setup guide: <a href="https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly">https://nickjanetakis.com/blog/setting-up-docker-for-windows-and-wsl-to-work-flawlessly</a></p>
+<p>Actually installed the windows version after all this.</p>
+<h2>Docker Commands</h2>
+<p>start a container</p>
+<blockquote>
+<p>`docker run -d -p 80:80 docker/getting-started</p>
+</blockquote>
+<p>-d - run the container in detached mode (in the background)
+-p 80:80 - map port 80 of the host to port 80 in the container
+docker/getting-started - the image to use</p>
+<p>Dashboard shows the containers running on your machine.</p>

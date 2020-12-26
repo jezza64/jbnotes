@@ -1,0 +1,665 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Python</h1>
+<h3>Installation</h3>
+<p>Conda install packagename</p>
+<p>Conda update packagename</p>
+<p>Pip install packagename (use conda if you can for conda environments)</p>
+<p>Objects have a type, and a set of methods that run on that type.</p>
+<h3>Imports</h3>
+<p>Import somemodule<br>
+somemodule.a(d, e)</p>
+<p>Or:</p>
+<p>From somemodule import a<br>
+a(d, e)</p>
+<h3>Mutable / immutable</h3>
+<p>Most are mutable (lists, dicts, numpy arrays, classes).</p>
+<p>Strings and tuples are immutable.</p>
+<h3>Built in scalar types</h3>
+<p>Str (unicode), bytes, float, bool, int.</p>
+<h2>Python operations</h2>
+<hr>
+<h3>To print strings</h3>
+<p>Named arguments:</p>
+<p>&quot;hello {name}&quot;.format(name = &quot;Jeremy&quot;)</p>
+<p>&quot;cost is {cost:6.3f}.format(cost = &quot;230.3498&quot;, ) -&gt; 230.35</p>
+<p># default arguments</p>
+<p>print(&quot;Hello {}, your balance is {}.&quot;.format(&quot;Adam&quot;, 230.2346))</p>
+<p># positional arguments</p>
+<p>print(&quot;Hello {0}, your balance is {1}.&quot;.format(&quot;Adam&quot;, 230.2346))</p>
+<p># keyword arguments</p>
+<p>print(&quot;Hello {name}, your balance is {blc}.&quot;.format(name=&quot;Adam&quot;,
+blc=230.2346))</p>
+<p># mixed arguments</p>
+<p>print(&quot;Hello {0}, your balance is {blc}.&quot;.format(&quot;Adam&quot;,
+blc=230.2346))</p>
+<p># arguments with index</p>
+<p>&quot;start: {}&quot;.format(Df2.shape[0])</p>
+<h3>Concatenate</h3>
+<p><strong>The join() is a string method which returns a string concatenated with
+the elements of an iterable.</strong></p>
+<p><strong>Concatenate with +</strong></p>
+<p>print('str1 + str2 = ', str1 + str2)</p>
+<p>String operations</p>
+<ol>
+<li>
+<p>&gt;&gt;&gt; &quot;PrOgRaMiZ&quot;.lower()</p>
+</li>
+<li>
+<p>'programiz'</p>
+</li>
+<li>
+<p>&gt;&gt;&gt; &quot;PrOgRaMiZ&quot;.upper()</p>
+</li>
+<li>
+<p>'PROGRAMIZ'</p>
+</li>
+<li>
+<p>&gt;&gt;&gt; &quot;This will split all words into a list&quot;.split()</p>
+</li>
+<li>
+<p>['This', 'will', 'split', 'all', 'words', 'into',</p>
+<blockquote>
+<p>'a', 'list']</p>
+</blockquote>
+</li>
+<li>
+<p>&gt;&gt;&gt; ' '.join(['This', 'will', 'join', 'all',</p>
+<blockquote>
+<p>'words', 'into', 'a', 'string'])</p>
+</blockquote>
+</li>
+<li>
+<p>'This will join all words into a string'</p>
+</li>
+<li>
+<p>&gt;&gt;&gt; 'Happy New Year'.find('ew')</p>
+</li>
+<li>
+<p>7</p>
+</li>
+<li>
+<p>&gt;&gt;&gt; 'Happy New Year'.replace('Happy','Brilliant')</p>
+</li>
+<li>
+<p>'Brilliant New Year'</p>
+</li>
+</ol>
+<h1>Head First Python notes</h1>
+<hr>
+<h2>Lists, Tuples, Dictionaries</h2>
+<p><strong>A variable takes on the type of the value assigned.</strong></p>
+<p>Everything is an object in Python, and any object can be assigned to a
+variable.</p>
+<p><strong>Like in other programming languages, objects can
+have state (attributes or values) and behavior (methods).</strong></p>
+<p>List: an ordered mutable collection of objects. Not predefined size, any
+objects, has sequence.</p>
+<p><img src="./jbnotes_images/image62.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/050fig01.png.jpg">{width=&quot;4.90625in&quot;
+height=&quot;2.90625in&quot;}</p>
+<p><strong>Tuple: an ordered immutable collection of objects. Like a constant
+list.</strong></p>
+<p><img src="./jbnotes_images/image63.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/051fig01.png.jpg">{width=&quot;4.395833333333333in&quot;
+height=&quot;3.0520833333333335in&quot;}</p>
+<p><strong>Dictionary: an unordered set of key/value pairs</strong></p>
+<p><img src="./jbnotes_images/image64.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/052fig01.png.jpg">{width=&quot;4.458333333333333in&quot;
+height=&quot;3.3229166666666665in&quot;}</p>
+<p><strong>Set: an unordered set of unique objects</strong></p>
+<p><img src="./jbnotes_images/image65.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/053fig01.png.jpg">{width=&quot;3.6145833333333335in&quot;
+height=&quot;3.0208333333333335in&quot;}</p>
+<p>Lists: [square brackets, comma separated objects]. Can do list of
+lists.</p>
+<p>Append(object) to add object</p>
+<p>remove(object) to remove</p>
+<p>pop(index) to remove on index (or last) and returns it</p>
+<p>list1.extend(list2) to add list2 to list1</p>
+<p>list.insert(index to insert before, object to insert)</p>
+<h2>Chapter 3: Dictionaries, Sets, Tuples</h2>
+<h3>Dictionary</h3>
+<p>for name / value pairs. Like a map. Order not preserved. Load using
+curly braces, with a colon for the key. Access with square brackets.</p>
+<p>Person3 = {'Name': 'Jremy',<br>
+'Gender': 'M'}</p>
+<p>Lookup with square brackets: person3['Gender']</p>
+<p>Check out this for the parser interpretation:
+<a href="https://docs.python.org/3/reference/lexical_analysis.html#operators">https://docs.python.org/3/reference/lexical_analysis.html#operators</a></p>
+<p>For loop only iterates over the keys. Use sorted function e.g. for k in
+sorted(dictionary). Sorted returns an ordered copy, doesn't change the
+original.</p>
+<p>Items method with for loop is best way to get the data.</p>
+<p>e.g. for k, v in sorted(found.items)):</p>
+<p>print(k, 'was found', v, 'times')</p>
+<p>Dictionary keys must be inititialised. So check membership with 'in'. Or
+set the default</p>
+<p><strong>Sets</strong>: like a list with unique values, curly braces, faster than
+list, can use set operators. Curly braces look like dictionary, but no
+colons. Can use set logic (union, difference, intersection)</p>
+<p><strong>Tuples</strong>: like a list but immutable. Round brackets. Cant have a
+single object in a tuple unless add a comma.</p>
+<p>Use type(object) to see if it's a list / dictionary etc.</p>
+<p>Often have e.g. dictionary of dictionaries.</p>
+<p><img src="./jbnotes_images/image66.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.4361111111111111in&quot;}</p>
+<p>Access with people['Ford']['Gender']. Print with pprint</p>
+<h2>Chapter 4: Functions and Modules</h2>
+<p>Modules are a collection of functions in a file.</p>
+<p>Library is multiple modules.</p>
+<p><img src="./jbnotes_images/image67.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/147fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.3444444444444446in&quot;}</p>
+<p>Functions in a class are methods.</p>
+<p>Doesn't force you to specify the return type, just objects.</p>
+<p>String delimiters: ' and &quot; are the same.</p>
+<p>Doc strings are &quot;&quot;&quot;, can span multiple lines. PEP8 is best practice
+format. <strong><a href="https://www.python.org/dev/peps/">https://www.python.org/dev/peps/</a>.</strong></p>
+<p>Pass args, return a single object - but this could be a data structure.</p>
+<p>Function annotations:</p>
+<p><img src="./jbnotes_images/image68.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/162fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.4819444444444445in&quot;}</p>
+<p>Python doesn't check the type of parameters passed to a function call,
+or the type of return values. Everything's an object. Annotations just
+for documentation. Visible with help BIF.</p>
+<h3>Default arguments: specify default value with =</h3>
+<p><img src="./jbnotes_images/image69.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/170fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.2520833333333334in&quot;}</p>
+<h3>Position versus keyword assignment: pass args in any order.</h3>
+<p>Modules</p>
+<h3>Share functions by creating a module (file).</h3>
+<p>Import a module, but interpreter assumes module is on the search path.
+Import error if not. Cant specify full path. This is hard! Looks in</p>
+<ol>
+<li>
+<p>Current working directory</p>
+</li>
+<li>
+<p>Interpreters site package locations</p>
+</li>
+<li>
+<p>Standard library locations</p>
+</li>
+</ol>
+<h3>Adding a module to site packages:</h3>
+<p>Setuptools module in standard library has the tools to add / remove from
+site packages.</p>
+<ol>
+<li>Create a distribution description (identifies the module. Create a
+file setup.py with the details of the author etc, and list of the
+.py files to include in the package. Also create a README.tct file
+in same folder)</li>
+</ol>
+<p><img src="./jbnotes_images/image70.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/179fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.6798611111111112in&quot;}</p>
+<ol start="2">
+<li>Generate a distribution file (creates multiple files zipped to a
+distribution file)</li>
+</ol>
+<p><img src="./jbnotes_images/image71.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/180fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.1847222222222222in&quot;}</p>
+<ol start="3">
+<li>Install the distribution file (use pip = package installer for
+python</li>
+</ol>
+<p><img src="./jbnotes_images/image72.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/182fig03.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.3625in&quot;}</p>
+<p>Can share packages via PyPI (python package index).
+<a href="https://pypi.python.org/pypi"><em><strong>https://pypi.python.org/pypi</strong></em></a>.</p>
+<h3><em><strong>Do Python function arguments support by-value or by-reference call semantics?</strong></em></h3>
+<p>Here's the kicker: both Tom <em>and</em> Sarah are right. Depending on the
+situation, Python's function argument semantics
+support <strong>both</strong> call-by-value <em>and</em> call-by-reference.</p>
+<p>Recall once again that variables in Python aren't variables as we are
+used to thinking about them in other programming languages; variables
+are <strong>object references</strong>. It is useful to think of the value stored in
+the variable as being the memory address of the value, not its actual
+value. It's this memory address that's passed into a function, not the
+actual value. This means that Python's functions support what's more
+correctly called <em>by-object-reference call semantics</em>.</p>
+<p>Based on the type of the object referred to, the actual call semantics
+that apply at any point in time can differ. So, how come in Tom's and
+Sarah's functions the arguments appeared to conform to by-value and
+by-reference call semantics? First off, they didn't---they only appeared
+to. What actually happens is that the interpreter looks at the type of
+the value referred to by the object reference (the memory address) and,
+if the variable refers to a <strong>mutable</strong> value, call-by-reference
+semantics apply. If the type of the data referred to is <strong>immutable</strong>,
+call-by- value semantics kick in. Consider now what this means for our
+data.</p>
+<p>Lists, dictionaries, and sets (being mutable) are always passed into a
+function by reference--- any changes made to the variable's data
+structure within the function's suite are reflected in the calling code.
+The data is mutable, after all.</p>
+<p>Strings, integers, and tuples (being immutable) are always passed into a
+function by value--- any changes to the variable within the function are
+private to the function and are not reflected in the calling code. As
+the data is immutable, it cannot change.</p>
+<p>Testing framework: pytest, and pytest plugins.</p>
+<p>Pep8 plugin can test for compliance with PEP8.</p>
+<p>Install pytest with pip</p>
+<p>Summary so far:</p>
+<p><strong>BULLET POINTS</strong></p>
+<ul>
+<li>
+<p>IDLE, Python's built-in IDE, is used to experiment with and execute
+Python code, either as single-statement snippets or as larger
+multistatement programs written within IDLE's text editor. As well
+as using IDLE, you ran a file of Python code directly from your
+operating system's command line, using the py -3 command (on
+Windows) or python3 (on everything else).</p>
+</li>
+<li>
+<p>You've learned how Python supports single-value data items, such as
+integers and strings, as well as the booleans True and False.</p>
+</li>
+<li>
+<p>You've explored use cases for the four built-in data structures:
+lists, dictionaries, sets, and tuples. You know that you can create
+complex data structures by combining these four built-ins in any
+number of ways.</p>
+</li>
+<li>
+<p>You've used a collection of Python statements,
+including if, elif, else, return, for, from, and import.</p>
+</li>
+<li>
+<p>You know that Python provides a rich standard library, and you've
+seen the following modules in
+action: datetime, random, sys, os, time, html, pprint, setuptools,
+and pip.</p>
+</li>
+<li>
+<p>As well as the standard library, Python comes with a handy
+collection of built-in functions, known as the BIFs. Here are some
+of the BIFs you've worked
+with: print, dir, help, range, list, len, input, sorted, dict, set, tuple,
+and type.</p>
+</li>
+<li>
+<p>Python supports all the usual operators, and then some. Those you've
+already seen include: in, not
+in, +, -, = (assignment), ==(equality), +=, and *.</p>
+</li>
+<li>
+<p>As well as supporting the square bracket notation for working with
+items in a sequence (i.e., []), Python extends the notation to
+support <strong>slices</strong>, which allow you to specify <strong>start</strong>, <strong>stop</strong>,
+and <strong>step</strong> values.</p>
+</li>
+<li>
+<p>You've learned how to create your own custom functions in Python,
+using the def statement. Python functions can optionally accept any
+number of arguments as well as return a value.</p>
+</li>
+<li>
+<p>Although it's possible to enclose strings in either single or double
+quotes, the Python conventions (documented in <strong>PEP 8</strong>) suggest
+picking one style and sticking to it. For this book, we've decided
+to enclose all of our strings within single quotes, unless the
+string we're quoting itself contains a single quote character, in
+which case we'll use double quotes (as a one-off, special case).</p>
+</li>
+<li>
+<p>Triple-quoted strings are also supported, and you've seen how they
+are used to add docstrings to your custom functions.</p>
+</li>
+<li>
+<p>You learned that you can group related functions into modules.
+Modules form the basis of the code reuse mechanism in Python, and
+you've seen how the pip module (included in the standard library)
+lets you consistently manage your module installations.</p>
+</li>
+<li>
+<p>Speaking of things working in a consistent manner, you learned that
+in Python <strong>everything is an object</strong>, which ensures---as much as
+possible---that everything works just as you expect it to. This
+concept really pays off when you start to define your own custom
+objects using classes, which we'll show you how to do in a later
+chapter.</p>
+</li>
+</ul>
+<h2>Chapter 5: building a web all</h2>
+<p>Flask is a small web application framework.</p>
+<p>Django is a much bigger one with good admin facilities, but overkill for
+this.</p>
+<p><img src="./jbnotes_images/image74.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.2673611111111112in&quot;}</p>
+<h3>Python decorators</h3>
+<p>Function decorator adjusts the behaviour of a function without needing
+to change code. Function is decorated. Take existing code and augment it
+with additional behaviour.</p>
+<p><img src="./jbnotes_images/image75.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.6805555555555556in&quot;}</p>
+<h3>URLs</h3>
+<p>Q: I'm a little confused by the 127.0.0.1 and: 5000 parts of the URL
+used to access the webapp. What's the deal with those?</p>
+<p>A: At the moment, you're testing your webapp on your computer,
+which---because it's connected to the Internet---has its own unique IP
+address. Despite this fact, Flask doesn't use your IP address and
+instead connects its test web server to the Internet's loopback address:
+127.0.0.1, also commonly known as localhost. Both are shorthand for &quot;my
+computer, no matter what its actual IP address is.&quot; For your web browser
+(also on your computer) to communicate with your Flask web server, you
+need to specify the address that is running your webapp,
+namely:127.0.0.1. This is a standard IP address reserved for this exact
+purpose.</p>
+<p>The :5000 part of the URL identifies the protocol port number your web
+server is running on.</p>
+<p>Typically, web servers run on protocol port 80, which is an Internet
+standard, and as such, doesn't need to be specified. You could type
+oreilly.com:80 into your browser's address bar and it would work, but
+nobody does, as oreilly.com alone is sufficient (as the :80 is assumed).</p>
+<p>When you're building a webapp, it's very rare to test on protocol port
+80 (as that's reserved for production servers), so most web frameworks
+choose another port to run on. 8080 is a popular choice for this, but
+Flask uses 5000 as its test protocol port.</p>
+<h3>HTML template engine</h3>
+<p><strong>TEMPLATES UP CLOSE</strong></p>
+<p><img src="./jbnotes_images/image76.jpeg" alt="image with nocaption">{width=&quot;1.25in&quot;
+height=&quot;0.9479166666666666in&quot;}</p>
+<p>Template engines let programmers apply the object-oriented notions of
+inheritance and reuse to the production of textual data, such as web
+pages.</p>
+<p>A website's look and feel can be defined in a top-level HTML template,
+known as the <strong>base template</strong>, which is then inherited from by other
+HTML pages. If you make a change to the base template, the change is
+then reflected in <em>all</em> the HTML pages that inherit from it.</p>
+<p>The template engine shipped with Flask is called <em>Jinja2</em>, and it is
+both easy to use and powerful. It is not this book's intention to teach
+you all you need to know about Jinja2, so what appears on these two
+pages is---by necessity---both brief and to the point. For more details
+on what's possible with Jinja2, see:</p>
+<p><a href="http://jinja.pocoo.org/docs/dev/"><em><strong>http://jinja.pocoo.org/docs/dev/</strong></em></a></p>
+<p>Here's the base template we'll use for our webapp. In this file,
+called base.html, we put the HTML markup that we want all of our web
+pages to share. We also use some Jinja2-specific markup to indicate
+content that will be supplied when HTML pages inheriting from this one
+are rendered (i.e., prepared prior to delivery to a waiting web
+browser). Note that markup appearing between {{ and }}, as well as
+markup enclosed between {% and %}, is meant for the Jinja2 template
+engine: we've highlighted these cases to make them easy to spot:</p>
+<p><img src="./jbnotes_images/image77.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.0708333333333333in&quot;}</p>
+<p>With the base template ready, we can inherit from it using
+Jinja2's extends directive. When we do, the HTML files that inherit need
+only provide the HTML for any named blocks in the base. In our case, we
+have only one named block: body.</p>
+<p>Here's the markup for the first of our pages, which we are
+calling entry.html. This is markup for an HTML form that users can
+interact with in order to provide the value
+for phrase and letters expected by our webapp.</p>
+<p>Note how the &quot;boilerplate&quot; HTML in the base template is not repeated in
+this file, as the extends directive includes this markup for us. All we
+need to do is provide the HTML that is specific to this file, and we do
+this by providing the markup within the Jinja2 block called body:</p>
+<p><img src="./jbnotes_images/image78.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.6479166666666667in&quot;}</p>
+<p>And, finally, here's the markup for the results.html file, which is used
+to render the results of our search. This template inherits from the
+base template, too:</p>
+<p><img src="./jbnotes_images/image79.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.607638888888889in&quot;}</p>
+<p>Debug mode for flask: automatically restarts webapp when code changed.</p>
+<h3>Dunder name dunder main</h3>
+<p>Used to prevent app.run being called when run on e.g. AWS, but is called
+when run locally.</p>
+<p><img src="./jbnotes_images/image80.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;0.9520833333333333in&quot;}</p>
+<h2>Chapter 6: File access</h2>
+<p>File open, operations, close</p>
+<p>Better to use with:</p>
+<p><img src="./jbnotes_images/image81.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/248fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.5541666666666667in&quot;}</p>
+<h2>Chapter 7 : Database access</h2>
+<p>DB-API is standard library to talk to any sql database</p>
+<p>Need a driver to connect.</p>
+<p>MySQL owned by Oracle!</p>
+<p>Standard stuff.</p>
+<p>Use a context manager and &quot;with&quot; statement to manage initialisation,
+work and teardown in less statements</p>
+<p><img src="./jbnotes_images/image82.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/305fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.7805555555555554in&quot;}</p>
+<p>Don't put import startements in a function or theyre exectured with
+every function call.</p>
+<h2>chapter 8: classes</h2>
+<p>OO is optional</p>
+<p>Can use with statement with or without a class, but class is better.</p>
+<p>&quot;Context management protocol&quot; is needed with the with statement.</p>
+<p>Class encapsulates behavior (ie implements a function, method) and
+state (variables, attributes)</p>
+<p>Create a class with</p>
+<p><img src="./jbnotes_images/image83.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/325fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.43125in&quot;}</p>
+<p>Instantiate with</p>
+<p>A = CountFromBy()</p>
+<p>Looks like a function call. Functions should have lower case and
+underscores. Classes have Hungarian notation.</p>
+<p>Methods always take (self) as the first argument (alias to the current
+object), but you don't pass this when calling methods.</p>
+<p>Object construction handled by the optimiser. Use magic method
+__init__ to initialise. Dunder init. Other dunder methods are dunder
+eq for ==, dunder ge for &gt; operator. Can overwrite these for a class.
+E.g. overwrite dunder repr for string representation of object.</p>
+<h2>Chapter 9: Context management protocol</h2>
+<p>Context manager means you can use the <strong>WITH</strong> statement to manage
+initiation and tear down.</p>
+<p>Create a class, protocol says need to define 2 dunder magic methods:
+__enter__ and __exit__. Then you can use with..</p>
+<p>Best to use __init__ also.</p>
+<p><img src="./jbnotes_images/image84.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.1791666666666667in&quot;}</p>
+<p><img src="./jbnotes_images/image85.png" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/361fig01.png">{width=&quot;6.268055555555556in&quot;
+height=&quot;6.752777777777778in&quot;}</p>
+<h2>Chapter 10: Function decorators</h2>
+<p>Web requests are all stateless so independent, no memory. HTTP enforces
+this. Web apps can load and unload at the discretion of the server, so
+not practical to hold state. No global variables for web app state.</p>
+<p>Sessions used instead. Flask web server implements this. Session like a
+layer of state. Add a cookie to the browser, link this to a session ID
+on the web server. Each user gets their own session, can store state on
+web app.</p>
+<p>Decorators prefixed with @.</p>
+<h3>Pass a function to a function:</h3>
+<p>functions are objects with an ID. Just pass the name of the function as
+the argument.</p>
+<h3>Invoke a passed function</h3>
+<p><img src="./jbnotes_images/image86.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/387fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.09375in&quot;}</p>
+<h3>Functions nested in functions</h3>
+<p>Code in a function can define another function. Can return the nested
+function.</p>
+<p><img src="./jbnotes_images/image87.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/388fig02.png.jpg">{width=&quot;5.739583333333333in&quot;
+height=&quot;2.0625in&quot;}</p>
+<p>A more common usage of this technique arranges for the enclosing
+function to return the nested function as its value, using
+the return statement. This is what allows you to create a decorator.</p>
+<h3>Return a function from a function</h3>
+<p><img src="./jbnotes_images/image88.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/389fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;1.7451388888888888in&quot;}</p>
+<p><img src="./jbnotes_images/image89.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.0840277777777776in&quot;}</p>
+<h3>Function accepting a list of arguments</h3>
+<h3>USE * TO ACCEPT AN ARBITRARY LIST OF ARGUMENTS</h3>
+<p>Python provides a special notation that allows you to specify that a
+function can take any number of arguments (where &quot;any number&quot; means
+&quot;zero or more&quot;). This notation uses the * character to represent <em>any
+number</em>, and is combined with an argument name (by convention, args is
+used) to specify that a function can accept an arbitrary list of
+arguments (even though *args is technically a tuple).</p>
+<p><strong>Think of * as meaning &quot;expand to a list of values.&quot;</strong></p>
+<p>Here's a version of myfunc that uses this notation to accept any number
+of arguments when invoked. If any arguments are provided, myfunc prints
+their values to the screen:</p>
+<p><img src="./jbnotes_images/image90.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.1909722222222223in&quot;}</p>
+<p><img src="./jbnotes_images/image91.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/391fig03.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.779166666666667in&quot;}</p>
+<h3>* WORKS ON THE WAY IN, TOO</h3>
+<p>If you provide a list to myfunc as an argument, the list (despite
+potentially containing many values) is treated as one item (i.e.,
+it's <em>one</em>list). To instruct the interpreter to <strong>expand</strong> the list to
+behave as if each of the list's items were an <em>individual</em> argument,
+prefix the list's name with the * character when invoking the function.</p>
+<p>Another short IDLE session demonstrates the difference using * can
+have:</p>
+<p><img src="./jbnotes_images/image92.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.5208333333333335in&quot;}</p>
+<h3>USE ** TO ACCEPT ARBITRARY KEYWORD ARGUMENTS</h3>
+<p>In addition to the * notation, Python also provides **, which expands
+to a collection of keyword arguments. Where * uses args as its variable
+name (by convention), ** uses kwargs, which is short for &quot;keyword
+arguments.&quot; (Note: you can use names other than args and kwargs within
+this context, but very few Python programmers do.)</p>
+<p><strong>Think of ** as meaning &quot;expand to a dictionary of keys and
+values.&quot;</strong></p>
+<p>Let's look at another function, called myfunc2, which accepts any number
+of keyword arguments:</p>
+<p><img src="./jbnotes_images/image93.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.782638888888889in&quot;}</p>
+<p>Here's a third version of myfunc (which goes by the shockingly
+imaginative name of myfunc3). This function accepts any list of
+arguments, any number of keyword arguments, or a combination of both:</p>
+<p><img src="./jbnotes_images/image94.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.582638888888889in&quot;}</p>
+<p><img src="./jbnotes_images/image95.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/394fig04.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.46875in&quot;}</p>
+<h3>Decorator steps</h3>
+<ol>
+<li>
+<p>Decorator is a function</p>
+</li>
+<li>
+<p>Decorator takes the decorated function as an argument</p>
+</li>
+<li>
+<p>Decorator returns a new function</p>
+</li>
+<li>
+<p>Decorator maintains the decorated functions signature</p>
+</li>
+</ol>
+<p><strong>When creating your own decorators, always import, then use, the
+&quot;functools&quot; module's &quot;wraps&quot; function. (technical reasons in library).</strong></p>
+<p><img src="./jbnotes_images/image96.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/403fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.577777777777778in&quot;}</p>
+<p><img src="./jbnotes_images/image97.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.509027777777778in&quot;}</p>
+<p>Note how the page2 function's code is only concerned with what it needs
+to do: display the <em>/page2</em> content. In this example, the page2 code is
+a single, simple statement; it would be harder to read and understand if
+it <em>also</em> contained the logic required to check whether a user's browser
+is logged in or not. Using a decorator to separate out the
+login-checking code is a big win.</p>
+<p><strong>Decorators aren't freaky; they're fun.</strong></p>
+<p>This &quot;logic abstraction&quot; is one of the reasons the use of decorators is
+popular in Python. Another is that, if you think about it, in creating
+the check_logged_in decorator, you've managed to write code
+that <em>augments an existing function with extra code, by changing the
+behavior of the existing function without changing its code</em>.</p>
+<h3>Generic decorator code</h3>
+<p><img src="./jbnotes_images/image98.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/407fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.6590277777777778in&quot;}</p>
+<p><strong>BULLET POINTS</strong></p>
+<p><img src="./jbnotes_images/image73.jpeg" alt="image with nocaption">{width=&quot;1.0208333333333333in&quot;
+height=&quot;0.7916666666666666in&quot;}</p>
+<ul>
+<li>
+<p>When you need to store server-side state within a Flask webapp, use
+the <em><strong>session</strong></em> dictionary (and don't forget to set a
+hard-to-guess <em><strong>secret_key</strong></em>).</p>
+</li>
+<li>
+<p>You can pass a function as an argument to another function. Using
+the function's name (without the parentheses) gives you a <strong>function
+object</strong>, which can be manipulated like any other variable.</p>
+</li>
+<li>
+<p>When you use a function object as an argument to a function, you can
+have the receiving function <strong>invoke</strong> the passed-in function object
+by appending parentheses.</p>
+</li>
+<li>
+<p>A function can be <strong>nested</strong> inside an enclosing function's suite
+(and is only visible within the enclosing scope).</p>
+</li>
+<li>
+<p>In addition to accepting a function object as an argument, functions
+can <strong>return</strong> a nested function as a return value.</p>
+</li>
+<li>
+<p><strong>*args</strong> is shorthand for &quot;expand to a list of items.&quot;</p>
+</li>
+<li>
+<p><strong>**kwargs</strong> is shorthand for &quot;expand to a dictionary of keys and
+values.&quot; When you see &quot;kw,&quot; think &quot;keywords.&quot;</p>
+</li>
+<li>
+<p>Both <strong>*</strong> and <strong>**</strong> can also be used &quot;on the way in,&quot; in that a
+list or keyword collection can be passed into a function as a single
+(expandable) argument.</p>
+</li>
+<li>
+<p>Using <strong>(<em>*args</em></strong>, <strong><em>**kwargs</em>)</strong> as a <strong>function
+signature</strong> lets you create functions that accept any number and
+type of arguments.</p>
+</li>
+<li>
+<p>Using the new function features from this chapter, you learned how
+to create a <strong>function decorator</strong>, which changes the behavior of an
+existing function without the need to change the function's actual
+code. This sounds freaky, but is quite a bit of fun (and is very
+useful, too).</p>
+</li>
+</ul>
+<h2>Chapter 11: Exception handling</h2>
+<p>When a runtime error occurs, an exception is <strong>raised</strong>. If
+you <em>ignore</em> a raised exception it is referred to as <strong>uncaught</strong>, and
+the interpreter will terminate your code, then display a runtime error
+message (as shown in the example from the bottom of the last page). That
+said, raised exceptions can also be <strong>caught</strong> (i.e., dealt with) with
+the try statement. Note that it's not enough to catch runtime errors,
+you <em>also</em> have to decide what you're going to do next.</p>
+<h2>Catching an Error Is Not Enough</h2>
+<hr>
+<p>When a runtime error occurs, an exception is <strong>raised</strong>. If
+you <em>ignore</em> a raised exception it is referred to as <strong>uncaught</strong>, and
+the interpreter will terminate your code, then display a runtime error
+message (as shown in the example from the bottom of the last page). That
+said, raised exceptions can also be <strong>caught</strong> (i.e., dealt with) with
+the try statement. Note that it's not enough to catch runtime errors,
+you <em>also</em> have to decide what you're going to do next.</p>
+<p>Perhaps you'll decide to deliberately ignore the raised exception, and
+keep going...with your fingers firmly crossed. Or maybe you'll try to
+run some other code in place of the code that crashed, and keep going.
+Or perhaps the best thing to do is to log the error before terminating
+your application as cleanly as possible. Whatever you decide to do,
+the try statement can help.</p>
+<p>In its most basic form, the try statement allows you to react whenever
+the execution of your code results in a raised exception. To protect
+code with try, put the code within try's suite. If an exception occurs,
+the code in the try's suite terminates, and then the code in
+the try's except suite runs. The except suite is where you define what
+you want to happen next.</p>
+<p><img src="./jbnotes_images/image99.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/424fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.740972222222222in&quot;}</p>
+<p><img src="./jbnotes_images/image100.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.5277777777777777in&quot;}</p>
+<p><img src="./jbnotes_images/image101.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/428fig02.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.4590277777777776in&quot;}The standard library comes with a module
+called sys that provides access to the interpreter's internals (a set of
+variables and functions available at runtime).</p>
+<p>One such function is exc_info, which provides information on the
+exception currently being handled. When invoked, exc_info returns a
+three-valued tuple where the first value indicates the
+exception's <strong>type</strong>, the second details the exception's <strong>value</strong>, and
+the third contains a <strong>traceback object</strong> that provides access to the
+traceback message (should you need it). When there is no currently
+available exception, exc_info returns the Python null value for each of
+the tuple values, which looks like this:(None, None,
+None).<img src="./jbnotes_images/image102.jpeg" alt="https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/430fig01.png.jpg">{width=&quot;6.268055555555556in&quot;
+height=&quot;3.045138888888889in&quot;}</p>
+<p>To make this (and your life) easier, Python extends the try/except syntax
+to make it convenient to get at the information returned by the
+sys.exc_info function, and it does this without you having to remember
+to import or interact with the sys module, nor wrangle with the tuple
+returned by the exc_info function.</p>
+<p><img src="./jbnotes_images/image103.jpeg" alt="image with nocaption">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.1708333333333334in&quot;}</p>
+<p>Create custom exceptions by extending the exception class</p>

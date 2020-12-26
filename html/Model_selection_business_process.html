@@ -1,0 +1,94 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Evaluating success of a data project</h1>
+<ol>
+<li>
+<p>Define a problem</p>
+<p>a.  Define a success metric</p>
+</li>
+<li>
+<p>Data</p>
+<p>a.  Does the model need to work in real time?</p>
+<p>b.  Does the model need to be trained in real time?</p>
+<p>c.  Is there an inconsistency between train and test data</p>
+</li>
+<li>
+<p>Evaluation</p>
+<p>a.  Train test split at random assumes data is homogenous. Probably
+not. Mayb slpit by time instead.</p>
+<p>b.  Baseline model</p>
+</li>
+<li>
+<p>Features</p>
+<p>a.  Choose good ones</p>
+<p>b.  Remove redundant ones</p>
+</li>
+<li>
+<p>Modelling</p>
+<p>a.  Does it need to be interperable?</p>
+<p>b.  How to tune</p>
+</li>
+<li>
+<p>Experiment</p>
+<p>a.  Go into production and evaluate and update quickly</p>
+</li>
+</ol>
+<h2>Standard process</h2>
+<p>Have a standard boilerplate way to process data to investigate. Saves
+lots of reengineering.</p>
+<p>e.g. Qualitataive / quantitative cols</p>
+<p>Null values</p>
+<p>correlations</p>
+<p>Uac / roc to score</p>
+<p>Classification_report to show the precision of models</p>
+<h2>Models</h2>
+<p>Xgboost is new and good</p>
+<p>Random forests -- tree decision, good at lots of things.</p>
+<p>Use ridge not Lasso as lasso removes some features -- try Eslatic net
+regression</p>
+<p>Blueprint technologies flow chart to find best model. Also one on scikit</p>
+<p>Mean absolute error is a good accuracy test.</p>
+<p>Move to K fold</p>
+<p>Open grid cv to go through parameters.
+<a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html</a></p>
+<h2>ML ideas</h2>
+<ul>
+<li><strong>tpot</strong> for automated optimisation</li>
+<li>EthicalML/awesome-production-machine-learning: lots of good learning resources</li>
+<li><strong>shap</strong> for model explanation:</li>
+</ul>
+<h2>Deployment ideas</h2>
+<ul>
+<li>Heroku - dont need VM, just script. Charged per run of script.</li>
+<li>Azure, with linux</li>
+<li>cloud.digitalocean.com:
+<ul>
+<li>easier to use than google and AWS.</li>
+<li>Good for hosting also. &quot;droplets&quot; are VMs. $5 pm</li>
+<li>need to have a firewall with some ports open, need to lock down VM to make sure can't be hacked.</li>
+<li>more data security than using AWS etc.</li>
+</ul>
+</li>
+</ul>
+<h2>Model Selection</h2>
+<p>in order of evolution:</p>
+<ol>
+<li>train on all data, test on all data (code check)</li>
+<li>simple train test split</li>
+<li>k fold cross evaluation and get averages and sensitivity</li>
+<li>Tuly held out test set</li>
+</ol>
+<p>Grid Search (e.g. <strong>GridSearchCV</strong>) does cross valiation and parameter optimisation.</p>
+<p>Default measure used is accuracy, but can pass an evaluation metric as scoring parameter.</p>
+<p>Get a different decision boundary when using different scoring pameters to tune the model.</p>
+<p><img src="jbnotes_images/2020-02-16-14-52-53.png" alt=""></p>
+<p>Just using cross validation is prone to data leakage, test data used partially for model selection. Hold out a final test set, not used in cross validation.</p>
+<p>In practice, use 3 data splits</p>
+<ol>
+<li>training set</li>
+<li>validation set (model selection)</li>
+<li>test set (final evaluation)</li>
+</ol>
+<p><img src="jbnotes_images/2020-02-16-14-58-16.png" alt=""></p>
+<p>Select an evaluation metric which suits the particualar application.</p>
+<p><img src="jbnotes_images/2020-02-16-15-05-44.png" alt=""></p>

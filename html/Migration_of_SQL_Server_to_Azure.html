@@ -1,0 +1,43 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Migration of SQL Server to Azure</h1>
+<h1>Azure</h1>
+<p>Security is big sell
+ability to transform
+innovation
+no database patching
+analytics</p>
+<h2>Azure migration program</h2>
+<p>High level Options:</p>
+<ol>
+<li>Migrate: Iaas.</li>
+</ol>
+<p>SQL runs in VMs in Azure. No hardware needed, but you do need to manage the op systems deployed in VM.</p>
+<ol start="2">
+<li>Modernise: Paas.</li>
+</ol>
+<p>uses native services. &quot;Managed Instance&quot;. Native SQL in Azure, allows ML. Web services in VMs migrate to web apps in native services. Then don't need to run the VM for the web service. Comes with regional failover.</p>
+<ol start="3">
+<li>Microservices: Saas.</li>
+</ol>
+<p>windowsFully modern functions on the server. Containers, azure services, app services, <strong>functions</strong>. Can use cosmos DB - planteary scale.</p>
+<p>Hybrid use program means reduced costs</p>
+<h2>Networking</h2>
+<p>Fixed IP addresses migrate to cloud with &quot;extended networking&quot;. Original IP adrress moves to cloud unchanged, safer for old code.
+Windows admin centre - Create Azure extended network.</p>
+<h2>Server Roles</h2>
+<p>e.g. Old windows File server move to cloud. Move to Azure file services. Storage migration service helps with all this.</p>
+<p>Windows virtual desktop: thin client, full office 365 etc. Like Remote desktop services. Multi session. Easy deployment for e.g. new office, new people.</p>
+<h2>SQL Server</h2>
+<p>Performance, availability, scalability, security.
+Familiar tools, e.g. management studio.
+Some features only in Azure.
+Performanmce monitoring: e.g. CPU monitor, but also query usage. ML gives reccommendations on indexes.
+Security check: e.g. logins being used, best practices.</p>
+<h2>Migration tools</h2>
+<p>With 3 teir software (web app,  web server for middle teir, SQL server for data)
+use tools for discovery, eg. app service migration assistant.
+end up with web app -&gt; azure app service -&gt; azure single sql database
+checks features are supported, examine sql workload. Reccommends migration approach.</p>
+<h2>Best Practices</h2>
+<p>cloud adoption framework gives dashboard for practices and progress</p>

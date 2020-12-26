@@ -1,0 +1,113 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<!-- TOC -->autoauto- [Machine Setup on M700](#machine-setup-on-m700)auto    - [git](#git)auto        - [Repositories:](#repositories)auto        - [Github config](#github-config)auto    - [Ubuntu](#ubuntu)auto        - [Ubuntu editor](#ubuntu-editor)auto        - [npm](#npm)auto        - [Pandoc](#pandoc)auto    - [Python](#python)autoauto<!-- /TOC -->
+<h1>Machine Setup on M700</h1>
+<h2>git</h2>
+<h3>Repositories:</h3>
+<p>Education
+Liveminds
+etc</p>
+<h3>Github config</h3>
+<p>install github for windows
+install github desktop gui</p>
+<p>install VS code, and tick the box to automatically fetch commits.</p>
+<p>when commit in VS code, staged commits need to be fully committeed.
+commit changes on 1 pc regularly so the other picks up the latest.</p>
+<p>set workspace files to ignored by git so are individual to machines.</p>
+<p>Had big issues setting up git on ubuntu with VSCode. Can do git commands happily on ubuntu, but VSCode edits on ubuntu are detected and committed but dont appear on github for some reason.
+Gave up, just do the edits on Windows, and pull to ubuntu site to compile to HTML.</p>
+<h1>WSL</h1>
+<p>Switch on WSL
+Install Ubuntu 18.04 on levono 400 from app store
+user name jezza64
+pwd same as the machine pin</p>
+<p>python is installed, run with</p>
+<blockquote>
+<p>python3
+python3 --version</p>
+</blockquote>
+<p>git is installed on the ubuntu, v2.17</p>
+<p>home folder is home/jezza64
+the c drive is mounted at /mnt/c</p>
+<p>To edit with VSCode from ubuntu, navigate to the folder, and &gt;<code>code .</code></p>
+<p>To open explorer from ubuntu</p>
+<blockquote>
+<p><code>explorer.exe .</code></p>
+</blockquote>
+<p>Windows path to ubuntu files: \wsl$\Ubuntu\home\jezza64</p>
+<p>Don't use command line to copy between windows and WSL, use explorer.</p>
+<p>Operations happen in the ubuntu VM.</p>
+<p>Cloned Education respository to Education on ubuntu.
+To do this, just git: clone, and put in the url.
+Didn't do any fancy git setup, just standard clone.</p>
+<p><a href="https://ubuntu.com/wsl">Good article for Ubuntu on WSL</a></p>
+<h3>WSL tips</h3>
+<p>Graphical apps can run via WSL, but need a graphical prgram installed e.g. xserver, xfce. Gives a linux graphical shell. Not worth it.</p>
+<p>The key point is that even though the WSL and Windows environments can “talk” to each other, there does need to be some segregation of responsibilities. For instance, when using git in WSL, it is recommended that you operate on the files in the WSL environment. The same goes for Windows - don’t try to run Windows executables directly from the WSL file system.</p>
+<p>Finally, I still recommend that you use Conda environments to keep your python environments clean. I have chosen to have a conda environment on Ubuntu and one on Windows so that I can make sure blog posts work appropriately across Windows and Linux environments.</p>
+<h3>Linux editor</h3>
+<p>Nano installed.</p>
+<h3>npm</h3>
+<p>installed this to allow markdown-it. Needed nodejs and npm.</p>
+<blockquote>
+<p><code>sudo apt install nodejs</code>
+<code>sudo apt install npm</code>
+<code>npm install -g markdown-it</code></p>
+</blockquote>
+<h3>Pandoc</h3>
+<p>installed</p>
+<h2>Python</h2>
+<p>Anaconda environments for 3.7 and 3.8
+I only have anaconda installed, so always need to start python from an anaconda prompt.</p>
+<p>Python installed on ubuntu, version 3.6. /usr/bin/python3.6.9 64 bit
+check with:</p>
+<blockquote>
+<p><code>python3 -v</code></p>
+</blockquote>
+<p>I've installed another python anaconda environment with</p>
+<p>Conda create -n py38 python=3.8</p>
+<p>But I didn't activate it (use conda activate py38)</p>
+<h2>Python on Ubuntu</h2>
+<p><a href="https://pbpython.com/wsl-python.html">good article on python in WSL</a></p>
+<p>installed v 2.7 on ubuntu automatically
+installed pip to ubuntu</p>
+<h2>Docker</h2>
+<p>Installing docker desktop for windows 2.2.3.0, &quot;desktop edge&quot;
+Use WSL to connect to this.
+Changed bios to enable virtual machines. Hyper-v</p>
+<h2>Windows terminal</h2>
+<p>Download from app store</p>
+<h3>On Levono PC:</h3>
+<p>General setup:
+Run anaconda cmd session
+Type &quot;Jupyter notebook&quot;
+Go to <a href="http://localhost:8888/tree">http://localhost:8888/tree</a>
+I have one Anaconda environment, the base.
+Anaconda prompt
+Python -- command line.
+Ipython -- interactive.</p>
+<p>Import os
+Os.getcwd()
+Exit</p>
+<p>Jupyter notebook</p>
+<p>Runs a process, access with web page at <a href="http://localhost:8888/tree">http://localhost:8888/tree</a></p>
+<p>Interactive, Save files as .ipynb with code and output.
+Includes all the Ipython functions.
+Best for interactive development is Jupyter</p>
+<h4>Jupyter extensions</h4>
+<p>pip install jupyter_contrib_nbextensions<br>
+jupyter contrib nbextension install</p>
+<h2>Surface Pro setup</h2>
+<p>C:\software
+v3.8.1 from python.org
+use pip to update</p>
+<h2>Google docs</h2>
+<p>New project liveminds1 in console
+Enable google sheets and google docs
+Client id: 622297012310-i56fmvi0fan4llfhv9ua3kljducgur8e.apps.googleusercontent.com
+Client secret: nqt1vlgXYQ1wzkjicXyyhnh7</p>
+<p>Google API console:
+<a href="https://console.developers.google.com/?authuser=0&amp;project=quickstart-1559839555673">https://console.developers.google.com/?authuser=0&amp;project=quickstart-1559839555673</a></p>
+<p>credentials.json downloaded to C:\Users\Jeremy Bates\development\python</p>
+<p>install google client library</p>
+<p><a href="https://github.com/googleapis/google-api-python-client">https://github.com/googleapis/google-api-python-client</a></p>

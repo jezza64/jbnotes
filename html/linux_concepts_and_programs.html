@@ -1,0 +1,195 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Windows unix tools</h1>
+<p>This is notes on facilities on Linux</p>
+<h2>Linux BASH</h2>
+<p>Windows 10 allows Linux without needing a VM: runs the standard BASH shell within windows. Called WSL (windows subsystem for linux). Then install e.g. Ubuntu.
+Don't need separate VM.</p>
+<p>Means can use commands and services like apache, MySQL, and run BASH scripts.</p>
+<p>Need to allow linux subsystem on windows settings, and install linux from windows store.</p>
+<p><a href="https://www.windowscentral.com/install-windows-subsystem-linux-windows-10">instructions</a></p>
+<p>Remote WSL extension to VSCode enabled, develop straight to Linux.</p>
+<h2>Bash scripting</h2>
+<p>Bash is an enhancement to shell scripting.
+Also AWK, SED. more complex.</p>
+<p><a href="https://help.ubuntu.com/community/Beginners/BashScripting">instructions</a></p>
+<pre><code class="language-bash">mkdir
+rm
+rm -r
+cp
+cp -r
+top
+ipconfig
+echo
+chmod
+
+
+
+</code></pre>
+<p>Bash scripting:
+Save with .sh extension
+start with #!/bin/bash
+run with ./file.sh
+chmod to execute</p>
+<h2>Ubuntu</h2>
+<p>Open source linux op system. Support for e.g. chrome. Desktop version, server version (used by AWS &amp; Azure). Every 2 years, so 18.04 is april 2018.</p>
+<h3>VS Code on Ubuntu (Remote)</h3>
+<p>In Ubuntu, run this to set up VS Code:</p>
+<blockquote>
+<p><code>code .</code></p>
+</blockquote>
+<p>This opens VSCode in the current folder</p>
+<p>use the VS Code extension for WSL (Remote - WSL extnesion) to allow file access from windows.</p>
+<p>This is a full dev environment. Runs commands in Linux evnironment. Can use WSL or a remote linux environment. This really is a separate instance, completely separate.</p>
+<p>When in linux side, to open a file in windows: F1, Remote-WSL: Reopen in Windows.</p>
+<p>Extensions run generally in the environment you are targetting, but some run locally.
+Some UI themes, snippets run locally so visible in both sides.</p>
+<p>Good article on setup <a href="https://code.visualstudio.com/docs/remote/troubleshooting#_resolving-git-line-ending-issues-in-containers-resulting-in-many-modified-files">here</a></p>
+<h2>Windows Powershell</h2>
+<p>Windows Powershell is command line access to operating system fuctions. Usefult for task management and configuration management. Based on .NET. More capable than cmd window, allows scripts etc.</p>
+<p>Start from command prompt, type <code>powershell</code> into cmd prompt. Or better, start -&gt; powershell, run as admin.</p>
+<p>Powershell ISE is a graphical dev environment for PS.</p>
+<p>Installed the powershell extension for VSCode.</p>
+<h2>ssh (secure shell)</h2>
+<p>Windows comes with ssh. Alternative to Putty. Use this to connect to a Linux computer. Login with an account on that machine, and get commands to that machine (remote on)</p>
+<p>ssh [username]@[hostname] -p [port]</p>
+<p>While remote controlling Linux over SSH might be vital, you may not even need SSH. Windows 10 now features a Linux subsystem and a Bash-like command prompt.</p>
+<p>This means that you can easily input Linux commands and receive realistic responses. While it might not be ideal for all scenarios, if you need Linux access for college or training purposes, and don’t have SSH access (regardless of app) to a Linux device, this might be ideal.</p>
+<p>Of course, this isn’t the only option. If you need to practice Bash commands in Windows, you can always set up a virtual machine. Simply install a Linux distribution into this and (hardware permitting) you have a Linux OS ready to use.</p>
+<p>Windows machines often connect with RDP (remote desktop protocol)</p>
+<h3>Connecting to a VM with ssh</h3>
+<ul>
+<li>Need VM IP address</li>
+<li>username</li>
+<li>password</li>
+</ul>
+<p>Most op systems have root as the default user name.</p>
+<p>ssh keys are better than passwords. Set up VM to take ssh keys. Open SSh or Putty to connect.</p>
+<p>https://www.digitalocean.com/docs/droplets/how-to/connect-with-ssh/openssh/</p>
+<p>need public key and private key.</p>
+<h3>Create ssh keys</h3>
+<p>ssh-keygen utility in Open SSH. Run on client to generate2048 bit RSA key pairs. Default Location is <code>~/.ssh</code>, default file name id_rsa for private, id_rsa.pub for public. Default location good for client to find the leys automatically. Optional passphrase to encrypt private key on disk.
+Upload keys to server using <code>ssh-copy-id</code>, or pipe contents to <code>~/.ssh/authorized_keys</code>, or ssh into server and create manually.</p>
+<p><code>ssh-copy-id username@203.0.113.0</code></p>
+<h2>curl (client for URLs)</h2>
+<p>Tool to transfer data to or from a server. Uses many protocols (Http, FTP, Gopher, POP etc).
+Has proxy support, authentication, HTTP post, FTP upload.
+curl</p>
+<p>Examples
+Get the main page from Netscape's web-server:</p>
+<blockquote>
+<p><code>curl http://www.netscape.com/</code></p>
+</blockquote>
+<p>Get the README file the user's home directory at funet's ftp-server:</p>
+<blockquote>
+<p>curl ftp://ftp.funet.fi/README</p>
+</blockquote>
+<p>Get a web page from a server using port 8000:</p>
+<blockquote>
+<p>curl http://www.weirdserver.com:8000/</p>
+</blockquote>
+<p>Get a directory listing of an FTP site:</p>
+<blockquote>
+<p>curl ftp://cool.haxx.se/</p>
+</blockquote>
+<p>Get the definition of curl from a dictionary:</p>
+<blockquote>
+<p>curl dict://dict.org/m:curl</p>
+</blockquote>
+<p>Fetch two documents at once:</p>
+<blockquote>
+<p>curl ftp://cool.haxx.se/ http://www.weirdserver.com:8000/</p>
+</blockquote>
+<p>Get a file off an FTPS server:</p>
+<blockquote>
+<p>curl ftps://files.are.secure.com/secrets.txt</p>
+</blockquote>
+<p>or use the more appropriate FTPS way to get the same file:</p>
+<blockquote>
+<p>curl --ftp-ssl ftp://files.are.secure.com/secrets.txt</p>
+</blockquote>
+<p>Get a file from an SSH server using SFTP:</p>
+<blockquote>
+<p>curl -u username sftp://example.com/etc/issue</p>
+</blockquote>
+<p>Get a file from an SSH server using SCP using a private key (not password-protected) to authenticate:</p>
+<blockquote>
+<p>curl -u username: --key ~/.ssh/id_rsa scp://example.com/~/file.txt</p>
+</blockquote>
+<p>Get a file from an SSH server using SCP using a private key (password-protected) to authenticate:</p>
+<blockquote>
+<p>curl -u username: --key ~/.ssh/id_rsa --pass private_key_password
+scp://example.com/~/file.txt</p>
+</blockquote>
+<p>Get the main page from an IPv6 web server:</p>
+<blockquote>
+<p>curl &quot;http://[2001:1890:1112:1::20]/&quot;</p>
+</blockquote>
+<p>Get a file from an SMB server:</p>
+<blockquote>
+<p>curl -u &quot;domain\username:passwd&quot; smb://server.example.com/share/file.txt</p>
+</blockquote>
+<h2>Linux commands</h2>
+<h2>Folders</h2>
+<p>Home folder /home/[user]
+installation at /usr/bin</p>
+<h3>Sudo</h3>
+<p>means Superuser-do.
+allows you to execute as the superuser.
+The uid and gid are set to superuser.</p>
+<p>Path listing</p>
+<blockquote>
+<p><code>echo $PATH</code></p>
+</blockquote>
+<p>Folder listing</p>
+<blockquote>
+<p>`ll'</p>
+</blockquote>
+<h2>APT Package management</h2>
+<p>APT comes with ubuntu.
+installs, upgrades. command line.</p>
+<h3>basic APT package commands</h3>
+<p>install:</p>
+<blockquote>
+<p><code>sudo apt install pmap</code></p>
+</blockquote>
+<p>remove:</p>
+<blockquote>
+<p><code>sudo apt remove pmap</code></p>
+</blockquote>
+<p>Update the Package Index: The APT package index is essentially a database of available packages from the repositories defined in the /etc/apt/sources.list file and in the /etc/apt/sources.list.d directory. To update the local package index with the latest changes made in the repositories, type the following:</p>
+<blockquote>
+<p><code>sudo apt update</code></p>
+</blockquote>
+<p>upgrade packages</p>
+<blockquote>
+<p><code>sudo apt upgrade</code></p>
+</blockquote>
+<p>default APT respoitaries are /etc/apt/sources.list, custom in sources.list.d</p>
+<p>APT installs .deb packages (Debian)
+APT cache uses the files to report on local situation.</p>
+<h3>installing using APT</h3>
+<p>Update ubuntu packages:</p>
+<blockquote>
+<p><code>sudo apt update</code>
+<code>sudo apt upgrade</code></p>
+</blockquote>
+<p>e.g. for Nano editor
+update the repositories in the cache:</p>
+<blockquote>
+<p><code>sudo apt update</code></p>
+</blockquote>
+<p>install nano</p>
+<blockquote>
+<p><code>sudo apt install nano</code></p>
+</blockquote>
+<h3>installing using npm</h3>
+<p>To see whats installed<br>
+for local</p>
+<blockquote>
+<p><code>npm list</code></p>
+</blockquote>
+<p>for global packages</p>
+<blockquote>
+<p><code>npm list -g</code></p>
+</blockquote>

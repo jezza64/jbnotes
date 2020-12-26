@@ -1,0 +1,75 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Plotting and charting</h1>
+<h2>Design</h2>
+<p>Trade off between</p>
+<ul>
+<li>
+<p>Abstraction: picture or abstract representation</p>
+</li>
+<li>
+<p>Multidimensional: denser information is less clear</p>
+</li>
+<li>
+<p>Dimension: multi dimensions with more data</p>
+</li>
+<li>
+<p>Familiarity: bar charts familiar, others not.</p>
+</li>
+<li>
+<p>Novelty:</p>
+</li>
+</ul>
+<p>Differences between engineers / scientists and artists / jorunalists</p>
+<p>Wheel for quanifying the trade off.</p>
+<h3>Edward Turfe: heuristics for the data-ink ratio and chart junk.</h3>
+<p>Increase data / ink ratio: Remove elements which don't add information
+to the graphic.</p>
+<p>Chart junk: e.g. patterning, grid. The duck: Non data creative graphics.
+But debatable because graphics make this more memorable.</p>
+<p>Lie factor: e.g. oil barrel chart</p>
+<p>Spark lines: tiny graphs embedded in spreadsheet or text.</p>
+<h3>Alberto Cairo book on The Truthful art</h3>
+<ul>
+<li>
+<p>Truthful: don't mislead yourself / audience</p>
+</li>
+<li>
+<p>Functional: e.g. direct labelling not grid.</p>
+</li>
+<li>
+<p>Beauty</p>
+</li>
+<li>
+<p>Insightful</p>
+</li>
+</ul>
+<p>Article on application of these ideas:
+<a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833">https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003833</a></p>
+<h2>Matplotlib</h2>
+<p><strong>Figure</strong> is the overall window or page containing the drawing. Top level object. Has title, legend, colour bar etc.
+Has multiple Axes objects.</p>
+<p><strong>Axes</strong> is the area in which something is plotted, using functions like plot() and scatter(). Has x-axis, y-axis, major and minor ticklines, labels. Axes labels, title, legend.</p>
+<p>All methods on Axes exist as a function in the pyplot module. With simple plots use the functions as then dont need to worry about multiple axes, cleaner.</p>
+<p>Pylab is depricated.</p>
+<p>use <strong>%matplotlib inline</strong> in Jupyter for static images.
+use <strong>%matplotlib notebook</strong> in Jupyter for interactive images.</p>
+<h3>Notes on Juptyer notebook &quot;basic matplotlib plotting lesson&quot;</h3>
+<h3>Zip</h3>
+<p>Generally parameters are separate lists of x, y, colours, features in
+same size arrays. Use list comprehensions and zip.</p>
+<p>Zip takes 2 lists, and creates tuples with e.g. first element from each,
+2^nd^ elements etc.</p>
+<p>Zip has lazy evaluation, so can store in a zip generator and then turn
+into a list.</p>
+<pre><code class="language-Python"># convert the two lists into a list of pairwise tuples  
+zip_generator = zip([1,2,3,4,5], [6,7,8,9,10]) 
+print(list(zip_generator)) 
+# the above prints: 
+# [(1, 6), (2, 7), (3, 8), (4, 9), (5, 10)]
+zip_generator = zip([1,2,3,4,5], [6,7,8,9,10])
+# The single star * unpacks a collection into positional arguments
+print(*zip_generator)
+# the above prints:
+# (1, 6) (2, 7) (3, 8) (4, 9) (5, 10)
+</code></pre>

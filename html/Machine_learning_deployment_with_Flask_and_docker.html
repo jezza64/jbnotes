@@ -1,0 +1,171 @@
+<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">
+<h4><a href="index.html">Back to index</a></h4>
+<h1>Machine Learning deployment</h1>
+<p>Python, flask, Docker, AWS EC2.</p>
+<h2>Steps</h2>
+<ol>
+<li>Train locally</li>
+<li>Wrap in flask</li>
+<li>docker to containerize flask</li>
+<li>host docker on EC2 and consume web instance</li>
+</ol>
+<h2>Model export</h2>
+<p>Model serialized into pickle file.
+Inference call (predict()) takes features as e.g. numpy array.</p>
+<h2>flask program to load pickle and expose end points</h2>
+<p>FLask is good to build a web service to expose the predict call over URL rest API.</p>
+<p>This is flask_code.py:</p>
+<pre><code class="language-python"># Serve model as a flask application
+
+import pickle
+import numpy as np
+from flask import Flask, request
+
+model = None
+app = Flask(__name__)
+
+# load to global
+def load_model():
+    global model
+    # model variable refers to the global variable
+    with open('iris_trained_model.pkl', 'rb') as f:
+        model = pickle.load(f)
+
+
+@app.route('/')
+def home_endpoint():
+    return 'Hello World!'
+
+
+@app.route('/predict', methods=['POST'])
+def get_prediction():
+    # Works only for a single sample
+    if request.method == 'POST':
+        data = request.get_json()  # Get data posted as a json
+        data = np.array(data)[np.newaxis, :]  # converts shape from (4,) to (1, 4)
+        prediction = model.predict(data)  # runs globally loaded model on the data
+    return str(prediction[0])
+
+
+if __name__ == '__main__':
+    load_model()  # load model at the beginning once only
+    app.run(host='0.0.0.0', port=80)
+
+</code></pre>
+<h2>Test the web service exists</h2>
+<p>Now can run the web service locally.
+run python app.py
+check browser on 0.0.0.0:80 and See the home endpoint output.
+Port 80 is privileged: used port 5000 if 80 is protected.</p>
+<h2>Test predict function locally</h2>
+<pre><code class="language-bash">curl -X POST \
+   0.0.0.0:80/predict \
+   -H 'Content-Type: application/json' \
+   -d '[5.9,3.0,5.1,1.8]'
+</code></pre>
+<h2>setup Docker</h2>
+<p>Allows deployment on any cloud VM / OS</p>
+<p>Docker file for docker daemon to build the docker image:</p>
+<pre><code class="language-docker">FROM python:3.6-slim
+
+# take files from current folder to deploy folder.
+COPY ./app.py /deploy/
+# lists versions of python packages needed
+COPY ./requirements.txt /deploy/
+COPY ./iris_trained_model.pkl /deploy/
+
+# change working directory
+WORKDIR /deploy/
+
+# expose python packages to the requirements file
+RUN pip install -r requirements.txt
+
+# make port 80 visible outside the container.
+EXPOSE 80
+
+ENTRYPOINT [&quot;python&quot;, &quot;app.py&quot;]
+</code></pre>
+<p>Build the docker image:</p>
+<pre><code class="language-bash">docker build -t app-iris .
+# Run the docker image
+# -p option maps port 8 locally to port 80 on the docker instance.
+docker run -p 80:80 app-iris .
+</code></pre>
+<p>Test locally in browser.</p>
+<h2>Host on AWS EC2</h2>
+<p>Edit security groups to allow http traffic on port 80 to public.
+launch the EC2 instance</p>
+<p>ssh to EC2, pass the key pair file .pem</p>
+<blockquote>
+<p><code>ssh -i /path/my-key-pair.pem ec2-user@public-dns-name</code></p>
+</blockquote>
+<p>Install docker on EC2 instance<br>
+test with</p>
+<blockquote>
+<p><code>docker info</code></p>
+</blockquote>
+<p>Copy all files needed to build image to EC2: requirements, app.py, pickle.</p>
+<blockquote>
+<p><code>scp -i /path/my-key-pair.pem file-to-copy ec2-user@public-dns-name:/home/ec2-user</code></p>
+</blockquote>
+<p>Build and run the Docker image (as for local)</p>
+<p>Test the home endpoint with public dns name</p>
+<p>Try a curl request from local to the server end point</p>
+<blockquote>
+<p><code>curl -X POST \ public-dns-name:80/predict \ -H 'Content-Type: application/json' \ -d '[5.9,3.0,5.1,1.8]'</code></p>
+</blockquote>
+<h2>Improvements</h2>
+<ul>
+<li>Use a WSGI (web server gateway interface) in the flask app.</li>
+<li>improve security of EC2, restrict to set of IPs</li>
+<li>test cases</li>
+</ul>
+<h1>Alternate notes</h1>
+<h2>Pickle</h2>
+<p>Native so don't need to install.
+Dump() method writes binary model to a file, load() to read. Write with
+'wb'</p>
+<h2>Joblib</h2>
+<p>Better for large datasets</p>
+<p>import the sklearn.externals.joblib package</p>
+<p>do joblib.dump() to file, and load to open.</p>
+<p>Both are not proecteded against malicious code.</p>
+<h2>Firefly</h2>
+<p>Write your own python function to load the model from the file and wrap
+the predict function. Input is the params, return the result.</p>
+<p>Firefly is a module to turn a function into a service. Good for a
+prototype, Alternatives are Flask and Flacon which are more heavy duty.</p>
+<p>Use Firefly to turn the function into a service, and test locally.</p>
+<p>Bind the function to a port on localhost:</p>
+<p>firefly app.predict --bind 127.0.0.1:5000</p>
+<p>curl can make a post request to this port</p>
+<p><strong>$</strong> curl -d '{&quot;text&quot;: &quot;Please respect each other.&quot;}' \
+<a href="http://127.0.0.1:5000/predict">http://127.0.0.1:5000/predict</a></p>
+<h2>Docker</h2>
+<p>A docker container runs an application in an isolated environment,
+including dependencies, can be shipped as an image for simple setup.
+Does operating system level abstraction, and creates a virtual
+environment on Windows or Linux. Don't need to spend time worrying about
+op system issues.</p>
+<p>Set up the Dockerfile with the instructions to load and run the file,
+and bind with firefly and expose. Instructions to setup the whole thing,
+a bit like a dev environment.</p>
+<p>Run the container.</p>
+<p>Send a request to the port with the data.</p>
+<p>Can run locally or deploy and scale in enterprise cluster.</p>
+<h3>Docker Terminology:</h3>
+<p>containers are mini VMs. Technically threads created by docker commands.</p>
+<p>Images are snapshots of containers. Running state saved using docker CLI
+or generated with a dockerfile.</p>
+<p>Dockerfile is an automated setip file.</p>
+<h2>Public Platform deployment</h2>
+<p>Use e.g. Heroku to deploy for wide access. Free basic membership. Give
+it the docker file and it hosts the service.</p>
+<h2>Unit tests</h2>
+<p>Create a class inherited from TestCase</p>
+<p><img src="./jbnotes_images/image61.jpeg" alt="">{width=&quot;6.268055555555556in&quot;
+height=&quot;2.282638888888889in&quot;}</p>
+<p>If you are using a Jupyter notebook, you can just place the unit tests
+in the final cell of the notebook.</p>
+<h2>Sphinx</h2>
+<p>Used to generate documentation from docstrings.</p>
