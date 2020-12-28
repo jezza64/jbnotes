@@ -274,17 +274,18 @@ install google client library
 
 <https://github.com/googleapis/google-api-python-client>
 
+
 ## Node.js on windows
 
 Downloaded and installed on windows. A bit scary, installed lots of stuff to be able to compile tools.
 Chocolaty, visual studio compiler, python 3.9 etc
 
 down-it installed for .md conversion  
-npm install -g markdown-it
+>`npm install -g markdown-it`
 in C:\Users\jerem\AppData\Roaming\npm\node_modules\markdown-it\bin\markdown-it.js  
 
 gulp installed for VS code automation:  
-npm install -g gulp  
+>`npm install -g gulp`
 in C:\Users\jerem\AppData\Roaming\npm\node_modules\gulp\bin\gulp.js  
 
 

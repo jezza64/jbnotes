@@ -54,6 +54,7 @@ quote break
 
 Three or more
 ***
+
 ___
 
 ### line breaks
@@ -82,9 +83,9 @@ installed npm on ubuntu
 installed markdown-it on ubuntu
 that automatically got python 2.7 onto my machine ubuntu environment.
 
->`sudo apt install nodejs`
->`sudo apt install npm`
->`npm install -g markdown-it`
+>`sudo apt install nodejs`  
+>`sudo apt install npm`  
+>`npm install -g markdown-it`  
 
 ### settings files
 

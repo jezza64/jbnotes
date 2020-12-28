@@ -1,387 +1,196 @@
 <LINK href="jb1.css" rel="stylesheet" type="text/css">
 <h4><a href="index.html">Back to index</a></h4>
-<h1>Sources:</h1>
-<p>McKinney: Python for Data analysis
-University of Michigan Data Science Specialization - Intro to data science</p>
-<h2>Pandas series</h2>
-<p>Create from list, dictionary etc</p>
-<p>Index created with ints if not provided with index parameter.</p>
-<p>Query with attributes:</p>
-<p>Can Iterate with</p>
-<p>for item in series:</p>
-<p>But quicker to use vectorised functions, e.g. np.sum(series). Can create
-your own vectorised functions. Also broadcast, e.g. s += 2 adds 2 to
-each item. When iterating through series, use broadcast / vectorised
-instead.</p>
-<p>.loc can also add values.</p>
-<p>Append returns a new series, original unchanged.</p>
-<p>Index can be duplicated!</p>
-<h2>Pandas Dataframe</h2>
-<h3>Indexing:</h3>
-<p>Column label, row index. Can be non unique.
-Quickly select based on row and col.</p>
-<blockquote>
-<p>s.iloc[3] for query by position</p>
-<p>s.loc['country'] for query by label</p>
-<p>Can call with s[3] or s['country'] and it works out if you're
-querying by position or value</p>
-</blockquote>
-<h4>Loc and iloc for row selection</h4>
-<blockquote>
-<p>Df.loc[row, col] for cell.</p>
-<p>Chaining (df[][]) returns copy of the dataframe.</p>
-<p>Slicing better. df.loc[:,['Name', 'Cost']]</p>
-</blockquote>
-<h3>Drop:</h3>
-<blockquote>
-<p>doesn't change the df, returns a copy without the row.</p>
-<p>can say inplace, not a copy. Axis = 1 means drop a col.</p>
-</blockquote>
-<p>Del df['Name']</p>
-<p>Views are generally faster, don't impact on underlying data. Use copy
-method to avoid this.</p>
-<p>.columns is the list of cols. Set the header row on the import. Can also
-use Df.rename</p>
-<h4>Boolean masks:</h4>
-<p>array of true / false combined with original data. True
-included in final result.
-Heavily used in pandas.</p>
-<p>Create by applying operators to df, e.g. df['Gold'] &gt; 0 produces
-same shape df.</p>
-<p>Where function applies mask at the same time, only_gold =
-df.where(df['Gold'] &gt; 0)</p>
-<p>Includes values not meeting criteria as NaN, but most functions ignore
-these rows. Use dropna to get rid.</p>
-<p>Boolean mask can be used as value for indexing. E.g. only_gold =
-df[df['Gold'] &gt; 0]</p>
-<p>Can chain Boolean masks e.g. len(df[(df['Gold'] &gt; 0) |
-(df['Gold.1'] &gt; 0)])</p>
-<p>Or df[(df['Gold.1'] &gt; 0) &amp; (df['Gold'] == 0)]</p>
-<p>Extremely important, and often an issue for new users, is to remember that each Boolean mask needs to be encased in parenthesis because of the order of operations.</p>
-<h4>Index</h4>
-<p>Index can be set by set_index function. Reset_index gets back to
-integer indexes.</p>
-<p>Index can be multiple cols. Call set _index with list of cols. Finds
-distinct combinations and sets index.</p>
-<p>Df = df.set_index(['state name', 'county name']) - this creates a 2
-level index. Need to query with args in order of index, level 0 first.
-e.g. df.loc['Michigan', 'Washtenaw County']</p>
-<p>Can have multi level cols also.</p>
-<h4>Unique</h4>
-<p>Df['sumlevel'].unique() shows unique values in a col.</p>
-<h4>To remove cols:</h4>
-<p>cols_to_keep = ['col 1', 'col 2']</p>
-<p>Df = df(cols_to_keep)</p>
-<h4>Get info</h4>
-<p>df.info()</p>
-<h4>Missing values</h4>
-<p>loading from files use na_values to indicate which values loaded are actually None. Use na_filter to turn off whitespace filtering.</p>
-<p>Fill_na to fill missing data forward and back relative to rows. Can e.g. reset index to a timestamp and use Df.sort_index() to sort on index. Then fill missing data forwards. Can also fill with series of
-this same size.</p>
-<p>Maths ignore missing values.</p>
-<h3>Selecting data using loc, iloc, ix</h3>
-<h4>iloc</h4>
-<p>For integer based position selection. Data.iloc[&lt;row selection&gt;, &lt;column selection&gt;]. Column selection is optional. Don't really use, always use name selction with .loc.</p>
-<p>Data.iloc[-1] gets last row</p>
-<p>Data.iloc[:, 0] gets first column</p>
-<p>Data.iloc[0:5] gets first 5 rows.</p>
-<p>Data.iloc[:, 0:2] gets all rows first 2 columns</p>
-<p>Data.iloc[[0, 3, 6, 24], [0, 5, 6]] for complex.</p>
-<p>Returns series when one row selected, Df when multiple selected. To get
-around this, pass a list of values, e.g. Data.iloc[[100]] returns
-one row as a dataframe.</p>
-<h4>loc</h4>
-<p>Used for selecting by label / index, or selecting with Boolean mask.</p>
-<p>Df.loc[&lt;row selection&gt;, &lt;column selection&gt;]. Column selection is
-optional.</p>
-<p>Selections withdata.loc are based on the index of the dataframe. Set the
-index with df.set_index(&quot;last_name&quot;)</p>
-<p>Access with df.loc['Jeremy'], or df.loc[['Jeremy', 'Lucy']]</p>
-<p>Again pass single row requests with a list using [[]] to make the
-result a DF not a series.</p>
-<p>Data.loc[:, ['col1' : 'col 3:']] gets the cols between col 1 and col
-3</p>
-<h4>loc with Boolean indexing</h4>
-<p>Most common method in practice.</p>
-<p>Pass an array or series of true / false values to select rows where
-true.</p>
-<p>Select matching rows on a condition: df.loc['first_name' == 'Jeremy']</p>
-<p>Select some colums from rows matching a condition: df.loc['first_name'
-== 'Jeremy', ['col1', 'col2']]</p>
-<h4>Slicing conventions</h4>
-<p>0:3 runs from 0 to row before 3. The last limit is not included.</p>
-<p>df.iloc[row selection, column selection] for position based selection.</p>
-<h3>Numpy Arrays to Lists</h3>
-<h4>1D list to array</h4>
-<p>Data = [1, 2, 3]</p>
-<p>From numpy import array</p>
-<p>Data = array(data)</p>
-<h4>2D list of lists to array</h4>
-<p>Data = [[11, 22],</p>
-<p>[33, 44],</p>
-<p>[55, 66]]</p>
-<p>Data = array(data)</p>
-<h4>Numpy array indexing</h4>
-<p>Data[4] # zero base, 5^th^ element</p>
-<p>Data[-1] # gets last item</p>
-<p>Data[-2] # gets last but one</p>
-<p>Data[4, 1] # gets 5^th^ row, 2^nd^ col</p>
-<p>Data[0, ] # gets 1^st^ row all cols</p>
-<h4>Slicing</h4>
-<p>Data[start: end]</p>
-<p>Data[-2: ] # gets data starting 2 before the end</p>
-<h4>Reshaping</h4>
-<p>Lots of Scikit learn models need targets as 2d arrays. Common to reshape
-1d array to 2d, but no change to the data. Just a 2d array with one
-column.</p>
-<h4>Reshape 1D to 2D with no change to data:</h4>
-<p>rehsape(rows, 1) # rows is data.shape[0]</p>
-<h4>Reshape 2d to 3d array:</h4>
-<p>Often you have 2d data (sequence in each row), but model expects 3d
-including multiple timestep dimension or multiple features.</p>
-<p>Reshape(rows, columns, 1) # no change to data, but different dimensions</p>
-<h3>Simple pandas operations</h3>
-<h4>To create from arrays:</h4>
-<p>Pd.DataFrame(data = .., columns = .., index = ..)</p>
-<h4>To get the index of the max</h4>
-<p>df['Gold'].idxmax()</p>
-<h4>To select the rows equal to a value:</h4>
-<p>max = df1['abs diff gold'].max()</p>
-<p>val_mask = df1['abs diff gold'] == max</p>
-<p>df1[val_mask]</p>
-<h4>To select first 3 rows:</h4>
-<p>dfc67 = dfc66.iloc[0:3]</p>
-<h4>To Select rows with row criteria, and subset of columns between 2 values</h4>
-<p>data.loc[data['first_name'] == 'Antonio', 'city':'email']</p>
-<h4>To Select rows with row criteria, all columns</h4>
-<p>data.loc[data['first_name'].isin(['France', 'Tyisha',
-'Eric'])]</p>
-<h4>To Select rows matching 2 criteria</h4>
-<p>data.loc[data['email'].str.endswith(&quot;gmail.com&quot;) &amp;
-(data['first_name'] == 'Antonio')]</p>
-<h4>To select rows with id column between 100 and 200, and just return named columns</h4>
-<p>data.loc[(data['id'] &gt; 100) &amp; (data['id'] &lt;= 200),
-['postal', 'web']]</p>
-<h4>To select via a a lambda function that yields True/False values.</h4>
-<p>data.loc[data['company_name'].apply(lambda x: len(x.split(' '))
-== 4)]</p>
-<p>(Select rows where the company name has 4 words in it. Can select
-outside of the main .loc for clarity: idx =
-data['company_name'].apply(lambda x: len(x.split(' ')) == 4))</p>
-<h4>To add a new col without the endless warning: use assign.</h4>
-<p>dfg32 = dfg3.assign(q3 = (dfg3['Gold'] - dfg3['Gold.1']) /
-dfg3['Gold.2'])</p>
-<h4>To drop a column</h4>
-<p>del df['column_name']</p>
-<h4>To return a string rather than a dataframe</h4>
-<p>max = dfg32['q3'].max()</p>
-<p>mask = dfg32['q3'] == max</p>
-<p>return (dfg32[mask].index)[0]</p>
-<h4>To create a series from a result:</h4>
-<p>Points = pd.Series(df['Gold.2'] * 3 + df['Silver.2'] * 2 +
-df['Bronze.2'] * 1)</p>
-<h4>To get the data values from a series into an array:</h4>
-<p>s.values</p>
-<h4>To take subset of cols:</h4>
-<p>columns_to_keep = ['STNAME', 'CTYNAME']</p>
-<p>dfc52 = dfc5[columns_to_keep]</p>
-<h4>To group by and get aggregates:</h4>
-<p>df_state = dfc52.groupby(['STNAME']).count()</p>
-<h4>To list unique values:</h4>
-<p>df['target'].unique()</p>
-<h4>To count unique values:</h4>
-<p>df['hID'].nunique()</p>
-<h4>To count non null values:</h4>
-<p>df['hID'].count()</p>
-<h4>To count all values including nulls:</h4>
-<p>df['hID'].size</p>
-<h4>To count per unique value</h4>
-<p>df['target'].value_counts()</p>
-<h4>To sort (and maybe reindex):</h4>
-<p>dfc62.sort_values(by = ['STNAME', 'CENSUS2010POP'], ascending =
-[True, False], inplace = True)</p>
-<p>df.sort_values(by=['count'], ascending=False)</p>
-<h4>To sort on something with a 2 level index:</h4>
-<blockquote>
-<p>grouped = Df2.groupby('Markets')</p>
-<p>grouped.describe(percentiles = []).sort_values(by=[('PP Complete
-Ad Cost', 'count')])</p>
-</blockquote>
-<h4>Add a col with known values:</h4>
-<p>df['Date'] = ['December 1', 'January 1', 'mid-May']</p>
-<h4>Join (merge) on index:</h4>
-<p>pd.merge(staff_df, student_df, how='outer', left_index=True,
-right_index=True)</p>
-<h4>Merge with key which is not the index:</h4>
-<p>pd.merge(staff_df, student_df, how='left', left_on='Name',
-right_on='Name')</p>
-<h4>Merge on multiple keys:</h4>
-<p>pd.merge(staff_df, student_df, how='inner', left_on=['First
-Name','Last Name'], right_on=['First Name','Last Name'])</p>
-<p>Merge preserves different cols same name with _x for left, _y for
-right.</p>
-<h4>Method chaining</h4>
-<p>good! Methods on objects return reference to the object.</p>
-<p>(df.where(df['SUMLEV']==50)</p>
-<p>.dropna()</p>
-<p>.set_index(['STNAME','CTYNAME'])</p>
-<p>.rename(columns={'ESTIMATESBASE2010': 'Estimates Base 2010'}))</p>
-<h4>Control row printing</h4>
-<blockquote>
-<p># control printouts</p>
-<p>pandas.set_option('display.max_rows', None)</p>
-<p>#pandas.set_option('display.max_rows', 5)</p>
-<p>You can also reset an option back to its default value like this:</p>
-<p>pd.reset_option('display.max_rows')</p>
-<p>or set directly:<br>
-pd.options.display.max_rows = 100</p>
-</blockquote>
-<h4>Multi line statements need parentheses.</h4>
-<p>Chain indexing (E.G. df.loc[KEY1][KEY2]) this is a bad code smell!!!</p>
-<h4>Map:</h4>
-<p>Pass function and iterable, returns a list after running function on
-each object.</p>
-<h4>Map to lookup in a dictionary:</h4>
-<p>#map to replace values with sparse dictionary lookup</p>
-<p>GDP['Country Name'] = GDP['Country
-Name'].map(r2).fillna(GDP['Country Name'])</p>
-<h4>Map to lookup in a dictionary when the index is the key:</h4>
-<p>t6['Continent'] = t6.index.to_series().map(ContinentDict)</p>
-<h4>Apply map:</h4>
-<p>Pass function to operate on each cell of dataframe, returns a dataframe.
-Not so often used as all cells.</p>
-<h4>Apply:</h4>
-<p>Pass function, and dataframe axis to operate on. Good for function on
-rows. Operates on entire rows or cols.</p>
-<p>e.g apply(<strong>lambda</strong> x:1 <strong>if</strong> x <strong>else</strong> 0)</p>
-<h4>Create and return a series:</h4>
-<p>pd.Series({'min': np.min(data), 'max': np.max(data)})</p>
-<h4>Lambda functions:</h4>
-<p>Lambda x: x + 3. Here, x is the bound variable (argument), and the body
-is x+3. It's an expression, so it can be named, can't include
-statements. Single line. Can take multiple parameters, comma separated.</p>
-<p>Add_three = lambda x: x+ 3</p>
-<p>Add_three(2)</p>
-<p>5</p>
-<h4>Group by:</h4>
-<p>Takes column names, splits into chunks, returns dataframe group by
-object. Tuple, first iten is group condition, second item is the
-dataframe reduced by that condition. Could also give a function to group
-the data.</p>
-<h4>Agg:</h4>
-<p>Split data, apply function, then combine -- use group by .agg. Pass
-dictionary of cols interested in, and a function to apply. The
-dictionary can be used to either to identify the columns to apply a
-function on or to name an output column if there's multiple functions
-to be run. The difference depends on the keys that you pass in from the
-dictionary and how they're named.</p>
-<p>Example:</p>
-<p>conts = t6.groupby('Continent')</p>
-<p>con = conts['population'].agg({</p>
-<p>'size': np.count_nonzero,</p>
-<p>'sum': np.sum,</p>
-<p>'mean': np.mean,</p>
-<p>'std': np.std})</p>
-<h4>Datatypes in dataframe</h4>
-<p>Often come out as object.</p>
-<p>t2.dtypes prints the types of all cols</p>
-<p>to cast to different type with a dictionary: df.astype({'col1':
-'int32'}).dtypes</p>
-<h4>Apply and Lambda</h4>
-<p>Whenever I get a hold of such complex problems, I use apply/lambda. Let
-me first show you how I will do this.</p>
-<p>def custom_rating(genre,rating):<br>
-if 'Thriller' in genre:<br>
-return min(10,rating+1)<br>
-elif 'Comedy' in genre:<br>
-return max(0,rating-1)<br>
-else:<br>
-return rating<br>
-<br>
-df['CustomRating'] = df.apply(lambda x:
-custom_rating(x['Genre'],x['Rating']),axis=1)</p>
-<p>The general structure is:</p>
+<h1>AWS data analysis approaches</h1>
 <ul>
-<li>
-<p>You define a function that will take the column values you want to</p>
-<blockquote>
-<p>play with to come up with your logic. Here the only two columns we
-end up using are genre and rating.</p>
-</blockquote>
+<li><a href="#aws-data-analysis-approaches">AWS data analysis approaches</a>
+<ul>
+<li><a href="#what-you-need-to-build-a-modern-data-lake">What you need to build a modern data lake</a>
+<ul>
+<li><a href="#history">History</a></li>
+<li><a href="#needs">Needs</a></li>
+<li><a href="#definition">Definition</a></li>
+<li><a href="#solutions">Solutions</a></li>
+<li><a href="#aws-solution">AWS solution</a></li>
+<li><a href="#demo">Demo</a></li>
+</ul>
 </li>
-<li>
-<p>You use an apply function with lambda along the row with axis=1. The</p>
-<blockquote>
-<p>general syntax is:</p>
-</blockquote>
+<li><a href="#building">Building</a>
+<ul>
+<li><a href="#s3-choices">S3 choices</a></li>
+<li><a href="#aws-lake-formation">AWS lake formation</a></li>
+</ul>
+</li>
+<li><a href="#move-to-managed-database">Move to managed database</a>
+<ul>
+<li><a href="#migration-tools">Migration tools</a></li>
+</ul>
+</li>
+<li><a href="#modernise-your-data-warehouse">Modernise your data warehouse</a>
+<ul>
+<li><a href="#amazon-redshift">Amazon Redshift</a></li>
+<li><a href="#terminology--concepts">Terminology / Concepts</a></li>
+<li><a href="#tools">Tools</a></li>
+</ul>
+</li>
+<li><a href="#streaming-and-real-time-analytics">Streaming and real time analytics</a>
+<ul>
+<li><a href="#streaming-principles">Streaming Principles</a></li>
+<li><a href="#amazon-kenesis">Amazon Kenesis</a></li>
+<li><a href="#amazon-quicksights">Amazon Quicksights</a></li>
+<li><a href="#video-streaming">Video streaming</a></li>
+</ul>
 </li>
 </ul>
-<p>df.apply(lambda x: func(x['col1'],x['col2']),axis=1)</p>
-<p>You should be able to create pretty much any logic using apply/lambda
-since you just have to worry about the custom function.</p>
-<p>Example:</p>
-<p>#creating a function and call on each row with apply</p>
-<p>def checkrenew(x):</p>
-<p>if (x &gt; med):</p>
-<p>return 1</p>
-<p>else:</p>
-<p>return 0</p>
-<p>t6['HighRenew'] = t6['% Renewable'].apply(checkrenew)</p>
-<h3>Stats in Numpy</h3>
-<p>Good to simulate an experiment and look at the results to get to
-conclusions without doing lots of maths. E.g. chance of a tornado is 1%
-on a day, whats the chance of 2 in a row. Simulate with numpy</p>
-<p>chance_of_tornado = 0.01</p>
-<p>tornado_events = np.random.binomial(1, chance_of_tornado, 1000000)</p>
-<p>two_days_in_a_row = 0</p>
-<p>for j in range(1,len(tornado_events)-1):</p>
-<p>if tornado_events[j]==1 and tornado_events[j-1]==1:</p>
-<p>two_days_in_a_row+=1</p>
-<p>print('{} tornadoes back to back in {}
-years'.format(two_days_in_a_row, 1000000/365))</p>
-<p>Hypothesis testing:</p>
-<p>also called A/B testing. experimentation, measure the impact of a
-change. Set a hypotheses, including a null hypothesis. Find evidence
-against the null hypo. Choose significance level (alpha) for the amount
-of chance that the effect is noise youre happy to accept. Typical values
-are 0.01, 0.1. Depends on the cost of the downside of wrong result, and
-the amount of noise.</p>
-<p>Scipi library has lots of significance tests. Use ttest to test this
-hypothesis. Tests expect a particular shape of data.</p>
-<p>P value is the value from the distribution to test against alpha.</p>
-<p>p-hacking / dredging: data science flaw - try lots of tests, when you
-try enough some will pass alpha. But you've done lots of tests!</p>
-<p>Remedies: Bonferroni correction to decrease alpha by 1 / number of
-tests, hold out sets (experiment on one set, test against the other), or
-investigation pre-registration.</p>
-<h1>Python for Data Science, Wes McKinney</h1>
-<h2>Chapter 5: pandas</h2>
-<h3>Series</h3>
-<p>one dimensional array, sequence of values with associated array of data
-labels called index.</p>
-<p>Like a fixed length ordered dictionary.</p>
-<p>The order is maintained.</p>
-<p>NaNs / NA / null are all sentinel values, all are false.</p>
-<h3>Dataframe</h3>
-<p>Rectangular table of data</p>
-<p>Ordered collection of columns. Columns can have different data types.</p>
-<p>Has a row and column index.</p>
-<p>Like a dict of series, all sharing the same index.</p>
-<p>Can make multi dimensional with higherarchical indexing.</p>
-<p>Index created 0.. if not assigned on creation.</p>
-<h1>Microsoft reactor on pandas</h1>
-<p>NeilShamby68</p>
-<p>Gitbhut: https://github.com/microsoft/reactors</p>
-<p>To get to local env: go to git, select fork, and that creates a fork of the repositary in my git acocunt.
-Then need to get the code locally: VS code to clone a repositary. That says where it is located. Then still need to pull. Connects to git, clones locally.</p>
-<p>good Pandas exercise:
-https://github.com/microsoft/Reactors/blob/main/Data_Science_1/Full_Day/3-Pandas.ipynb. Forked to get a copy to my repositary.</p>
-<p>https://notebooks.azure.com
-https://notebooks.azure.com/jeremy-bates64</p>
-<p>Open azure project, upload a file from github url.
-Can run jupyter from there.</p>
-<p>VS code is good. Lots of intellsense, built in git, can debug, extensions.
-Installed azure tools for vs code</p>
-<p>Microsoft azure portal offers machine learning service to run Jupyter. Azure machine learning studio.</p>
-<p>numpy arrays are inplicit index, pandas series is explicit. Series keys are ordered.</p>
-<p>resources: https://pandas.pydata.org/docs/getting_started/10min.html</p>
+</li>
+</ul>
+<h2>What you need to build a modern data lake</h2>
+<p>Goal is to make data widely available.</p>
+<h3>History</h3>
+<p>SQL. Slows down when reporting.
+Lots of data outside of database hard to report on.
+Hadoop for this data.
+But them more and more data.
+Need to analyse data at higher speed, and more data.
+Multiple languages used, people using various tools.</p>
+<h3>Needs</h3>
+<ul>
+<li>catalogue what's there</li>
+<li>version it</li>
+<li>handle different sources</li>
+<li>allow many applications and tools</li>
+<li>allow many people</li>
+<li>anaylsis and reporting</li>
+</ul>
+<p><img src="jbnotes_images/2020-06-17-11-16-58.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-11-17-59.png" alt=""></p>
+<h3>Definition</h3>
+<p>Data lakes is a centralised repository with a catalogue. Allows for self service and reporting. Easy plug in of analytical engines.</p>
+<h3>Solutions</h3>
+<p>Possible to have an open source solution, but need lots of tools and open source. Apache, hadoop, hive etc. Many tools, hard to manage. Hard to update, security hard, cluster is mainly idle, no time to experiment.</p>
+<p>Cloud is a better solution. Serverless. Some are open source, some are open source managed by AWS.</p>
+<h3>AWS solution</h3>
+<p>Easy to build on AWS: S3 for storage.</p>
+<p>Only pay for storage, and compute when you use it.</p>
+<p>Flexible pricing tiers, so e.g. use intelligent tiering so you can automatically move to data a cheaper tier if you don't access it for a month.</p>
+<p>Security: lots of facilities for compliance, don't need to build yourself.</p>
+<p>Comprehensive set of services: storage, analysis, data transformation and loading. Mainly based on open standards or open source, so that makes it easy away from AWS.</p>
+<p><img src="jbnotes_images/2020-06-17-11-18-45.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-11-09-46.png" alt="">!</p>
+<h3>Demo</h3>
+<ul>
+<li>use the &quot;AWS Lake Formation&quot; tool</li>
+<li>Crawler to go through files and work out if all consistent, make sense of the data and interpret.  e.g. CSV or JSON. Imports data into a table, works out columns etc. Can schedule and adapts schema.</li>
+<li>Can then run SQL directly on files without ingesting the data.</li>
+</ul>
+<p>Amazon EMR: hadoop based automatic scaling<br>
+Amazon Redshift: warehousing<br>
+Amazon Glue: transformation<br>
+Amazon Athena: queries</p>
+<h2>Building</h2>
+<ol>
+<li>choose storage platform based on ingestion</li>
+<li>ingest</li>
+<li>store</li>
+<li>analysis</li>
+</ol>
+<p><img src="jbnotes_images/2020-06-17-11-10-38.png" alt=""></p>
+<p>Pipeline architecture: start in raw data in S3, use amazon glue or EMR</p>
+<p><img src="jbnotes_images/2020-06-17-11-11-59.png" alt=""></p>
+<h3>S3 choices</h3>
+<ul>
+<li>standard</li>
+<li>glacier</li>
+<li>auto tier</li>
+</ul>
+<p><img src="jbnotes_images/2020-06-17-11-12-41.png" alt=""></p>
+<p>Use object tagging to flag data to apply secuity policy, archiving.<br>
+Batch operations</p>
+<p><img src="jbnotes_images/2020-06-17-11-13-29.png" alt=""></p>
+<h3>AWS lake formation</h3>
+<p>one stop shop for easy data lake.<br>
+Transforms, catalogues, enforces security, provides self service access to data.</p>
+<p><img src="jbnotes_images/2020-06-17-11-14-04.png" alt=""></p>
+<h2>Move to managed database</h2>
+<p>Amazon RDS: move without changing applications. Reduce admin, get better performance. scalability, security.</p>
+<p><img src="jbnotes_images/2020-06-17-11-20-06.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-11-20-35.png" alt=""></p>
+<ul>
+<li>Amazon Aurora: free relational. MySQL</li>
+<li>Amazon RDS: Paid relational (SQL Server, Oracle)</li>
+<li>Amazon Document DB: non relational, MongoDB</li>
+<li>Amazon Keyspaces: Cassandra</li>
+<li>Amazon Elasticache: Redis, Memcached.</li>
+</ul>
+<h3>Migration tools</h3>
+<p>AWS databates nmigration services (DMS) - to move data.
+Schema conversion tools (SCT)  to go from one db to another - to move schema. Not 100% but simpler.<br>
+DMS can do replication. E.g. take an SQL backup, migrate, then apply more recent transaction logs.<br>
+Database freedom program to move from in house to AWS quickly, scale up and down cheaply.</p>
+<p><img src="jbnotes_images/2020-06-17-11-36-47.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-11-37-15.png" alt=""></p>
+<h2>Modernise your data warehouse</h2>
+<p>Issues:</p>
+<ul>
+<li>exponential growth</li>
+<li>insights needed</li>
+<li>migration has lots of benefits</li>
+</ul>
+<h3>Amazon Redshift</h3>
+<p>A technical platform to store data with various facilities and capabilities.</p>
+<p><img src="jbnotes_images/2020-06-17-11-59-16.png" alt=""></p>
+<p>Allows data warehouse and data lake interactions</p>
+<p>Business data in data warehouse, structured, relatively static. Complex analytic queries.<br>
+Data lake for event data, allows data in multiple formats, less structured.</p>
+<p><img src="jbnotes_images/2020-06-17-12-02-39.png" alt=""></p>
+<p>Developed on Postgres SQL, added OLAP.</p>
+<p><img src="jbnotes_images/2020-06-17-12-06-03.png" alt=""></p>
+<h3>Terminology / Concepts</h3>
+<p>Lots of concepts to store data in appropriate configuration</p>
+<ul>
+<li>Columnar storage: not row storage. This makes it fast for specific columns.</li>
+<li>Compression: 2-4 times compression so cheaper. Better IO performance. Different compression types by column.</li>
+<li>Blocks: large unit read in query</li>
+<li>Zone maps: eliminate unneccesary IO by storing block metadata.</li>
+<li>Sorting: rows in order defined in DDL. Allows less blocks to be read. Less IO.</li>
+<li>Slices: data distributed through the cluster.</li>
+<li>Nodes: large unit of storage</li>
+</ul>
+<h3>Tools</h3>
+<p><img src="jbnotes_images/2020-06-17-12-19-53.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-12-21-10.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-12-22-48.png" alt=""></p>
+<h2>Streaming and real time analytics</h2>
+<ul>
+<li>e.g. fortnite, all real time data to Amazon kenesis.</li>
+<li>High speed data creation.</li>
+<li>Need to get insights to sell more in game purchases.</li>
+<li>Value of data diminishes over time, best to analyse</li>
+<li>Cant wait for batch processes.</li>
+</ul>
+<p><img src="jbnotes_images/2020-06-17-12-50-25.png" alt=""></p>
+<p>Use Data streams to react to application events</p>
+<ol>
+<li>Ingest data as generated</li>
+<li>Process data without interrupting flow</li>
+<li>analyse immediately</li>
+</ol>
+<h3>Streaming Principles</h3>
+<p>Process quickly<br>
+Buffer to enable parallelization<br>
+Use data streams for real time architecture.</p>
+<p><img src="jbnotes_images/2020-06-17-12-54-59.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-12-56-06.png" alt=""></p>
+<p>Producers and consumers and decoupled.</p>
+<h3>Amazon Kenesis</h3>
+<p>Easily collect store process anaylise in real time.</p>
+<p><img src="jbnotes_images/2020-06-17-12-59-47.png" alt=""></p>
+<h3>Amazon Quicksights</h3>
+<p>End to end platform<br>
+Integrates with ML<br>
+Gives easy analysis tools</p>
+<h3>Video streaming</h3>
+<p>Feed data stream to Rekognition<br>
+or sageMaker<br>
+Can play back online.</p>
+<p><img src="jbnotes_images/2020-06-17-13-15-57.png" alt=""></p>
+<p><img src="jbnotes_images/2020-06-17-14-51-31.png" alt=""></p>

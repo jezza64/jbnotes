@@ -8,11 +8,11 @@
 
 Bit like a VM, but independent of operating system. instances transferrable between linux and windows.
 
-VMs virtualise hardware. Containers virtualise the oerating system.
+VMs virtualize hardware. Containers virtualize the operating system.
 
 covers Code, runtime env, libraries, config.
 
-Advantantages:
+Advantages:
 
 - consistent environment
 - cross platform
@@ -29,7 +29,7 @@ is the read only template which defines the container. Image contains the code t
 encapsulated running environment. it's a running docker image.
 
 **Docker Daemon**
-is a persistent background process mandaing images, contaners, networks, storeage volumes. Listens for API requests and processes.
+is a persistent background process managing images, containers, networks, storage volumes. Listens for API requests and processes.
 
 **Docker Engine Rest API**
 Http client can access this to interact with daemon
@@ -43,7 +43,7 @@ gives a CLI to give build, pull, run, stop commands to Docker daemon.
 
 **Docker Host**
 Comprises daemon, images, containers, storage, networks. 
-Daemon processes commands from the client and pulls, builds, etc. 
+Daemon processes commands from the client and pulls, builds, etc.
 
 **Build file**
 Goes with image
@@ -52,10 +52,9 @@ Goes with image
 
 Some abstraction. either default Docker network, or user defined. Each has 3 flavours:
 
-- None: 
-- bridge: no need for port forwarding. for containers to communicate with eachother. 
+- None
+- bridge: no need for port forwarding. for containers to communicate with each other
 - host
-
 
 ## AWS
 
@@ -65,7 +64,7 @@ is an image registry for storing docker images.
 **Amazon ECS: Amazon elastic container services**
 When you're running lots of containers, need an orchestration tool. (e.g. Kubernetes, ECS, docker swarm). Start stop monitor thousands of containers.
 Kubernetes is popular free open source.
-Amazon EKS is Kubernertes on AWS with integration.
+Amazon EKS is Kubernetes on AWS with integration.
 
 supports both
 
@@ -77,18 +76,15 @@ install on EC2 instance.
 ## Docker installation
 
 Needs windows pro
-installed the lunix version from <https://docs.docker.com/install/linux/docker-ce/ubuntu/>
+installed the linux version from <https://docs.docker.com/install/linux/docker-ce/ubuntu/>
 installed via Docker repositories
-
 
 Update the apt package index:
 >`$ sudo apt-get update`
 
 Install packages to allow apt to use a repository over HTTPS:
 
-```bash
-$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent \ software-properties-common
-```
+>`$ sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent \ software-properties-common`
 
 Add Docker’s official GPG key:
 >`$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -`
@@ -126,14 +122,15 @@ Actually installed the windows version after all this.
 
 ## Docker Commands
 
-start a container
->`docker run -d -p 80:80 docker/getting-started
+start a container:
+
+```Bash
+
+docker run -d -p 80:80 docker/getting-started
 
 -d - run the container in detached mode (in the background)
 -p 80:80 - map port 80 of the host to port 80 in the container
 docker/getting-started - the image to use
 
-Dashboard shows the containers running on your machine. 
-
-
-
+Dashboard shows the containers running on your machine.
+```
