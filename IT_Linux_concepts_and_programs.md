@@ -19,6 +19,7 @@
   - [Linux commands](#linux-commands)
     - [Folder setup](#folder-setup)
     - [Sudo](#sudo)
+    - [version info](#version-info)
   - [APT Package management](#apt-package-management)
     - [basic APT package commands](#basic-apt-package-commands)
     - [installing using APT](#installing-using-apt)
@@ -219,7 +220,6 @@ Get a file from an SMB server:
 
 >curl -u "domain\username:passwd" smb://server.example.com/share/file.txt
 
-
 ## Linux commands
 
 ### Folder setup
@@ -241,6 +241,11 @@ Path listing
 
 Folder listing
 >`ll`
+
+### version info
+
+>`cat /etc/os-release`  
+>`uname -or`
 
 ## APT Package management
 

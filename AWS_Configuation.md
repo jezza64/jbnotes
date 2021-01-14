@@ -17,6 +17,8 @@
     - [Route 53](#route-53)
   - [S3 buckets for hosting](#s3-buckets-for-hosting)
   - [Amazon Lightsail](#amazon-lightsail)
+  - [Databases](#databases)
+    - [RDS](#rds)
 
 ## Lightsail
 
@@ -80,3 +82,21 @@ http://jeremybates.uk.s3-website.eu-west-2.amazonaws.com/
 - chose 512 MB RAM, 1 vCPU, 20 GB SSD
 
 https://lightsail.aws.amazon.com/ls/webapp/home/instances
+
+## Databases
+
+### RDS
+
+Free tier database
+populated from here: https://www.mysqltutorial.org/mysql-sample-database.aspx
+admin / Bj7
+For public internet access:
+
+- needs an IGW
+- a route table to route traffic from public subnet to IGW (definition of a public subnet)
+- needs a public IP address for the subnet
+- NACL and security group rule to allow traffic
+
+try telnet to check connectivity: 
+>`telnet jb-db1.cmw200ro5hvp.eu-west-2.rds.amazonaws.com 3306`
+

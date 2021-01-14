@@ -9,6 +9,7 @@
   - [cheatsheet](#cheatsheet)
     - [code blocks](#code-blocks)
     - [Blockquotes](#blockquotes)
+    - [preformatted text](#preformatted-text)
     - [Rule](#rule)
     - [line breaks](#line-breaks)
   - [Using MS Visual Studio Code](#using-ms-visual-studio-code)
@@ -19,6 +20,7 @@
   - [Alternative MD compiler: pandoc](#alternative-md-compiler-pandoc)
   - [Deployment to AWS](#deployment-to-aws)
   - [Style for HTML](#style-for-html)
+  - [more sophisticated frameworks](#more-sophisticated-frameworks)
 
 ## Markdown
 
@@ -30,7 +32,7 @@
 
 ### code blocks
 
-```bash
+```
 for code blocks
 ```
 
@@ -49,6 +51,15 @@ print a
 quote break
 
 > and another quote.
+
+### preformatted text
+
+to show exactly as typed, just indent by 4 spaces or 2 tabs
+
+  this is markdown
+  with no formatting
+
+but lint doesn't like it. better to use code blocks, ```
 
 ### Rule
 
@@ -135,3 +146,7 @@ puts output in the same folder.
 Add to each file:
 >`<LINK href="air_style_sheet.css" rel="stylesheet" type="text/css">`
 Source style sheets from e.g. https://markdowncss.github.io/
+
+## more sophisticated frameworks
+
+try https://hexo.io/

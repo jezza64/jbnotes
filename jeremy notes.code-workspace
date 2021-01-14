@@ -13,6 +13,11 @@
 			"MD034": false,
 			"MD041": false,
 			"MD033": false
-		}
+		},
+		"cSpell.words": [
+			"datatypes",
+			"deallocate",
+			"precompiles"
+		]
 	}
 }

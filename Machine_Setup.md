@@ -26,6 +26,7 @@
   - [Jupyter extensions](#jupyter-extensions)
   - [Google docs](#google-docs)
   - [Node.js on windows](#nodejs-on-windows)
+  - [MySQL](#mysql)
 
 ## git
 
@@ -149,7 +150,7 @@ installed for document conversion word to MD
 CLI installed on /home/jezza64/aws
 aws --version -> aws-cli/2.1.1 Python/3.7.3 Linux/4.4.0-19041-Microsoft exe/x86_64.ubuntu.20
 
-## Python and Conda on windows 
+## Python and Conda on windows
 
 installed Miniconda on windows. Not added to path. In c:\software\miniconda
 installed python 3.9.0
@@ -172,6 +173,12 @@ I've set up the terminal prompt to run anaconda and activate my windows env:
                 "commandline": "%windir%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\software\\miniconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\software\\miniconda3' ; cd \\users\\jerem ; conda activate jbconda1 \""                
             }
 ```
+
+
+>`conda install pandas`  
+>`conda install notebook`
+
+run with `jupyter notebook`
 
 ## python libraries
 
@@ -288,5 +295,19 @@ gulp installed for VS code automation:
 >`npm install -g gulp`
 in C:\Users\jerem\AppData\Roaming\npm\node_modules\gulp\bin\gulp.js  
 
+## MySQL
 
+Installed 8.022 to Program files\MySQL
+Root is Bj7
+user: jeremy / Bj7
+installed to windows, as service.
+Service name MySQL80
+Runs on system account
 
+MySQLShell: command line interface, connect from PS termial with 
+>`cd C:\Program Files\MySQL\MySQL Server 8.0\bin`  
+>`.\mysql -u root -p`
+
+MySQLWorkbench
+
+Connect to localhost, 3306

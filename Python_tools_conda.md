@@ -36,7 +36,7 @@ Activate / Deactivate
 >`conda activate conda-env`
 >`conda deactivate`
 
-Conda environments live in envs folder, e.g. /Users/user-name/miniconda3/envs   
+Conda environments live in envs folder, e.g. /Users/user-name/miniconda3/envs  
 
 Can set the folder on creation. This is good because have it under your project folder, one env per project. Then it's clear, but need to change the prompt to just the env name (change in .condarc file), and need to specify the --prefix flag when installing packages, because conda can't find the environment with just the name.
 >`conda create --prefix /path/to/conda-env             # Or use -p`
@@ -71,7 +71,7 @@ To install from alternate repository, pass --channel
 Permanently add a channel as a package source:
 >`conda config --append channels conda-forge`
 
-Search for a package in repositaries:
+Search for a package in repositories:
 >`conda search -f seaborn`
 
 That modifies .condarc, where env variables are stored.
@@ -89,7 +89,7 @@ Include a file in project root folder listing all packages with version numners.
 To recreate an environment with an environment file:
 >`% conda env create -n conda-env -f /path/to/environment.yml`
 
-To add packages listed in an enviromnet file to existing enviroment:
+To add packages listed in an environment file to existing environment:
 >`% conda env update -n conda-env -f /path/to/environment.yml`
 
 revision history:
