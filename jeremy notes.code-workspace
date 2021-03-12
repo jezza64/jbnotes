@@ -12,7 +12,8 @@
 			"MD400": false,
 			"MD034": false,
 			"MD041": false,
-			"MD033": false
+			"MD033": false,
+			"MD010": false
 		},
 		"cSpell.words": [
 			"datatypes",

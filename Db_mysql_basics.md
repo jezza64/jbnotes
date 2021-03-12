@@ -14,6 +14,7 @@
     - [select into](#select-into)
     - [UPDATE Differences](#update-differences)
   - [usage and conventions](#usage-and-conventions)
+  - [useful commands](#useful-commands)
   - [Queries](#queries)
     - [odds and sods](#odds-and-sods)
     - [field](#field)
@@ -75,6 +76,8 @@
 ## New Features for me
 
 Covers MySQL V8.0
+
+Sourced from https://www.mysqltutorial.org/
 
 ### replace
 
@@ -141,11 +144,21 @@ UPDATE t1 SET col1 = col1 + 1, col2 = col1;
 
 - ; delimiter, each statement executed in sequence
 - change delimiter with `DELIMITER delimiter_character`
+- backticks for quotes
 - A stored procedure typically contains multiple statements separated by semicolon (;).  To use compile the whole stored procedure as a single compound statement, you need to temporarily change the delimiter from the semicolon (;) to anther delimiters such as $$ or //:
-- to get current database, ```select database()```
+- variables can overlap with column names, the variable name has preference. Don't do this.
+- identifiers can be quoted (if contains reserved words) or unquoted
+- If the ANSI_QUOTES SQL mode is enabled, it is also permissible to quote identifiers within double quotation marks
+- 64 char default limit
+- dbs are actually folders, tables are files, triggers are files. So names not case sensitive in windows but are i unix.
+- user defined variables are different form local variables. Local in stored functiions,  
+
+## useful commands
+
+- to get current database, `select database()`
 - there's a default db for a login
-- to get current connection id, ```SELECT CONNECTION_ID()```
-- to get processes, ```SHOW PROCESSLIST```
+- to get current connection id, `SELECT CONNECTION_ID()`
+- to get processes, `SHOW PROCESSLIST`
 
 ```sql
 DELIMITER $$
@@ -1298,7 +1311,7 @@ SELECT @table_exists;
 - MySQL does not have the built-in BOOLEAN or BOOL data type. To represent boolean values, MySQL uses the smallest integer type which is TINYINT(1). In other words, BOOLEAN and BOOL are synonyms for TINYINT(1).
 - ZEROFILL makes default 0
 - The MySQL DECIMAL data type is used to store exact numeric values in the database. We often use the DECIMAL data type for columns that preserve exact precision e.g., money data in accounting systems.
-- for accounting, the GAAP standard is ```amount DECIMAL(19,4);```
+- for accounting, the GAAP standard is `amount DECIMAL(19,4);`
 - CHAR for fixed size, padded to length. But padding blanks removed when using expressions
 - DATETIME is 5 byte, no timezone
 - TIMESTAMP is 4 bytes, with UTC timezone, only up to 2038. REsults depend on which timezone your db is configured for
