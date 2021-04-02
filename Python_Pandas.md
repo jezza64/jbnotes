@@ -141,6 +141,9 @@ Can say inplace, not a copy. Axis = 1 means drop a col.
 
 >`Del df['Name']`
 
+Drop a column: best method is
+>'df.drop('column_name', axis=1, inplace=True)'
+
 Views are generally faster, don't impact on underlying data. Use copy method to avoid this.
 
 list of cols. Can set the header row on the import.

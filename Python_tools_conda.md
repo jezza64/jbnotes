@@ -46,9 +46,10 @@ List environments:
 
 ## Installing packages
 
-Can do 
--in the active environment -- this is better as no risk of unintentionally installing for all envs
--from default shell (use --name or --prefix)
+Can do this
+
+- in the active environment -- this is better as no risk of unintentionally installing for all envs
+- from default shell (use --name or --prefix)
 
 By default packages come from anaconda repository. (same for all commands)
 
@@ -83,7 +84,7 @@ Pip doesn't have as many features (metadata) as conda so can cause problems, ins
 
 ### Managing environments
 
-Include a file in project root folder listing all packages with version numners. Make an environment file with:
+Include a file in project root folder listing all packages with version numbers. Make an environment file with:
 >`(conda-env) % conda env export --file environment.yml`
 
 To recreate an environment with an environment file:
