@@ -5,6 +5,7 @@
 # Python
 
 - [Python](#python)
+  - [Sources](#sources)
   - [Basics](#basics)
     - [Installation](#installation)
     - [Imports](#imports)
@@ -13,15 +14,17 @@
     - [Python operations](#python-operations)
       - [To print strings](#to-print-strings)
       - [Concatenate](#concatenate)
-  - [Memory structures](#memory-structures)
-    - [List](#list)
-    - [Tuple](#tuple)
-    - [Dictionary](#dictionary)
-    - [Set](#set)
-  - [Chapter 3: Dictionaries, Sets, Tuples](#chapter-3-dictionaries-sets-tuples)
-    - [Dictionary](#dictionary-1)
-    - [Sets](#sets)
+    - [Statements, indentation, comment](#statements-indentation-comment)
+    - [printing](#printing)
+    - [statements](#statements)
+  - [Chapter 3: Lists, Dictionaries, Sets, Tuples](#chapter-3-lists-dictionaries-sets-tuples)
+    - [Memory structures](#memory-structures)
+    - [Lists](#lists)
     - [Tuples](#tuples)
+    - [Dictionary](#dictionary)
+    - [Sets](#sets)
+  - [iterating](#iterating)
+    - [Iterables](#iterables)
   - [Chapter 4: Functions and Modules](#chapter-4-functions-and-modules)
     - [Modules](#modules)
     - [Adding a module to site packages:](#adding-a-module-to-site-packages)
@@ -48,34 +51,34 @@
     - [Decorator steps](#decorator-steps)
     - [Generic decorator code](#generic-decorator-code)
   - [Chapter 11: Exception handling](#chapter-11-exception-handling)
-  - [Catching an Error Is Not Enough](#catching-an-error-is-not-enough)
+    - [Catching an Error Is Not Enough](#catching-an-error-is-not-enough)
+
+## Sources
+
+https://www.geeksforgeeks.org/python-programming-language/?ref=ghm
 
 ## Basics
 
 ### Installation
 
-Conda install packagename
-
-Conda update packagename
-
-Pip install packagename (use conda if you can for conda environments)
-
+Conda install packagename  
+Conda update packagename  
+Pip install packagename (use conda if you can for conda environments)  
 Objects have a type, and a set of methods that run on that type.
 
 ### Imports
 
-Import somemodule\
+Import somemodule  
 somemodule.a(d, e)
 
 Or:
 
-From somemodule import a\
+From somemodule import a  
 a(d, e)
 
 ### Mutable / immutable
 
-Most are mutable (lists, dicts, numpy arrays, classes).
-
+Most are mutable (lists, dicts, numpy arrays, classes).  
 Strings and tuples are immutable.
 
 ### Built in scalar types
@@ -151,9 +154,230 @@ String operations
 
 12. \'Brilliant New Year\'
 
+### Statements, indentation, comment
+
+Multi line statements with any of (), {}, [], ;, \  
+Indentation for blocks  
+
+```python
+s = 1 + 2 + 3 + \
+    4 + 5 + 6
+
+footballer = ['MESSI',
+          'NEYMAR',
+          'SUAREZ']
+
+n = (1 * 2 * 3 + 7 
++ 8 + 9)
+
+# single line comment
+a = 2 # comment
+
+"""
+multi
+line
+comment
+"""
+
+'''
+multi line 
+comment
+'''
+
+# multi line docstrings
+def my_function(arg1):
+	"""
+	Summary line.
+
+	Extended description of function.
+
+	Parameters:
+	arg1 (int): Description of arg1
+
+	Returns:
+	int: Description of return value
+
+	"""
+
+	return arg1
+
+print(my_function.__doc__)
+
+```
+
+### printing
+
+```python
+# print
+# One object is passed
+print("GeeksForGeeks")
+ 
+x = 5
+# Two objects are passed
+print("x =", x)
+ 
+# code for disabling the softspace feature
+print('G', 'F', 'G', sep ='')
+ 
+# using end argument
+print("Python", end = '@') 
+print("GeeksforGeeks")
+
+>>> 
+GeeksForGeeks
+x = 5
+GFG
+Python@GeeksforGeeks
+
+# print on same line
+print("geeks", end =" ")
+print("geeksforgeeks")
+>>> geeks geeksforgeeks
+
+# Python program showing how to use
+# string modulo operator(%) to print
+# fancier output
+
+# print integer and float value
+print("Geeks : %2d, Portal : %5.2f" % (1, 05.333))
+>>> Geeks :  1, Portal : 5.33
+
+# print integer value
+print("Total students : %3d, Boys : %2d" % (240, 120))
+>>> Total students : 240, Boys : 120
+
+# print octal value
+print("%7.3o" % (25))
+>>> 031
+
+# print exponential value
+print("%10.3E" % (356.08977))
+>>> 3.561E+02
+
+# general formatting of numbers: 
+# %[flags][width][.precision]type 
+e.g. 
+“%2d” means print 2 digits
+“%5.2f” means print a float, total number of chars and decimal places.
+
+# f strings are better
+# Python3 program introducing f-string
+val = 'Geeks'
+print(f"{val}for{val} is a portal for {val}.")
+
+
+name = 'Tushar'
+age = 23
+print(f"Hello, My name is {name} and I'm {age} years old.")
+
+# Prints today's date with help
+# of datetime library
+import datetime
+
+today = datetime.datetime.today()
+print(f"{today:%B %d, %Y}")
+
+```
+
+### statements
+
+```python
+#if needs rackets, colo
+if (a['asset'] == 'BNB'):
+    print(a)
+
+# one line if else for assignment
+a = 1 if 20 > 10 else 0
+# [on_true] if [expression] else [on_false] 
+
+# Since all are false, false is returned
+print (any([False, False, False, False]))
+
+# Here the method will short-circuit at the
+# second item (True) and will return True.
+print (any([False, True, False, False]))
+
+# Here the method will short-circuit at the
+# first (True) and will return True.
+print (any([True, False, False, False]))
+
+# Here all the iterables are True so all
+# will return True and the same will be printed
+print (all([True, True, True, True]))
+
+# Here the method will short-circuit at the
+# first item (False) and will return False.
+print (all([False, True, True, False]))
+
+# This statement will return False, as no
+# True is found in the iterables
+print (all([False, False, False]))
+
+# This code explains how can we
+# use 'any' function on list
+list1 = []
+list2 = []
+
+# Index ranges from 1 to 10 to multiply
+for i in range(1,11):
+	list1.append(4*i)
+
+# Index to access the list2 is from 0 to 9
+for i in range(0,10):
+	list2.append(list1[i]%5==0)
+
+print('See whether at least one number is divisible by 5 in list 1=>')
+print(any(list2))
+
+# python3 code to
+# illustrate the
+# difference between
+# == and is operator
+# [] is an empty list
+list1 = []
+list2 = []
+list3=list1
+
+if (list1 == list2):
+	print("True")
+else:
+	print("False")
+
+if (list1 is list2):
+	print("True")
+else:
+	print("False")
+
+if (list1 is list3):
+	print("True")
+else:
+	print("False")
+
+list3 = list3 + list2
+
+if (list1 is list3):
+	print("True")
+else:
+	print("False")
+
+# Python program to illustrate
+# Finding common member in list
+# using 'in' operator
+list1=[1,2,3,4,5]
+list2=[6,7,8,9]
+for item in list1:
+	if item in list2:
+		print("overlapping")	
+else:
+	print("not overlapping")
+
+```
+
 ---
 
-## Memory structures
+## Chapter 3: Lists, Dictionaries, Sets, Tuples
+
+### Memory structures
 
 **A variable takes on the type of the value assigned.**
 
@@ -163,59 +387,299 @@ variable.
 **Like in other programming languages, objects can
 have state (attributes or values) and behavior (methods).**
 
-### List
+### Lists
 
-an ordered mutable collection of objects. Not predefined size, any
-objects, has sequence.
+- an ordered mutable collection of objects
+- Not predefined size
+- any objects
+- has sequence
+- can have duplicates
+- access by position
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/050fig01.png.jpg](./jbnotes_images/image62.jpeg){width="4.90625in"
-height="2.90625in"}
+![g](./jbnotes_images/image62.jpeg)
 
-### Tuple
+- Append(object) to add object
+- remove(object) to remove
+- pop(index) to remove on index (or last) and returns it
+- list1.extend(list2) to add list2 to list1
+- list.insert(index to insert before, object to insert)
 
-an ordered immutable collection of objects. Like a constant list.**
+```python
+a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/051fig01.png.jpg](./jbnotes_images/image63.jpeg){width="4.395833333333333in"
-height="3.0520833333333335in"}
+# indexing
+a[2]
+>>> baz
+
+# negative indexing
+a[-2]
+>>> quux
+
+# list slicing
+
+# If a is a list, the expression a[m:n] returns the portion of a from index m to, but not including, index n:
+a[1:4]
+>>> ['bar', 'baz', 'qux']
+a[-5:-2] == a[1:4]
+>>> true
+
+# Omitting the first index starts the slice at the beginning of the list, and omitting the second index extends the slice to the end of the list:
+print(a[:4], a[0:4])
+>>> ['foo', 'bar', 'baz', 'qux'] ['foo', 'bar', 'baz', 'qux']
+
+# You can specify a stride—either positive or negative:
+a[::-1]
+>>> ['corge', 'quux', 'qux', 'baz', 'bar', 'foo']
+
+# operators - work very like string operators
+
+# The in and not in operators:
+>>> 'qux' in a
+True
+
+# concatenate lists
+>>> a + ['grault', 'garply']
+['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'grault', 'garply']
+
+# replicate lists
+>>> a * 2
+['foo', 'bar', 'baz', 'qux', 'quux', 'corge', 'foo', 'bar', 'baz',
+'qux', 'quux', 'corge']
+
+>>> len(a)
+6
+>>> min(a)
+'bar'
+>>> max(a)
+'qux'
+
+# Nested lists
+>>> x = ['a', ['bb', ['ccc', 'ddd'], 'ee', 'ff'], 'g', ['hh', 'ii'], 'j']
+>>> x
+['a', ['bb', ['ccc', 'ddd'], 'ee', 'ff'], 'g', ['hh', 'ii'], 'j']
+
+>>> x[1]
+['bb', ['ccc', 'ddd'], 'ee', 'ff']
+>>> x[1][0]
+'bb'
+>>> print(x[1][1][0], x[1][1][1])
+ccc ddd
+
+# operators on nested lists only act on the level you specify
+>>> len(x)
+5
+>>> 'ddd' in x
+False
+>>> 'ddd' in x[1]
+False
+>>> 'ddd' in x[1][1]
+True
+
+# modify single value
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+>>> a
+['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+
+>>> a[2] = 10
+>>> a[-1] = 20
+>>> a
+['foo', 'bar', 10, 'qux', 'quux', 20]
+
+>>> del a[3]
+>>> a
+['foo', 'bar', 'baz', 'quux', 'corge']
+
+# modify multiple values
+## replaces any size, shrinks or grows
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+
+>>> a[1:4]
+['bar', 'baz', 'qux']
+>>> a[1:4] = [1.1, 2.2, 3.3, 4.4, 5.5]
+>>> a
+['foo', 1.1, 2.2, 3.3, 4.4, 5.5, 'quux', 'corge']
+>>> a[1:6]
+[1.1, 2.2, 3.3, 4.4, 5.5]
+>>> a[1:6] = ['Bark!']
+>>> a
+['foo', 'Bark!', 'quux', 'corge']
+
+# insert to a list in a position
+>>> a = [1, 2, 7, 8]
+>>> a[2:2] = [3, 4, 5, 6]
+>>> a
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+# delete multiple elements
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+>>> a[1:5] = []
+>>> a
+['foo', 'corge']
+
+# append to list
+>>> a += ['grault', 'garply']
+>>> a = [10, 20] + a
+
+# Note that a list must be concatenated with another list, so if you want to add only one element, you need to specify it as a singleton list:
+>>> a += 20 # error
+>>> a += [20] # ok
+
+# modifications: lists are mutable so these modify in place
+>>> a = ['a', 'b']
+>>> a.append(123)
+>>> a
+['a', 'b', 123]
+
+# Remember that when the + operator is used to concatenate to a list, if the target operand is an iterable, then its elements are broken out and appended to the list individually:
+>>> a = ['a', 'b']
+>>> a + [1, 2, 3]
+['a', 'b', 1, 2, 3]
+
+# The .append() method does not work that way! If an iterable is appended to a list with .append(), it is added as a single object:
+>>> a = ['a', 'b']
+>>> a.append([1, 2, 3])
+>>> a
+['a', 'b', [1, 2, 3]]
+
+# insert at a location
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+>>> a.insert(3, 3.14159)
+>>> a[3]
+3.14159
+>>> a
+['foo', 'bar', 'baz', 3.14159, 'qux', 'quux', 'corge']
+
+# remove an object
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+>>> a.remove('baz')
+>>> a
+['foo', 'bar', 'qux', 'quux', 'corge']
+
+# pop to remove by index
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+>>> a.pop()
+'corge'
+>>> a
+['foo', 'bar', 'baz', 'qux', 'quux']
+
+>>> a.pop()
+'quux'
+>>> a
+['foo', 'bar', 'baz', 'qux']
+
+>>> a = ['foo', 'bar', 'baz', 'qux', 'quux', 'corge']
+
+>>> a.pop(1)
+'bar'
+>>> a
+['foo', 'baz', 'qux', 'quux', 'corge']
+
+>>> a.pop(-3)
+'qux'
+>>> a
+['foo', 'baz', 'quux', 'corge']
+
+# copy 
+# For a list, a[:] is a copy of a—they do not reference the same object.
+
+```
+
+### Tuples
+
+an ordered immutable collection of objects. Like a constant list.
+
+![d](./jbnotes_images/image63.jpeg)
+
+like a list but immutable. Round brackets. Cant have a single object in a tuple unless add a comma.
+
+Use type(object) to see if it's a list / dictionary etc.
+
+Work just like lists, but can't be modified
+
+execution faster, safer than lists
+
+```python
+>>> t = ('foo', 'bar', 'baz', 'qux', 'quux', 'corge')
+>>> t
+('foo', 'bar', 'baz', 'qux', 'quux', 'corge')
+
+>>> t[0]
+'foo'
+>>> t[-1]
+'corge'
+>>> t[1::2]
+('bar', 'qux', 'corge')
+>>> t[::-1]
+('corge', 'quux', 'qux', 'baz', 'bar', 'foo')
+
+# define with one item a problem: 
+>>> t = (1, 2)
+>>> type(t)
+<class 'tuple'>
+>>> t = (2)
+>>> type(t)
+<class 'int'>
+>>> t = (2,)
+>>> type(t)
+<class 'tuple'>
+
+# packing and unpacking
+>>> t = ('foo', 'bar', 'baz', 'qux')
+>>> t[0]
+'foo'
+# unpacking. Need to have same number of items
+>>> (s1, s2, s3, s4) = t
+>>> s1
+'foo'
+>>> (s1, s2, s3, s4) = ('foo', 'bar', 'baz', 'qux')
+>>> s1
+'foo'
+
+# packing without parentheses
+# In assignments like this and a small handful of other situations, Python allows the parentheses that are usually used for denoting a tuple to be left out:
+
+>>> t = 1, 2, 3
+>>> t
+(1, 2, 3)
+
+>>> x1, x2, x3 = t
+>>> x1, x2, x3
+(1, 2, 3)
+
+>>> x1, x2, x3 = 4, 5, 6
+>>> x1, x2, x3
+(4, 5, 6)
+
+>>> t = 2,
+>>> t
+(2,)
+
+# swapping variables
+# Tuple assignment allows for a curious bit of idiomatic Python. Frequently when programming, you have two variables whose values you need to swap. In most programming languages, it is necessary to store one of the values in a temporary variable while the swap occurs like this:
+>>> a = 'foo'
+>>> b = 'bar'
+>>> a, b
+('foo', 'bar')
+
+>>># Magic time!
+>>> a, b = b, a
+
+>>> a, b
+('bar', 'foo')
+
+
+```
 
 ### Dictionary
 
-an unordered set of key/value pairs
+- an unordered set of key/value pairs
+- mutable
+- can be nested
+- Load using curly braces, with a colon for the key.
+- Access via keys  with square brackets.
+- since 3.7 order is preserved
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/052fig01.png.jpg](./jbnotes_images/image64.jpeg){width="4.458333333333333in"
-height="3.3229166666666665in"}
-
-### Set
-
-an unordered set of unique objects
-
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/053fig01.png.jpg](./jbnotes_images/image65.jpeg){width="3.6145833333333335in"
-height="3.0208333333333335in"}
-
-Lists: [square brackets, comma separated objects]. Can do list of
-lists.
-
-Append(object) to add object
-
-remove(object) to remove
-
-pop(index) to remove on index (or last) and returns it
-
-list1.extend(list2) to add list2 to list1
-
-list.insert(index to insert before, object to insert)
-
-## Chapter 3: Dictionaries, Sets, Tuples
-
-### Dictionary
-
-for name / value pairs. Like a map. Order not preserved. Load using
-curly braces, with a colon for the key. Access with square brackets.
-
-Person3 = {'Name': 'Jremy',\
-'Gender': 'M'}
-
-Lookup with square brackets: person3\['Gender'\]
+![h](./jbnotes_images/image64.jpeg)
 
 Check out this for the parser interpretation:
 <https://docs.python.org/3/reference/lexical_analysis.html#operators>
@@ -226,12 +690,217 @@ original.
 
 Items method with for loop is best way to get the data.
 
-e.g. for k, v in sorted(found.items)):
+```python
+for k, v in sorted(found.items)):
+    print(k, 'was found', v, 'times')
+```
 
-print(k, 'was found', v, 'times')
-
-Dictionary keys must be inititialised. So check membership with 'in'. Or
+Dictionary keys must be initialized. So check membership with 'in'. Or
 set the default
+
+Often have e.g. dictionary of dictionaries.
+
+![jn](./jbnotes_images/image66.jpeg)
+
+Access with people\['Ford'\]\['Gender'\]. Print with pprint
+
+```python
+d = {
+    <key>: <value>,
+    <key>: <value>,
+      .
+    <key>: <value>
+}
+
+>>> MLB_team = {
+...     'Colorado' : 'Rockies',
+...     'Boston'   : 'Red Sox',
+
+# You can also construct a dictionary with the built-in dict() function. The argument to dict() should be a sequence of key-value pairs. A list of tuples works well for this:
+d = dict([
+    (<key>, <value>),
+      .
+      .
+    (<key>, <value>)
+])
+
+# If the key values are simple strings, they can be specified as keyword arguments. So here is yet another way to define MLB_team:
+>>> MLB_team = dict(
+...     Colorado='Rockies',
+
+# access
+>>> type(MLB_team)
+<class 'dict'>
+
+>>> MLB_team
+{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins', 'Milwaukee': 'Brewers', 'Seattle': 'Mariners'}
+
+>>> MLB_team[1]
+error
+
+>>> MLB_team['Minnesota']
+'Twins'
+
+# add an entry
+MLB_team['Kansas City'] = 'Royals'
+>>> MLB_team
+{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',
+'Milwaukee': 'Brewers', 'Seattle': 'Mariners', 'Kansas City': 'Royals'}
+
+# update an entry
+>>> MLB_team['Seattle'] = 'Seahawks'
+>>> MLB_team
+{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',
+'Milwaukee': 'Brewers', 'Seattle': 'Seahawks', 'Kansas City': 'Royals'}
+
+# delete
+>>> del MLB_team['Seattle']
+>>> MLB_team
+{'Colorado': 'Rockies', 'Boston': 'Red Sox', 'Minnesota': 'Twins',
+'Milwaukee': 'Brewers', 'Kansas City': 'Royals'}
+
+
+# can have any immutable as teh key, but this is not like a list!
+>>> d = {3: 'd', 2: 'c', 1: 'b', 0: 'a'}
+>>> d
+{3: 'd', 2: 'c', 1: 'b', 0: 'a'}
+
+>>> d[0]
+'a'
+>>> d[2]
+'c'
+
+# Note: Although access to items in a dictionary does not depend on order, Python does guarantee that the order of items in a dictionary is preserved. When displayed, items will appear in the order they were defined, and iteration through the keys will occur in that order as well. Items added to a dictionary are added at the end. If items are deleted, the order of the remaining items is retained.
+
+# You can only count on this preservation of order very recently. It was added as a part of the Python language specification in version 3.7. However, it was true as of version 3.6 as well—by happenstance as a result of the implementation but not guaranteed by the language specification.
+
+# nested dictionary
+>>> person = {}
+>>> type(person)
+<class 'dict'>
+
+>>> person['fname'] = 'Joe'
+>>> person['lname'] = 'Fonebone'
+>>> person['age'] = 51
+>>> person['spouse'] = 'Edna'
+>>> person['children'] = ['Ralph', 'Betty', 'Joey']
+>>> person['pets'] = {'dog': 'Fido', 'cat': 'Sox'}
+
+>>> person
+{'fname': 'Joe', 'lname': 'Fonebone', 'age': 51, 'spouse': 'Edna',
+'children': ['Ralph', 'Betty', 'Joey'], 'pets': {'dog': 'Fido', 'cat': 'Sox'}}
+
+>>> person['fname']
+'Joe'
+>>> person['age']
+51
+>>> person['children']
+['Ralph', 'Betty', 'Joey']
+
+>>> person['children'][-1]
+'Joey'
+>>> person['pets']['cat']
+'Sox'
+#This example exhibits another feature of dictionaries: the values contained in the dictionary don’t need to be the same type. In person, some of the values are strings, one is an integer, one is a list, and one is another dictionary.
+
+# Just as the values in a dictionary don’t need to be of the same type, the keys don’t either
+
+# duplicate handling
+# First, a given key can appear in a dictionary only once. Duplicate keys are not allowed. A dictionary maps each key to a corresponding value, so it doesn’t make sense to map a particular key more than once.
+
+# You saw above that when you assign a value to an already existing dictionary key, it does not add the key a second time, but replaces the existing value:
+
+# operators
+# in
+>>> 'Milwaukee' in MLB_team
+True
+
+# You can use the in operator together with short-circuit evaluation to avoid raising an error when trying to access a key that is not in the dictionary:
+>>> MLB_team['Toronto']
+Traceback (most recent call last):
+  File "<pyshell#2>", line 1, in <module>
+    MLB_team['Toronto']
+KeyError: 'Toronto'
+
+# uses short circuit evaluation, only first statement
+>>> 'Toronto' in MLB_team and MLB_team['Toronto']
+False
+
+# dictionary methods
+d.clear()
+
+#The Python dictionary .get() method provides a convenient way of getting the value of a key from a dictionary without checking ahead of time whether the key exists, and without raising an error.
+>>> d = {'a': 10, 'b': 20, 'c': 30}
+>>> print(d.get('b'))
+20
+>>> print(d.get('z'))
+None
+# with default
+>>> print(d.get('z', -1))
+-1
+
+# item list returns list of key value pairs
+>>> d = {'a': 10, 'b': 20, 'c': 30}
+>>> d
+{'a': 10, 'b': 20, 'c': 30}
+
+>>> list(d.items())
+[('a', 10), ('b', 20), ('c', 30)]
+>>> list(d.items())[1][0]
+'b'
+>>> list(d.items())[1][1]
+20
+
+# keys returns list of keys
+>>> list(d.keys())
+['a', 'b', 'c']
+
+# values returns list of values
+>>> list(d.values())
+[10, 20, 30]
+# Any duplicate values in d will be returned as many times as they occur:
+
+# Technical Note: The .items(), .keys(), and .values() methods actually return something called a view object. A dictionary view object is more or less like a window on the keys and values. For practical purposes, you can think of these methods as returning lists of the dictionary’s keys and values.
+
+# pop removes a key, returns value
+# like del but a method not a statement
+>>> d.pop('b')
+20
+>>> d
+{'a': 10, 'c': 30}
+# pop with default
+>>> d.pop('z', -1)
+-1
+
+# popitem removes last key value pair
+>>> d.popitem()
+('c', 30)
+>>> d
+{'a': 10, 'b': 20}
+
+# update merges dictionaries, adding or replacing. 
+>>> d1 = {'a': 10, 'b': 20, 'c': 30}
+>>> d1.update([('b', 200), ('d', 400)])
+>>> d1
+{'a': 10, 'b': 200, 'c': 30, 'd': 400}
+
+>>> d1 = {'a': 10, 'b': 20, 'c': 30}
+>>> d1.update(b=200, d=400)
+>>> d1
+{'a': 10, 'b': 200, 'c': 30, 'd': 400}
+
+# copy a dictionary
+>>> d2 = dict(d1)
+>>> d2 == d1, d2 is d1
+(True, False)
+
+>>> d2 = dict(d1.items())
+>>> d1 == d2, d1 is d2
+(True, False)
+
+```
+
+
 
 ### Sets
 
@@ -239,20 +908,155 @@ like a list with unique values, curly braces, faster than
 list, can use set operators. Curly braces look like dictionary, but no
 colons. Can use set logic (union, difference, intersection)
 
-### Tuples
+an unordered set of unique objects
 
-like a list but immutable. Round brackets. Cant have a
-single object in a tuple unless add a comma.
+![hg](./jbnotes_images/image65.jpeg)
 
-Use type(object) to see if it's a list / dictionary etc.
+## iterating
 
-Often have e.g. dictionary of dictionaries.
+only collection based iteration
 
-![image with no
-caption](./jbnotes_images/image66.jpeg){width="6.268055555555556in"
-height="1.4361111111111111in"}
+for <var> in <iterable>:
+    <statement(s)>
 
-Access with people\['Ford'\]\['Gender'\]. Print with pprint
+<iterable> is a collection of objects—for example, a list or tuple. The <statement(s)> in the loop body are denoted by indentation, as with all Python control structures, and are executed once for each item in <iterable>. The loop variable <var> takes on the value of the next element in <iterable> each time through the loop.
+
+### Iterables
+
+In Python, iterable means an object can be used in iteration. The term is used as:
+
+- An adjective: An object may be described as iterable.
+- A noun: An object may be characterized as an iterable.
+
+If an object is iterable, it can be passed to the built-in Python function iter(), which returns something called an iterator. Yes, the terminology gets a bit repetitive.
+
+An iterator is essentially a value producer that yields successive values from its associated iterable object. The built-in function next() is used to obtain the next value from in iterator.
+
+Notice how an iterator retains its state internally. It knows which values have been obtained already, so when you call next(), it knows what value to return next.
+
+When out of values, return error
+
+Iterators are lazy, so don't return all values at one, get them when needed.  
+
+Only next, no previous.
+
+Each of the objects in the following example is an iterable and returns some type of iterator when passed to iter():
+
+```python
+>>> iter('foobar')                             # String
+<str_iterator object at 0x036E2750>
+
+>>> iter(['foo', 'bar', 'baz'])                # List
+<list_iterator object at 0x036E27D0>
+
+>>> iter(('foo', 'bar', 'baz'))                # Tuple
+<tuple_iterator object at 0x036E27F0>
+
+>>> iter({'foo', 'bar', 'baz'})                # Set
+<set_iterator object at 0x036DEA08>
+
+>>> iter({'foo': 1, 'bar': 2, 'baz': 3})       # Dict
+<dict_keyiterator object at 0x036DD990>
+
+# not iterable
+>>> iter(42)                                   # Integer
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    iter(42)
+TypeError: 'int' object is not iterable
+
+>>> iter(3.1)                                  # Float
+Traceback (most recent call last):
+  File "<pyshell#27>", line 1, in <module>
+    iter(3.1)
+TypeError: 'float' object is not iterable
+
+>>> iter(len)                                  # Built-in function
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    iter(len)
+TypeError: 'builtin_function_or_method' object is not iterable
+
+```
+
+For loop: in the background, this calls iter() to create iterator, called next() repeatedly, terminates loop  when next() raises the StopIteration exception
+
+```python
+# iterate a dict
+>>> d = {'foo': 1, 'bar': 2, 'baz': 3}
+>>> for k in d:
+...     print(k)
+foo
+bar
+baz
+
+>>> for k in d:
+...     print(d[k])
+...
+1
+2
+3
+
+>>> for v in d.values():
+...     print(v)
+...
+1
+2
+3
+
+# keys and values at same time use packing
+>>> for i, j in [(1, 2), (3, 4), (5, 6)]:
+...     print(i, j)
+...
+1 2
+3 4
+5 6
+
+>>> d = {'foo': 1, 'bar': 2, 'baz': 3}
+>>> for k, v in d.items():
+...     print('k =', k, ', v =', v)
+...
+k = foo , v = 1
+k = bar , v = 2
+k = baz , v = 3
+
+# range: range(<begin>, <end>, <stride>) returns an iterable that yields integers starting with <begin>, up to but not including <end>. If specified, <stride> indicates an amount to skip between values (analogous to the stride value used for string and list slicing):
+
+for a in range(1, 100, 2)
+    print a
+
+# break
+>>> for i in ['foo', 'bar', 'baz', 'qux']:
+...     if 'b' in i:
+...         break
+...     print(i)
+...
+foo
+
+# continue (goes to next value)
+>>> for i in ['foo', 'bar', 'baz', 'qux']:
+...     if 'b' in i:
+...         continue
+...     print(i)
+...
+foo
+qux
+
+# else - executes if iteratble is exhausted
+>>> for i in ['foo', 'bar', 'baz', 'qux']:
+...     print(i)
+... else:
+...     print('Done.')  # Will execute
+...
+foo
+bar
+baz
+qux
+Done.
+
+```
+
+
 
 ## Chapter 4: Functions and Modules
 
@@ -260,8 +1064,7 @@ Modules are a collection of functions in a file.
 
 Library is multiple modules.
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/147fig01.png.jpg](./jbnotes_images/image67.jpeg){width="6.268055555555556in"
-height="2.3444444444444446in"}
+![j](./jbnotes_images/image67.jpeg)
 
 Functions in a class are methods.
 
@@ -276,8 +1079,7 @@ Pass args, return a single object - but this could be a data structure.
 
 Function annotations:
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/162fig01.png.jpg](./jbnotes_images/image68.jpeg){width="6.268055555555556in"
-height="1.4819444444444445in"}
+![g](./jbnotes_images/image68.jpeg)
 
 Python doesn't check the type of parameters passed to a function call,
 or the type of return values. Everything's an object. Annotations just
@@ -285,8 +1087,7 @@ for documentation. Visible with help BIF.
 
 Default arguments: specify default value with =
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/170fig01.png.jpg](./jbnotes_images/image69.jpeg){width="6.268055555555556in"
-height="1.2520833333333334in"}
+![](./jbnotes_images/image69.jpeg)
 
 Position versus keyword assignment: pass args in any order.
 
@@ -303,7 +1104,7 @@ Import error if not. Cant specify full path. This is hard! Looks in
 
 ### Adding a module to site packages:
 
-Setuptools module in standard library has the tools to add / remove from
+Setup tools module in standard library has the tools to add / remove from
 site packages.
 
 1.  Create a distribution description (identifies the module. Create a
@@ -311,20 +1112,17 @@ site packages.
     .py files to include in the package. Also create a README.tct file
     in same folder)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/179fig01.png.jpg](./jbnotes_images/image70.jpeg){width="6.268055555555556in"
-height="2.6798611111111112in"}
+![](./jbnotes_images/image70.jpeg)
 
 2.  Generate a distribution file (creates multiple files zipped to a
     distribution file)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/180fig02.png.jpg](./jbnotes_images/image71.jpeg){width="6.268055555555556in"
-height="2.1847222222222222in"}
+![](./jbnotes_images/image71.jpeg)
 
 3.  Install the distribution file (use pip = package installer for
     python
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/182fig03.png.jpg](./jbnotes_images/image72.jpeg){width="6.268055555555556in"
-height="1.3625in"}
+![g](./jbnotes_images/image72.jpeg)
 
 Can share packages via PyPI (python package index).
 [***https://pypi.python.org/pypi***](https://pypi.python.org/pypi).
@@ -431,7 +1229,7 @@ Summary so far:
     you've seen how the pip module (included in the standard library)
     lets you consistently manage your module installations.
 
--  Speaking of things working in a consistent manner, you learned that
+- Speaking of things working in a consistent manner, you learned that
     in Python **everything is an object**, which ensures---as much as
     possible---that everything works just as you expect it to. This
     concept really pays off when you start to define your own custom
@@ -445,9 +1243,7 @@ Flask is a small web application framework.
 Django is a much bigger one with good admin facilities, but overkill for
 this.
 
-![image with no
-caption](./jbnotes_images/image74.jpeg){width="6.268055555555556in"
-height="1.2673611111111112in"}
+![caption](./jbnotes_images/image74.jpeg)
 
 ### Python decorators
 
@@ -455,9 +1251,7 @@ Function decorator adjusts the behaviour of a function without needing
 to change code. Function is decorated. Take existing code and augment it
 with additional behaviour.
 
-![image with no
-caption](./jbnotes_images/image75.jpeg){width="6.268055555555556in"
-height="1.6805555555555556in"}
+![image caption](./jbnotes_images/image75.jpeg)
 
 ### URLs
 
@@ -492,9 +1286,7 @@ Flask uses 5000 as its test protocol port.
 
 **TEMPLATES UP CLOSE**
 
-![image with no
-caption](./jbnotes_images/image76.jpeg){width="1.25in"
-height="0.9479166666666666in"}
+![image with no caption](./jbnotes_images/image76.jpeg)
 
 Template engines let programmers apply the object-oriented notions of
 inheritance and reuse to the production of textual data, such as web
@@ -522,9 +1314,7 @@ browser). Note that markup appearing between {{ and }}, as well as
 markup enclosed between {% and %}, is meant for the Jinja2 template
 engine: we've highlighted these cases to make them easy to spot:
 
-![image with no
-caption](./jbnotes_images/image77.jpeg){width="6.268055555555556in"
-height="3.0708333333333333in"}
+![image with no caption](./jbnotes_images/image77.jpeg)
 
 With the base template ready, we can inherit from it using
 Jinja2's extends directive. When we do, the HTML files that inherit need
@@ -542,16 +1332,14 @@ need to do is provide the HTML that is specific to this file, and we do
 this by providing the markup within the Jinja2 block called body:
 
 ![image with no
-caption](./jbnotes_images/image78.jpeg){width="6.268055555555556in"
-height="2.6479166666666667in"}
+caption](./jbnotes_images/image78.jpeg)
 
 And, finally, here's the markup for the results.html file, which is used
 to render the results of our search. This template inherits from the
 base template, too:
 
 ![image with no
-caption](./jbnotes_images/image79.jpeg){width="6.268055555555556in"
-height="2.607638888888889in"}
+caption](./jbnotes_images/image79.jpeg)
 
 Debug mode for flask: automatically restarts webapp when code changed.
 
@@ -561,8 +1349,7 @@ Used to prevent app.run being called when run on e.g. AWS, but is called
 when run locally.
 
 ![image with no
-caption](./jbnotes_images/image80.jpeg){width="6.268055555555556in"
-height="0.9520833333333333in"}
+caption](./jbnotes_images/image80.jpeg)
 
 Chapter 6: File access
 ----------------------
@@ -571,8 +1358,7 @@ File open, operations, close
 
 Better to use with:
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/248fig02.png.jpg](./jbnotes_images/image81.jpeg){width="6.268055555555556in"
-height="1.5541666666666667in"}
+![f](./jbnotes_images/image81.jpeg)
 
 ---
 
@@ -589,8 +1375,7 @@ Standard stuff.
 Use a context manager and "with" statement to manage initialisation,
 work and teardown in less statements
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/305fig02.png.jpg](./jbnotes_images/image82.jpeg){width="6.268055555555556in"
-height="2.7805555555555554in"}
+![g](./jbnotes_images/image82.jpeg)
 
 Don't put import startements in a function or theyre exectured with
 every function call.
@@ -610,8 +1395,7 @@ state (variables, attributes)
 
 Create a class with
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/325fig02.png.jpg](./jbnotes_images/image83.jpeg){width="6.268055555555556in"
-height="1.43125in"}
+![f](./jbnotes_images/image83.jpeg)
 
 Instantiate with
 
@@ -641,11 +1425,9 @@ Create a class, protocol says need to define 2 dunder magic methods:
 Best to use \_\_init\_\_ also.
 
 ![image with no
-caption](./jbnotes_images/image84.jpeg){width="6.268055555555556in"
-height="2.1791666666666667in"}
+caption](./jbnotes_images/image84.jpeg)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/361fig01.png](./jbnotes_images/image85.png){width="6.268055555555556in"
-height="6.752777777777778in"}
+![f](./jbnotes_images/image85.png)
 
 ---
 
@@ -668,16 +1450,14 @@ the argument.
 
 ### Invoke a passed function
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/387fig01.png.jpg](./jbnotes_images/image86.jpeg){width="6.268055555555556in"
-height="2.09375in"}
+![f](./jbnotes_images/image86.jpeg)
 
 ### Functions nested in functions
 
 Code in a function can define another function. Can return the nested
 function.
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/388fig02.png.jpg](./jbnotes_images/image87.jpeg){width="5.739583333333333in"
-height="2.0625in"}
+![f](./jbnotes_images/image87.jpeg)
 
 A more common usage of this technique arranges for the enclosing
 function to return the nested function as its value, using
@@ -685,12 +1465,9 @@ the return statement. This is what allows you to create a decorator.
 
 ### Return a function from a function
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/389fig02.png.jpg](./jbnotes_images/image88.jpeg){width="6.268055555555556in"
-height="1.7451388888888888in"}
+![f](./jbnotes_images/image88.jpeg)
 
-![image with no
-caption](./jbnotes_images/image89.jpeg){width="6.268055555555556in"
-height="3.0840277777777776in"}
+![image with noc caption](./jbnotes_images/image89.jpeg)
 
 ### Function accepting a list of arguments
 
@@ -709,12 +1486,9 @@ Here's a version of myfunc that uses this notation to accept any number
 of arguments when invoked. If any arguments are provided, myfunc prints
 their values to the screen:
 
-![image with no
-caption](./jbnotes_images/image90.jpeg){width="6.268055555555556in"
-height="2.1909722222222223in"}
+![image with no caption](./jbnotes_images/image90.jpeg)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/391fig03.png.jpg](./jbnotes_images/image91.jpeg){width="6.268055555555556in"
-height="2.779166666666667in"}
+![f](./jbnotes_images/image91.jpeg)
 
 ### * WORKS ON THE WAY IN, TOO
 
@@ -727,9 +1501,7 @@ prefix the list's name with the \* character when invoking the function.
 Another short IDLE session demonstrates the difference using \* can
 have:
 
-![image with no
-caption](./jbnotes_images/image92.jpeg){width="6.268055555555556in"
-height="2.5208333333333335in"}
+![image with no caption](./jbnotes_images/image92.jpeg)
 
 ### USE ** TO ACCEPT ARBITRARY KEYWORD ARGUMENTS
 
@@ -745,20 +1517,15 @@ values."**
 Let's look at another function, called myfunc2, which accepts any number
 of keyword arguments:
 
-![image with no
-caption](./jbnotes_images/image93.jpeg){width="6.268055555555556in"
-height="2.782638888888889in"}
+![image with no caption](./jbnotes_images/image93.jpeg)
 
 Here's a third version of myfunc (which goes by the shockingly
 imaginative name of myfunc3). This function accepts any list of
 arguments, any number of keyword arguments, or a combination of both:
 
-![image with no
-caption](./jbnotes_images/image94.jpeg){width="6.268055555555556in"
-height="3.582638888888889in"}
+![image with no caption](./jbnotes_images/image94.jpeg)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/394fig04.png.jpg](./jbnotes_images/image95.jpeg){width="6.268055555555556in"
-height="2.46875in"}
+![f](./jbnotes_images/image95.jpeg)
 
 ### Decorator steps
 
@@ -773,12 +1540,10 @@ height="2.46875in"}
 **When creating your own decorators, always import, then use, the
 "functools" module's "wraps" function. (technical reasons in library).**
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/403fig01.png.jpg](./jbnotes_images/image96.jpeg){width="6.268055555555556in"
-height="2.577777777777778in"}
+![r](./jbnotes_images/image96.jpeg)
 
 ![image with no
-caption](./jbnotes_images/image97.jpeg){width="6.268055555555556in"
-height="2.509027777777778in"}
+caption](./jbnotes_images/image97.jpeg)
 
 Note how the page2 function's code is only concerned with what it needs
 to do: display the */page2* content. In this example, the page2 code is
@@ -797,14 +1562,12 @@ behavior of the existing function without changing its code*.
 
 ### Generic decorator code
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/407fig01.png.jpg](./jbnotes_images/image98.jpeg){width="6.268055555555556in"
-height="3.6590277777777778in"}
+![r](./jbnotes_images/image98.jpeg)
 
 **BULLET POINTS**
 
 ![image with no
-caption](./jbnotes_images/image73.jpeg){width="1.0208333333333333in"
-height="0.7916666666666666in"}
+caption](./jbnotes_images/image73.jpeg)
 
 -   When you need to store server-side state within a Flask webapp, use
     the ***session*** dictionary (and don't forget to set a
@@ -853,7 +1616,7 @@ said, raised exceptions can also be **caught** (i.e., dealt with) with
 the try statement. Note that it's not enough to catch runtime errors,
 you *also* have to decide what you're going to do next.
 
-## Catching an Error Is Not Enough
+### Catching an Error Is Not Enough
 
 When a runtime error occurs, an exception is **raised**. If
 you *ignore* a raised exception it is referred to as **uncaught**, and
@@ -877,19 +1640,17 @@ the code in the try's suite terminates, and then the code in
 the try's except suite runs. The except suite is where you define what
 you want to happen next.
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/424fig01.png.jpg](./jbnotes_images/image99.jpeg){width="6.268055555555556in"
-height="2.740972222222222in"}
+![g](./jbnotes_images/image99.jpeg)
 
-![image with no
-caption](./jbnotes_images/image100.jpeg){width="6.268055555555556in"
-height="2.5277777777777777in"}
+![image with no caption](./jbnotes_images/image100.jpeg)
 
-![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/428fig02.png.jpg](./jbnotes_images/image101.jpeg){width="6.268055555555556in"
-height="2.4590277777777776in"}The standard library comes with a module
+![g](./jbnotes_images/image101.jpeg)
+
+The standard library comes with a module
 called sys that provides access to the interpreter's internals (a set of
 variables and functions available at runtime).
 
-One such function is exc\_info, which provides information on the
+One such function is exc_info, which provides information on the
 exception currently being handled. When invoked, exc\_info returns a
 three-valued tuple where the first value indicates the
 exception's **type**, the second details the exception's **value**, and
@@ -897,8 +1658,9 @@ the third contains a **traceback object** that provides access to the
 traceback message (should you need it). When there is no currently
 available exception, exc\_info returns the Python null value for each of
 the tuple values, which looks like this:(None, None,
-None).![https://learning.oreilly.com/library/view/head-first-python/9781491919521/figs/web/430fig01.png.jpg](./jbnotes_images/image102.jpeg){width="6.268055555555556in"
-height="3.045138888888889in"}
+None).
+
+![g](./jbnotes_images/image102.jpeg)
 
 To make this (and your life) easier, Python extends the try/except syntax
 to make it convenient to get at the information returned by the
@@ -906,8 +1668,6 @@ sys.exc\_info function, and it does this without you having to remember
 to import or interact with the sys module, nor wrangle with the tuple
 returned by the exc\_info function.
 
-![image with no
-caption](./jbnotes_images/image103.jpeg){width="6.268055555555556in"
-height="2.1708333333333334in"}
+![image with no caption](./jbnotes_images/image103.jpeg)
 
 Create custom exceptions by extending the exception class

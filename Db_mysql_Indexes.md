@@ -1,5 +1,9 @@
 # MySQL Indexes
 
+- [MySQL Indexes](#mysql-indexes)
+  - [Basics](#basics)
+    - [index features](#index-features)
+
 ## Basics
 
 Faster retrieval, slower updates

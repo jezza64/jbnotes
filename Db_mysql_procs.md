@@ -1,5 +1,24 @@
 # Mysql Stored Procedures
 
+- [Mysql Stored Procedures](#mysql-stored-procedures)
+	- [Basics](#basics)
+		- [Advantages / problems](#advantages--problems)
+		- [delimiter](#delimiter)
+	- [Create](#create)
+	- [Parameters](#parameters)
+	- [Variables in procs](#variables-in-procs)
+	- [Listing procs](#listing-procs)
+	- [IF and CASE](#if-and-case)
+	- [Loops](#loops)
+	- [Cursors](#cursors)
+	- [Error handling](#error-handling)
+		- [handler precedence](#handler-precedence)
+		- [handler examples](#handler-examples)
+	- [SIGNAL statement](#signal-statement)
+	- [Stored Functions](#stored-functions)
+	- [Stored object access control](#stored-object-access-control)
+	- [Show warnings and errors](#show-warnings-and-errors)
+
 ## Basics
 
 - precompiled SQL

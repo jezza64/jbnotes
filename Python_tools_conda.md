@@ -69,6 +69,9 @@ List:
 To install from alternate repository, pass --channel
 >`conda install --channel conda-forge opencv`
 
+e.g. for google sheets,
+>`conda install -c conda-forge google-api-python-client`
+
 Permanently add a channel as a package source:
 >`conda config --append channels conda-forge`
 
