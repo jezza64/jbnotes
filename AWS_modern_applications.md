@@ -31,9 +31,9 @@ Choices:
 
 1. monolithic executable.
 2. Half way step is SOA: service orientated architecture. But need service bus to orchestrate.
-3. Microservices: break components into services, purpuse built for indivisual servioce. Different language, choice over everything. Everything called over Http with APIs, so loosely coupled.  
+3. Microservices: break components into services, purpose built for individual service. Different language, choice over everything. Everything called over Http with APIs, so loosely coupled.  
 
-Relational has scaling limitations. Dynamo DB came from this. Cassandra, Mongo etc flavours of non SQL. 
+Relational has scaling limitations. Dynamo DB came from this. Cassandra, Mongo etc flavours of non SQL.
 
 Purpose built gives scale, performance, availability: specific to each individual purpose, not SQL as only way of doing everything.  
 100s of choices. CHoose the right technology for the job.
@@ -46,15 +46,15 @@ MySQL relational for the cloud. Storage based on writing to db logs, reading fro
 
 ### Dynamo DB
 
-Key value, scalable. Flat linear scaling for object retrieval that you can't do with relational. 
+Key value, scalable. Flat linear scaling for object retrieval that you can't do with relational.
 
 ### Document DB
 
-Mongo DB compatible. Emulates Mongo DB apis, so easy to shift. Mongo is hard to scale up and down, but Document DB is easy. 
+Mongo DB compatible. Emulates Mongo DB apis, so easy to shift. Mongo is hard to scale up and down, but Document DB is easy.
 
 ### Elasticache
 
-In memory data store. memcached: store stream, get it out. Redis: things like counters and publish / subscribe, and has more functions to control way data comes back. Put cache in front of relational database to handle the read only part of access, protect it. 
+In memory data store. memcached: store stream, get it out. Redis: things like counters and publish / subscribe, and has more functions to control way data comes back. Put cache in front of relational database to handle the read only part of access, protect it.
 
 ### Neptune
 
@@ -66,7 +66,7 @@ Time is hard in RDS. e.g. manufacturing plant, oil refinery with pressure sensor
 
 ### Quantum ledger database
 
-Fully managed ledger database. verify history. Immutable and transparent. History can't be daleted or modified, fully audited. Chained, like blockchain. 
+Fully managed ledger database. verify history. Immutable and transparent. History can't be deleted or modified, fully audited. Chained, like blockchain.
 
 ### Cassandra
 
@@ -94,12 +94,12 @@ Tools for plan: get high level metrics, understand data flows between server and
 
 ![](jbnotes_images/2020-08-17-10-37-30.png)
 
-AWS application discovery service is a tool to understand your current stack. Dynatrace another tool. 
+AWS application discovery service is a tool to understand your current stack. Dynatrace another tool.
 Migrate the data, make AWS the live copy, redirect the reads.
 
 Re-host: lift and shift. VM image, least invasive.  
 
-Re-platform: e.g. move from self hosted db to AWS MySql. Containerize an application, e.g. docker, move to AWS. Use containers because this accelerates development cycle: devs and build base image, share dependencies. More people developing on the same app.  
+Re-platform: e.g. move from self hosted db to AWS MySql. Containerize an application, e.g. docker, move to AWS. Use containers because this accelerates development cycle: dev and build base image, share dependencies. More people developing on the same app.  
 
 Migration landing zone: tool to help migration, shows you what it should look like post migration.  
 

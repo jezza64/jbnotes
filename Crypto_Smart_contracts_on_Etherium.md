@@ -2,7 +2,7 @@
 
 ## Basics
 
-Contract is code (functions) and data (state) at a specific address on Etherium blockchain. 
+Contract is code (functions) and data (state) at a specific address on Etherium blockchain.
 
 ![](jbnotes_images/Crypto_Smart_contracts_on_Etherium_2021-05-04-20-28-02.png)
 
@@ -51,9 +51,9 @@ Completely isolated, so code has no access to the network, filesystem, processes
 
 same address space, and same EVM treatment, for:
 
-1. external accounts (controlled by humans with public provate key pairs). public key is the external address.  
+1. external accounts (controlled by humans with public private key pairs). public key is the external address.  
 
-2. contract accounts (controlled by code stored with the account). Address from the time the contract created plus creator and transaction number (nonce). 
+2. contract accounts (controlled by code stored with the account). Address from the time the contract created plus creator and transaction number (nonce).
 
 Storage: Accounts have a persistent key-value store, mapping 256 bit words to 256 bit words.  
 
@@ -79,7 +79,7 @@ If the gas is used up at any point (i.e. it would be negative), an out-of-gas ex
 
 The Ethereum Virtual Machine has three areas where it can store data- storage, memory and the stack, which are explained in the following paragraphs.
 
-Each account has a data area called **storage**, which is persistent between function calls and transactions. Storage is a key-value store that maps 256-bit words to 256-bit words. It is not possible to enumerate storage from within a contract, it is comparatively costly to read, and even more to initialise and modify storage. Because of this cost, you should minimize what you store in persistent storage to what the contract needs to run. Store data like derived calculations, caching, and aggregates outside of the contract. A contract can neither read nor write to any storage apart from its own.
+Each account has a data area called **storage**, which is persistent between function calls and transactions. Storage is a key-value store that maps 256-bit words to 256-bit words. It is not possible to enumerate storage from within a contract, it is comparatively costly to read, and even more to initialize and modify storage. Because of this cost, you should minimize what you store in persistent storage to what the contract needs to run. Store data like derived calculations, caching, and aggregates outside of the contract. A contract can neither read nor write to any storage apart from its own.
 
 The second data area is called **memory**, of which a contract obtains a freshly cleared instance for each message call. Memory is linear and can be addressed at byte level, but reads are limited to a width of 256 bits, while writes can be either 8 bits or 256 bits wide. Memory is expanded by a word (256-bit), when accessing (either reading or writing) a previously untouched memory word (i.e. any offset within a word). At the time of expansion, the cost in gas must be paid. Memory is more costly the larger it grows (it scales quadratically).
 
@@ -128,4 +128,3 @@ Even if a contract’s code does not contain a call to selfdestruct, it can stil
 If you want to deactivate your contracts, you should instead disable them by changing some internal state which causes all functions to revert. This makes it impossible to use the contract, as it returns Ether immediately.
 
 ## Examples
-

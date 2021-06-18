@@ -3,11 +3,10 @@
 - [Crypto Technology](#crypto-technology)
   - [Asymetric key encryption](#asymetric-key-encryption)
   - [blockchain](#blockchain)
-    - [demo](#demo)
+    - [Blockchain mechanics](#blockchain-mechanics)
+      - [Peers](#peers)
     - [Problems to be solved](#problems-to-be-solved)
-    - [structure](#structure)
     - [private blockchain](#private-blockchain)
-    - [Blockchain with Condordia](#blockchain-with-condordia)
   - [Proof of Work](#proof-of-work)
   - [Proof of stake](#proof-of-stake)
   - [Merkle trees and hashing](#merkle-trees-and-hashing)
@@ -65,7 +64,7 @@ POW: nee 51% of nodes to agree a change to blockchain,
 Transaction = block. Lots of blocks in a blockchain, Record of movements.
 past blocks are inflexible, unless 51% of people agree which is an unlikely scam.
 
-### demo
+### Blockchain mechanics
 
 demo at https://blockchaindemo.io/
 
@@ -81,14 +80,15 @@ Block has:
 Mining means determine the nonce.
 Can't change block data without changing the hash, and that invalidates subsequent blocks.
 
-Peers:
+#### Peers
 
-Peers exchange last block. 
-If the peer is older, requests whole blockchain and replaces it. 
+Peers exchange last block when they connect.
+If the peer is one block ahead, requests one block.
+If peer is ahead and valid, requests whole blockchain and replaces it.
 Ends up with all peers moving to latest blockchain.
+If one goes wrong, will be superseded by the corrected chain.
 
 ![](jbnotes_images/Crypto_Technology_2021-05-21-11-59-52.png)
-
 
 ### Problems to be solved
 
@@ -107,27 +107,17 @@ Need 5 things
 4. punishment and reward to make it in your best interest to follow the rules.
 5. market adoption to get punishment / rewards meaningful
 
-### structure
-
-Each block has a hash of the previous block.  
-Reward for adding blocks correctly.  
-
 ### private blockchain
 
 companies screen participants  
 not decentralised.  
 could just share a spreadsheet - not using decentralization / tamper proof features.
 
-### Blockchain with Condordia
-
-Rust programing language.
-Another blockchain..
-
 ## Proof of Work
 
 Needs multiple consensus to add to blockchain
 every 10 mins
-rewards in BTC - halvings half rewards, about every 4 years.
+rewards in BTC - halfings half rewards, about every 4 years.
 Used by BTC, Litecoin, etc
 
 ## Proof of stake
@@ -135,16 +125,16 @@ Used by BTC, Litecoin, etc
 Deposit funds on a node as a stake. Contest to forge the next block. Winner chosen based on stake, time of stake, plus random. This means it's hard to take control.
 e.g. Cardano.
 
-ETH was POW until 2020. ETH 2.0 is POS.
-Need to lock up 32 ether as collateral on each node.
-Soon Eth 2.0 will merge with ETH 1.0, 2022 - the docking. Then just POS
-only get staking rewards after docking.
-For Eth 2.0, each validator gets a share of the next block. Pie reduces as more validators. Staking calculators.
-Signing up hard: only 900 new validators per day. 20K validators waiting now.
-Needs dedicated computer with online connection. Can be penalties for problems.
-Alternative simpler staking solutions: e.g. some exchanges can do it for you. But need to let exchange control the coins.
-Staking pool: group doing the staking. reduces minimum stake. But is it reliable, customer support, user reviews, collateral etc.
-Validator as a service: rent a validator, your stake. easy to do but get control.
+- ETH was POW until 2020. ETH 2.0 is POS.
+- Need to lock up 32 ether as collateral on each node.
+- Soon Eth 2.0 will merge with ETH 1.0, 2022 - the docking. Then just POS
+- only get staking rewards after docking.
+- For Eth 2.0, each validator gets a share of the next block. Pie reduces as more validators. Staking calculators.
+- Signing up hard: only 900 new validators per day. 20K validators waiting now.
+- Needs dedicated computer with online connection. Can be penalties for problems.
+- Alternative simpler staking solutions: e.g. some exchanges can do it for you. But need to let exchange control the coins.
+- Staking pool: group doing the staking. reduces minimum stake. But is it reliable, customer support, user reviews, collateral etc.
+- Validator as a service: rent a validator, your stake. easy to do but get control.
 
 ## Merkle trees and hashing
 
@@ -178,7 +168,7 @@ Merkle tree / hash tree - data tree data structure where each non-leaf node is a
 
 Properties:  
 
-- check lots of data quickly: If the root hash is not changes, you can be confident all root nodes have not been changed. 
+- check lots of data quickly: If the root hash is not changes, you can be confident all root nodes have not been changed.
 - proof of membership: you can check if a price of data is in the tree by checking the hash of a small part of the tree
 - tamper resistant: it's not been changed
 
@@ -188,7 +178,7 @@ Bitcoin just a Merkle tree
 Etherium uses Merkle Patricia tree
 Git: version control in MT.
 
-Uni allocation to 100k people: UNI generates file with 100k proofs. You log in, it gets your wallet, checks for the proof inthe file, passes to smart contract, that did the transfer. Better than doing 100k transfers.  
+Uni allocation to 100k people: UNI generates file with 100k proofs. You log in, it gets your wallet, checks for the proof in the file, passes to smart contract, that did the transfer. Better than doing 100k transfers.  
 
 ## Decentralised web protocols
 
@@ -208,7 +198,7 @@ Can connect to other peers directly
 
 Because content stored in multiple locations, can't easily address by location Instead address by hash of the content.  
 New versions get a different address
-Problem when an update, you want the latest version, but the id has changed. Uses mulable file system MFS.
+Problem when an update, you want the latest version, but the id has changed. Uses mutable file system MFS.
 
 Covers web pages, files, apps, data.
 
@@ -225,12 +215,12 @@ Makes it possible to query data which is difficult to query directly.
 
 Some queries easy, where the contract exposes useful methods.  
 But where the query is more complex it's hard.  
-Can take a long time to get an answer because of finalisation, block reorganisations, uncycled blocks etc.  
+Can take a long time to get an answer because of finalization, block reorganisations, uncycled blocks etc.  
 
 The graph solves with a hosted service which indexes blockchains.  
-These are subgraphs. 
+These are subgraphs.  
 Can then be queries with standard GraphQL API.  
-Will move to non hosted decentralised. 
+Will move to non hosted decentralised.  
 
 ### How The Graph Works
 
@@ -271,5 +261,3 @@ E.g. lease a flat, release the key for payment.
 Don't need a trustee in the centre, automated.  
 
 Everyone in the supply chain can see status, and e.g. trigger an action to make a new product on delivery of a different one.  
-
-

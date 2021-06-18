@@ -4,62 +4,62 @@
   - [Overview](#overview)
   - [Another overview](#another-overview)
   - [news sites](#news-sites)
-- [Dapps](#dapps)
-  - [KeeperDAO](#keeperdao)
-  - [MakerDAO](#makerdao)
-  - [Uniswap](#uniswap)
-    - [uniswap v2](#uniswap-v2)
-      - [Swap](#swap)
-      - [Send](#send)
-      - [pool](#pool)
-    - [Uniswap V3](#uniswap-v3)
-    - [Positioning](#positioning)
-    - [Basics](#basics)
-    - [Token swaps](#token-swaps)
-  - [UMA](#uma)
-    - [basics](#basics-1)
-    - [example](#example)
-    - [mechanisms](#mechanisms)
+  - [Dapps](#dapps)
+    - [KeeperDAO](#keeperdao)
+    - [MakerDAO](#makerdao)
+    - [Uniswap](#uniswap)
+      - [uniswap v2](#uniswap-v2)
+        - [Swap](#swap)
+        - [Send](#send)
+        - [pool](#pool)
+      - [Uniswap V3](#uniswap-v3)
+      - [Positioning](#positioning)
+      - [Basics](#basics)
+      - [Token swaps](#token-swaps)
+    - [UMA](#uma)
+      - [basics](#basics-1)
+      - [example](#example)
+      - [mechanisms](#mechanisms)
     - [priceless contracts](#priceless-contracts)
-    - [oracles](#oracles)
-    - [DMV (Data verification mechanism)](#dmv-data-verification-mechanism)
-    - [Synthetic tokens](#synthetic-tokens)
-    - [liquidation and disputes](#liquidation-and-disputes)
-    - [Issues](#issues)
-    - [Economic incentives](#economic-incentives)
-    - [Token holders](#token-holders)
-    - [Allison Lu lectures](#allison-lu-lectures)
-    - [Regina Cai lecture on UMA](#regina-cai-lecture-on-uma)
-    - [applications](#applications)
-  - [Perpetual protocol](#perpetual-protocol)
-  - [dydx](#dydx)
-  - [Nexus Mutual (NXM)](#nexus-mutual-nxm)
+      - [oracles](#oracles)
+      - [DMV (Data verification mechanism)](#dmv-data-verification-mechanism)
+      - [Synthetic tokens](#synthetic-tokens)
+      - [liquidation and disputes](#liquidation-and-disputes)
+      - [Issues](#issues)
+      - [Economic incentives](#economic-incentives)
+      - [Token holders](#token-holders)
+      - [Allison Lu lectures](#allison-lu-lectures)
+      - [Regina Cai lecture on UMA](#regina-cai-lecture-on-uma)
+      - [applications](#applications)
+    - [Perpetual protocol](#perpetual-protocol)
+    - [Dydx](#dydx)
+    - [Nexus Mutual (NXM)](#nexus-mutual-nxm)
 
 ## Overview
 
-Can build e.g. exchanges which are not controllled by aynone
+Can build e.g. exchanges which are not controlled by anyone
 
-Etherium a good platform for smart contracts. Write decentralised applications (DAPS)
+Etherium a good platform for smart contracts. Write decentralized applications (DAPPS)
 set the rules in the code, then you don't control the rules once published.
 need to start with some money. ETH is volatile, so generally use stablecoins (pegged to e.g. USD).
-You don't want to have directly cash backed stablecoin as then you can't decentralise
-DAI is an example of a stablecoin pegged to USD, overcollateralised with crypto asset basket. Decentralised because doens't need Fiat currency. Deposit $1 ETH, get. $0.66 Dai. Or buy DAI. Overcollateraliseation covers for ETH volatility. So it's decentralised, secure.
+You don't want to have directly cash backed stablecoin as then you can't decentralize
+DAI is an example of a stablecoin pegged to USD, overcollateralised with crypto asset basket. Decentralized because doesn't need Fiat currency. Deposit $1 ETH, get. $0.66 Dai. Or buy DAI. Overcollateralization covers for ETH volatility. So it's decentralized, secure.
 
 Services:
 
-- decentralised exchange (DEX). Rules to buy / sell. No central exchange operator, no identity, no fees. Just smart contracts. Don't need to deposit funds, just exchange directly.
-- decentralised money markets. e.g. uniswap. Connect borrowers and lenders. e.g. Compond. Deposit crypto, borrow against it with a smart contract. (yield farming).
-- decentralised insurance. people willing to buy insurance vs sellers. Mix and match services.
+- decentralized exchange (DEX). Rules to buy / sell. No central exchange operator, no identity, no fees. Just smart contracts. Don't need to deposit funds, just exchange directly.
+- decentralized money markets. e.g. uniswap. Connect borrowers and lenders. e.g. Compound. Deposit crypto, borrow against it with a smart contract. (yield farming).
+- decentralized insurance. people willing to buy insurance vs sellers. Mix and match services.
 
-Money legos to build services. put services together.
+Money Legos to build services. put services together.
 
 advantages:
 
 - transparency
 - interoperability
-- decentralisation
+- decentralization
 - free
-- flexable
+- flexible
 
 problems:
 
@@ -71,34 +71,33 @@ problems:
 examples: https://defipulse.com/defi-list/
 revenues: https://terminal.tokenterminal.com/
 
-
 ## Another overview
 
-Use Etherium, good for writing decentralised apps.
-Write smart contracts to manage the financial service. Deploy rules on Etherium network, can't change them.
-Bitcoin has only basic programmable functionality.
-Stable coins: crypto but pegged to a stable fiat currency USD.
-So use Etherium based on USD
-DAI is a stablecoin, decentralised, over collateralised. Platform for lots of DeFi.
+- Use Etherium, good for writing decentralized apps.
+- Write smart contracts to manage the financial service. Deploy rules on Etherium network, can't change them.
+- Bitcoin has only basic programmable functionality.
+- Stable coins: crypto but pegged to a stable fiat currency USD.
+- So use Etherium based on USD
+- DAI is a stablecoin, decentralized, over collateralised. Platform for lots of DeFi.
 
-DEX: decentralized exchange.
-No signups, fees, et.c Just smart contracts.
-Don't need to put money there first, a direct transfer.
+- DEX: decentralized exchange.
+- No sign ups, fees, etc. Just smart contracts.
+- Don't need to put money there first, a direct transfer.
 
 Everything happens autonomously, no intermediaries. Open source.
 
-Lots of advantages: decentralised, cheap, automated etc
+Lots of advantages: decentralized, cheap, automated etc
 Risks: in infancy, so things can go wrong.
 
 ## news sites
 
 DAPP radar
 
-# Dapps
+## Dapps
 
-## KeeperDAO
+### KeeperDAO
 
-Compound, MakerDAO, and other DeFi protocols require user positions to be liquidated if their underlying collateral becomes worth too little. This exploits that for pay. 
+Compound, MakerDAO, and other DeFi protocols require user positions to be liquidated if their underlying collateral becomes worth too little. This exploits that for pay.
 
 3 roles
 
@@ -109,7 +108,7 @@ Compound, MakerDAO, and other DeFi protocols require user positions to be liquid
 
 2. Keepers
 
-    DO arbitrage between DEXs, and liquidate unhealthy contracts on Defi for a fee.
+    Do arbitrage between DEXs, and liquidate unhealthy contracts on Defi for a fee.
     require capital, borrow it form liquidity providers and give profits.
     Need a strategy to make a profit as one transactions, e.g. arbitrage between Uniswap and Kyber.
     Implement as smart contract (a keeper)
@@ -119,24 +118,24 @@ Compound, MakerDAO, and other DeFi protocols require user positions to be liquid
     Find a contract that needs to be terminated, wrap it instead of terminating.
     This is cheaper for the owner and offers more profit, especially when volatile. Has same effect of removing the risk.
 
-## MakerDAO
+### MakerDAO
 
 Uses DAI, stablecoin, $1.
 On Etherium.
 MakerDAO manages DAI and does the governance.
 Maker protocol is a set of smart contracts which maintain DAI.
-Dai is overcollateralised, locked in to smart contracts.  
+Dai is over-collateralised, locked in to smart contracts.  
 
 Lots of Jobs.
 
-well worth a look. 
+well worth a look.
 Revenue growing on https://terminal.tokenterminal.com/
 
 MKR coin. Buy some.
 
-## Uniswap
+### Uniswap
 
-### uniswap v2
+#### uniswap v2
 
 decentralised exchange aggregator and liquidity increaser  
 does ETH to USDC, but only has wrapped bitcoin.  
@@ -156,7 +155,7 @@ options: swap, send pool.
 Connect to metamask
 Uses smart contracts to interact with Etherium.
 
-#### Swap
+##### Swap
 
 Swap any 2 tokens. Only really want to exchange liquid pairs.
 Prices are just an estimate.
@@ -166,11 +165,11 @@ Set time limit
 2. slippage - amount price can change between placing and execution
 3. price impact of your order. E.g. Exchange ETH for DIA, little impact. But if go for obscure token then more price impact.
 
-#### Send
+##### Send
 
 Swap and send to someone else.
 
-#### pool
+##### pool
 
 Liquidity pools sit in smart contracts.  
 These take the other side to every trade.  
@@ -186,7 +185,7 @@ As swaps happen, your share of the pool is updated.
 Have to have a strategy: need to provide to pairs where you expect more activity in future. Don;t get rewards if no activity. Larger pools less profitable because more sharing of rewards.
 Look at uniswap.info analytics website for overview of activity.
 
-### Uniswap V3
+#### Uniswap V3
 
 - coming out May
 - Liquidity providers make markets in customized price ranges
@@ -203,29 +202,29 @@ Look at uniswap.info analytics website for overview of activity.
 
 V3 white paper here: https://www.scribd.com/document/499988185/whitepaper-v3#from_embed
 
-### Positioning
+#### Positioning
 
 Uniswap at 25% of transactions on ETH per day.
 60% of DEX market
 Competitors: Curve, DODO, Balancer. Visible on Coingecko.com.
 Can e.g. trade weighted baskets of cryptos
 
-### Basics
+#### Basics
 
 automated liquidity on ETH, implemented with smart contracts.
 Decentralized, security sorted etc
 Each uniswap smart contract (pair) managed a liquidity pool mode up of reserves of 2 ERC-20 tokens.
 
-### Token swaps
+#### Token swaps
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-03-29-14-35-36.png)
 Exchange ERC-20 tokens at current market price
 No order book used, just automated formula in smart contract.
-constant product formula means that 
+constant product formula means that
 
-## UMA
+### UMA
 
-### basics
+#### basics
 
 umaproject.org  
 Protocol for developers to build synthetic assets  
@@ -239,9 +238,9 @@ tokens can track the price of anything
 minimal on chain transactions to reduce costs  
 quick to launch assets  
 
-Not overcollateralised, instead they incentivize validators to find contracts that don't have enough collateral.  
+Not over-collateralised, instead they incentivize validators to find contracts that don't have enough collateral.  
 
-### example
+#### example
 
 want to issue a new synthetic gold token  
 Put some collateral on Etherium (e.g. $5000 of WBTC)  
@@ -251,7 +250,7 @@ smart contract mirrors the price of gold
 issuer is naturally short the tokens  
 if they go down, buy back at less, and destroy to get your collateral back.  
 
-### mechanisms
+#### mechanisms
 
 mechanisms to provide honesty:
 
@@ -277,7 +276,7 @@ Priceless means you only write the price on chain in the event of a dispute, whi
 Hence need for incentives for sponsors to act properly.  
 Means you  can have derivs on unreliable price feeds, so many more.  
 
-### oracles
+#### oracles
 
 2 parts: optimistic oracle and DMV.
 
@@ -291,13 +290,13 @@ Means you  can have derivs on unreliable price feeds, so many more.
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-04-06-12-20-39.png)
 
-### DMV (Data verification mechanism)
+#### DMV (Data verification mechanism)
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-04-06-12-21-24.png)
 
 Disputes from oracles and liquidators.  
 Vote of UMA token holders, 48 hours
-UMA holders use the UMA Voter dapp to vote, calculate the price using UMIP identifier.  
+UMA holders use the UMA Voter dapp to vote, calculate the price using identifier.  
 DVM aggregates votes to determine final price.  
 loser loses their bond.  
 
@@ -305,7 +304,7 @@ This human interaction reduces manipulation in volatile and manipulatable market
 
 Economic guarantee that it costs more to corrupt the DVM than you could gain from corrupting the oracle.  
 
-### Synthetic tokens
+#### Synthetic tokens
 
 Collateral backed tokens where value based on reference index.  
 Can create prediction markets, futures markets, collateralised loans.  
@@ -333,9 +332,9 @@ Slow mechanism otherwise where token holders can liquidate.
 
 Allows any synthetic asset with a price.  
 
-May: value about $4bn, TVL 1.8bn and not really growing.  Recc by VC guy.  
+May: value about $4bn, TVL 1.8bn and not really growing.  Recommended by VC guy.  
 
-### liquidation and disputes
+#### liquidation and disputes
 
 anyone can liquidate based on price feed vs collateral.  
 dispute this liquidation within the Liquidation liveness period.  
@@ -351,29 +350,29 @@ liquidation bond functions:
 bond returned if not disputed.
 lose a proportion if disputed and found incorrect.
 
-if sponsor disputes, they pay bond. 
+if sponsor disputes, they pay bond.
 
 If lose, lose the bond and all collateral goes to the liquidator.  
 
-If disputer wins, get bond back, get dispute reward. Incorrect liquidator gets some of their stake back. 
+If disputer wins, get bond back, get dispute reward. Incorrect liquidator gets some of their stake back.
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-04-06-13-01-22.png)
 
-Before expiry, sponsors can redeem tokens to get their collateral back. 
+Before expiry, sponsors can redeem tokens to get their collateral back.  
 After expiry, anyone may settle contract. Get DVM to give the price at expiration.  
 
-### Issues
+#### Issues
 
 Audited by OpenZeppelin.
 Various theoretical attacks and liquidity possibilities.
 
-### Economic incentives
+#### Economic incentives
 
 Oracles need an economic guarantee around the cost of corrupting the oracle. Make sure no profitable way to corrupt the DVM.  
 Look at potential profit from corruption (PFC) vs cost of corruption (COC).  
 Each smart contract needs to implement a function for profit of corruption. PFC. Fees are varied to make COC > PFC.
 
-### Token holders
+#### Token holders
 
 Owning UMA means can contribute price info, govern UMA protocol.  
 Rewards for voting on price requests  
@@ -388,7 +387,7 @@ defines the reference index.
 
 UMIP: UMA improvement proposal. For voting.  
 
-### Allison Lu lectures
+#### Allison Lu lectures
 
 Good lecture to Defi summit, 2019 so a bit old but good.  
 https://www.youtube.com/watch?v=T-AbXAeTKtQ
@@ -411,7 +410,7 @@ video on building synthetic derivs on UMA
 
 https://www.youtube.com/watch?v=TjeB27zIn4g
 
-### Regina Cai lecture on UMA
+#### Regina Cai lecture on UMA
 
 Synthetic assets good because more free from physical limits.  Get risk exposure without holding the asset.  
 Can depend only on the price feed from physical world.  
@@ -423,9 +422,9 @@ Amount of collateral depends on the price feed. Deposit stable asset to create a
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-05-04-16-56-14.png)
 
-If undercollateralised relative to the minimum, detected and a penalty is imposed whilst you're still overcollateralised relative to the asset. Penalty paid to the token holders.  
+If under-collateralised relative to the minimum, detected and a penalty is imposed whilst you're still over-collateralised relative to the asset. Penalty paid to the token holders.  
 
-If moves too quick, that's a big problem, but that's because the overcollateralisation was not set high enough.  
+If moves too quick, that's a big problem, but that's because the over-collateralisation was not set high enough.  
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-05-04-17-00-42.png)
 
@@ -433,7 +432,7 @@ Mechanism needs to be set to generate liquidity, sort out inefficient markets, p
 
 Answers:
 
-1. Make tokens mature, that makes it easy for the creatorts.
+1. Make tokens mature, that makes it easy for the creators.
 2. Non fungible, so only the creator can redeem them against the same token facility used to create them.
 3. Make trading price tend towards the collateral price.
 
@@ -441,28 +440,26 @@ Answers:
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-05-04-17-20-19.png)
 
-### applications
+#### applications
 
 1. Leveraged short BTC
 2. CNY stable coin
-3. reddit upvotes
+3. reddit up votes
 
 4. IRS
 
 ![](jbnotes_images/Crypto_Defi_Dapps_2021-05-04-17-23-42.png)
 
-
-
-## Perpetual protocol
+### Perpetual protocol
 
 Perpetual contracts: no expiry or settlement date.  
 Uses xDAI chain for low gas fees  
 
-## dydx
+### Dydx
 
 Spot, margin, perpetual trading.
 
-## Nexus Mutual (NXM)
+### Nexus Mutual (NXM)
 
 https://nexusmutual.io/
 
@@ -475,4 +472,3 @@ Claims processed by assessors, and escalated to all if not consensus.
 Incentive to be an assessor  
 Incentive to pay out fairly to get good reputation
 Keep minimum capital pool by changing value of tokens.  
-
