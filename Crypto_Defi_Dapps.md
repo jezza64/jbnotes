@@ -130,6 +130,7 @@ Lots of Jobs.
 
 well worth a look.
 Revenue growing on https://terminal.tokenterminal.com/
+or https://duneanalytics.com/browse/dashboards
 
 MKR coin. Buy some.
 

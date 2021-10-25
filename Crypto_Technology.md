@@ -4,17 +4,22 @@
   - [Asymetric key encryption](#asymetric-key-encryption)
   - [blockchain](#blockchain)
     - [Blockchain mechanics](#blockchain-mechanics)
-      - [Peers](#peers)
+    - [Bitcoin transactions](#bitcoin-transactions)
+    - [Bitcoin UTXO model](#bitcoin-utxo-model)
+    - [Transactions vs accounts](#transactions-vs-accounts)
+    - [Peers](#peers)
     - [Problems to be solved](#problems-to-be-solved)
     - [private blockchain](#private-blockchain)
-  - [Proof of Work](#proof-of-work)
-  - [Proof of stake](#proof-of-stake)
+  - [Consensus mechanisms](#consensus-mechanisms)
+    - [Proof of Work](#proof-of-work)
+    - [Proof of stake](#proof-of-stake)
   - [Merkle trees and hashing](#merkle-trees-and-hashing)
     - [Hash functions](#hash-functions)
     - [Merkle tree](#merkle-tree)
     - [Blockchain usage of Merkle trees](#blockchain-usage-of-merkle-trees)
   - [Decentralised web protocols](#decentralised-web-protocols)
   - [IPFS](#ipfs)
+  - [Layer 2: lightning](#layer-2-lightning)
   - [The Graph](#the-graph)
     - [How The Graph Works](#how-the-graph-works)
   - [Web 3.0](#web-30)
@@ -80,7 +85,37 @@ Block has:
 Mining means determine the nonce.
 Can't change block data without changing the hash, and that invalidates subsequent blocks.
 
-#### Peers
+### Bitcoin transactions
+
+Address is a representation of a public key, can have multiple.  
+Most wallets will automatically create new public keys each time you want to receive bitcoin.  
+Transaction must be signed with private key of the owner of the UTXOs  
+
+### Bitcoin UTXO model
+
+Unspent transaction output is a discrete bit of bitcoin, any amount.  
+Input to a transaction is a set of UTXOs, the output of the transaction is a UTXO.  
+UTXOs can be combined or split to make further payments.  
+Like coins: spend a UTXO, get unspent UTXO output as change.  
+Most are dust, nearly valueless.  
+Combine them in the next transaction, then they are spent, and a new UTXO is created.  
+
+UTXOs stored in the UTXO set. 
+
+Miners do **coinbase** transactions, these are different. No inputs, just outputs. That's a new UTXO.  
+You can trace the history of UTXOs through transactions.  
+
+![](jbnotes_images/Crypto_Technology_2021-09-28-16-08-56.png)
+
+### Transactions vs accounts
+
+Transactions have benefits:
+
+- bitcoin makes it easy to set up multiple accounts, no apparent connection between accounts, so better privacy
+- accounting is secure as it's about the coins. In account based systems, it's very hard to get a complete picture as chargebacks and overdrawn accounts.  
+- transaction based with coins and UTXOs are easy to add up.  
+
+### Peers
 
 Peers exchange last block when they connect.
 If the peer is one block ahead, requests one block.
@@ -113,14 +148,16 @@ companies screen participants
 not decentralised.  
 could just share a spreadsheet - not using decentralization / tamper proof features.
 
-## Proof of Work
+## Consensus mechanisms
+
+### Proof of Work
 
 Needs multiple consensus to add to blockchain
 every 10 mins
 rewards in BTC - halfings half rewards, about every 4 years.
 Used by BTC, Litecoin, etc
 
-## Proof of stake
+### Proof of stake
 
 Deposit funds on a node as a stake. Contest to forge the next block. Winner chosen based on stake, time of stake, plus random. This means it's hard to take control.
 e.g. Cardano.
@@ -205,6 +242,18 @@ Covers web pages, files, apps, data.
 1. Content addressing: protocol to make addresses translatable across protocols.
 2. Directed acyclic graphs (DAG): Merkle DAGs each node has a unique id which is a hash of the contents. Hash of the child blocks.
 3. Distributed Hash tables (DHT): database of key / values. Handles which peers have which content, and routing to the peer.  
+
+## Layer 2: lightning
+
+Layer 2 doesn't store transactions on the blockchain, so no mining, fast and cheap.  
+
+- 2 parties agree to open a lightning channel, each store some bitcoin on the channel.
+- multisig
+- defined amount of bitcoin
+- bitcoin moved between the 2 participants, any number of transactions, quickly
+- close with another on chain transactions, reflects the net change
+- can use a third party to pass on the payment for a fee, with guaranteed delivery.
+- many implementations of the protocol, all compatible
 
 ## The Graph
 
