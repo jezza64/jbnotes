@@ -24,6 +24,7 @@
     - [How The Graph Works](#how-the-graph-works)
   - [Web 3.0](#web-30)
   - [Smart Contracts](#smart-contracts)
+  - [Bridges](#bridges)
 
 ## Asymetric key encryption
 
@@ -310,3 +311,6 @@ E.g. lease a flat, release the key for payment.
 Don't need a trustee in the centre, automated.  
 
 Everyone in the supply chain can see status, and e.g. trigger an action to make a new product on delivery of a different one.  
+
+## Bridges
+

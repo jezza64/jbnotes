@@ -1,12 +1,45 @@
-# Crypto investment
+# Crypto DOT investment
 
-## Pluto digital
+- [Crypto DOT investment](#crypto-dot-investment)
+  - [Strategy](#strategy)
+  - [KR1 Highlights mid 2021](#kr1-highlights-mid-2021)
+  - [KR1 NAV](#kr1-nav)
+  - [KR1 Investments](#kr1-investments)
+    - [Vega protocol VEGA](#vega-protocol-vega)
+      - [My notes](#my-notes)
+    - [XPN Exponent](#xpn-exponent)
+      - [my notes](#my-notes-1)
+    - [Basilisk / Hydra DX](#basilisk--hydra-dx)
+      - [my notes](#my-notes-2)
+    - [Interlay (InterBTC on polkadot, KINT Kintsugi on Kusama)](#interlay-interbtc-on-polkadot-kint-kintsugi-on-kusama)
+      - [InterBTC](#interbtc)
+      - [Kintsugi](#kintsugi)
+      - [My notes](#my-notes-3)
+    - [Moonbeam (GLMR on Polkadot / MOVR Moonriver on Kusama)](#moonbeam-glmr-on-polkadot--movr-moonriver-on-kusama)
+      - [Moonriver](#moonriver)
+      - [Moonbeam](#moonbeam)
+      - [my comments](#my-comments)
+    - [Redstone](#redstone)
+      - [My notes](#my-notes-4)
+    - [Divergence (DIVER)](#divergence-diver)
+      - [My notes](#my-notes-5)
+    - [ITG iTrust](#itg-itrust)
+      - [My notes](#my-notes-6)
+    - [Clover (CLV)](#clover-clv)
+      - [My notes](#my-notes-7)
+    - [Parallel](#parallel)
+    - [AStar (Astar on Polkadot, Shiden SDN on Kusama)](#astar-astar-on-polkadot-shiden-sdn-on-kusama)
+      - [Astar](#astar)
+      - [Shiden](#shiden)
+      - [my notes](#my-notes-8)
+    - [Acala / Karura](#acala--karura)
+      - [My notes](#my-notes-9)
+    - [ATA Automata](#ata-automata)
+      - [my notes](#my-notes-10)
+    - [Equilibrium (EQ)](#equilibrium-eq)
+    - [Unique network](#unique-network)
 
-IPO q4 2021?
 
-## ETP
-
-21shares.com for ETH, SOL etc
 
 ## Strategy
 
@@ -26,11 +59,30 @@ look for $KROEF on twitter
 
 https://pbs.twimg.com/media/E29mik9VgAYPzqe?format=png&name=900x900
 
-NAV calcs from 
-
-
-
 ## KR1 Investments
+
+### Vega protocol VEGA
+
+https://vega.xyz/use/
+
+KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that Vega Protocol (“VEGA”), a portfolio project of KR1, has completed a successful US$5 million funding round led by Arrington Capital and Cumberland DRW. The funding round included participation from previous backers, as well as new backers like Coinbase Ventures and ParaFi Capital.
+
+KR1 is also pleased to announce the Company’s participation in the recent funding round,  investing a further US$150,000 in exchange for 194,999.17 VEGA tokens at a price of US$0.77 per token. This investment comes in addition to KR1’s seed round participation, announced in October 2019. Across both funding rounds, the Company now holds a total of 842,493.91 VEGA tokens.
+
+Vega is a decentralised derivatives protocol that allows anyone to launch markets and eliminates centralised gatekeepers to provide high throughput, low-fee trading in a capital efficient way. In doing so, the protocol bridges the immense industry of derivatives in traditional finance with the still nascent and rapidly evolving world of decentralised finance. Vega is currently advancing towards its mainnet release, with future plans including self-custodied cross-chain collateral, a trustless bridge into the Ethereum ecosystem, as well as bridges into other major blockchains such as Bitcoin, Polkadot and Cosmos.
+
+George McDonaugh, Managing Director and Co-Founder of KR1, commented:
+
+“Vega is one of the most anticipated projects in our portfolio and we are very happy to be able to support the team again in this latest round, especially considering the incredible progress they have made. A core excitement of the blossoming decentralised finance ecosystem has always been about the potential to open up financial infrastructure for everyone in a fair way and Vega will prove to be a major step change towards this becoming a mainstream reality.”
+
+#### My notes
+
+interesting youtube video https://www.youtube.com/watch?v=DhGD8brS3r0
+UK guys
+KR1 says its exciting
+presentation day: https://www.youtube.com/playlist?list=PLtgXvHMJ2nYLdzEYZ2_QRwS9vTx44PMFh
+Big bounty program
+Looks like a really good bet for me to know about
 
 ### XPN Exponent
 
@@ -46,7 +98,11 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “Exponent is a much-needed service that takes quant-driven DeFi investing to the next level. Building on top of Enzyme, another portfolio project of ours, and led by a stellar team, we believe Exponent will spawn an important community of strategists and hedge funds that are going to drive significant value into DeFi. We are tremendously excited to be supporting them on their journey.”
 
-### Basilisk
+#### my notes
+
+Can't find this as a crowd loan.
+
+### Basilisk / Hydra DX
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Basilisk crowdloan and Kusama (“KSM”) parachain auction. KR1 contributed a total of 11,111.1 KSM to the Basilisk crowdloan campaign.
 
@@ -60,7 +116,29 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “Basilisk is an exciting community focused project run by an exceptional team of crypto thinkers. As a permanent deployment on Kusama, Basilisk has strong synergies with Polkadot-facing HydraDX, which, together, will cater to the varying liquidity needs of crypto assets throughout their life cycles. Projects can bootstrap liquidity in the early stages using a Basilisk pool, then later move to the HydraDX omnipool to unlock unprecedented cross-chain liquidity in an ‘ocean of assets’.”
 
-### KINT Kintsugi
+#### my notes
+
+Polkadot equivalent is Hydra DX.
+No crowdloan yet.
+https://hydradx.io/
+
+### Interlay (InterBTC on polkadot, KINT Kintsugi on Kusama)
+
+#### InterBTC
+
+KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that the Company has invested a total of US$269,892 into Interlay Ltd. (“Interlay”), in return for 1,224 Series Seed Shares in Interlay. KR1 invested alongside respected investors such as IOSG Ventures, who led the round, and others including Hypersphere, Zee Prime Ventures and CMS Holdings.
+
+Interlay is currently building out its flagship product ‘interBTC’, a fully collateralized one-to-one Bitcoin-backed asset that enables interoperability between multiple blockchain ecosystems while fully preserving Bitcoin’s censorship-resistant nature. At its core, interBTC leverages the concept of trustless and efficient cross-chain exchanges using cryptocurrency-backed assets introduced in previous research published by the Interlay team. interBTC will launch as a parachain on Polkadot and, once launched, can be utilised on Ethereum, Cosmos, Kusama and other networks in a seamless way through Polkadot’s interoperability technology.
+
+Alexei Zamyatin, CEO and Co-Founder of Interlay, commented:
+
+"We are extremely pleased to have the support of top investors from various ecosystems and geographic locations, who believe in our mission to bring Bitcoin to all major blockchains such as Polkadot, Ethereum and Cosmos. Together, we will accelerate the development and adoption of interBTC and allow people to invest, earn and pay with BTC on any blockchain in a truly trustless and decentralised way."
+
+Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
+
+“Bitcoin continues to be the highest valued asset in the digital asset ecosystem by a wide margin but,  compared to other base-layer blockchains, it is lacking on-chain opportunities to engage in, such as decentralised finance. interBTC is going to unlock a new wave of innovation for Bitcoin holders across multiple blockchains and serves as a prime example of decentralisation working to provide services that anyone can use without worrying about trust.”
+
+#### Kintsugi
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Kintsugi crowdloan and Kusama (“KSM”) parachain auction. KR1 contributed a total of 5,000 KSM to the Kintsugi crowdloan campaign.
 
@@ -74,7 +152,18 @@ George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 
 “Kintsugi marks the start of a fully trustless bridge for Bitcoin into the interconnected world of Kusama. This allows holders of Bitcoin, the most widely distributed crypto asset, to expand into a new world of applications and use cases and we are proud to support Kintsugi’s vision.”
 
-### MOVR Moonriver
+
+#### My notes
+
+InterBTC does this on polkadot.
+Brings wrapped BTC to polkadot.
+Works over a bridge.
+No crowdloan yet, it's batch 2 on 23rd Dec
+https://interlay.io/
+
+### Moonbeam (GLMR on Polkadot / MOVR Moonriver on Kusama)
+
+#### Moonriver
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Moonriver (“MOVR”) crowdloan and Kusama (“KSM”) parachain auction. KR1 contributed a total of 5,000 KSM to the Moonriver crowdloan campaign, which successfully secured the second parachain slot in the previous round of Kusama parachain auctions.
 
@@ -95,19 +184,23 @@ George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 “It is fantastic to see the excitement within the Kusama community for Moonriver, as well as the many other extremely well coordinated launches of technically sophisticated parachains.  Moonriver and the entire team have our full support and we are looking forward to developers taking advantage of Moonriver’s Ethereum-like environment that is fully compatible with existing tools and protocols.”
 
 “Considering the exceptional traction of MOVR in the secondary markets, we had to find a balance as a Company and could not pass on the opportunity to realise some profits on our contributed KSM. This partial exit allows us to be an even more active participant in further upcoming parachain auctions and is also strengthening our staking activities going forward.”
-### Interlay
 
-KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that the Company has invested a total of US$269,892 into Interlay Ltd. (“Interlay”), in return for 1,224 Series Seed Shares in Interlay. KR1 invested alongside respected investors such as IOSG Ventures, who led the round, and others including Hypersphere, Zee Prime Ventures and CMS Holdings.
+#### Moonbeam
 
-Interlay is currently building out its flagship product ‘interBTC’, a fully collateralized one-to-one Bitcoin-backed asset that enables interoperability between multiple blockchain ecosystems while fully preserving Bitcoin’s censorship-resistant nature. At its core, interBTC leverages the concept of trustless and efficient cross-chain exchanges using cryptocurrency-backed assets introduced in previous research published by the Interlay team. interBTC will launch as a parachain on Polkadot and, once launched, can be utilised on Ethereum, Cosmos, Kusama and other networks in a seamless way through Polkadot’s interoperability technology.
+KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that Moonbeam (“GLMR”), a portfolio project of KR1 and one of the most prominent projects building on Polkadot, has completed a successful US$6 million strategic funding round led by CoinFund alongside Binance Labs and ParaFi Capital. The round included participation from Coinbase Ventures, Fenbushi Capital, IOSG Ventures, and all previous seed investors.
 
-Alexei Zamyatin, CEO and Co-Founder of Interlay, commented:
+KR1 is pleased to announce the Company’s participation in this recent funding round, investing a further US$150,000 into Moonbeam in exchange for 30,000.00 GLMR tokens. This investment comes in addition to KR1’s seed round participation, announced in October 2020. Across both funding rounds, the Company now holds a total of 130,000.00 GLMR.
 
-"We are extremely pleased to have the support of top investors from various ecosystems and geographic locations, who believe in our mission to bring Bitcoin to all major blockchains such as Polkadot, Ethereum and Cosmos. Together, we will accelerate the development and adoption of interBTC and allow people to invest, earn and pay with BTC on any blockchain in a truly trustless and decentralised way."
+Moonbeam is an Ethereum-compatible smart contract platform on the Polkadot network that makes it easy to build natively interoperable applications. This Ethereum compatibility allows developers to deploy existing Solidity smart contracts and dApp frontends to Moonbeam with minimal changes. As a parachain on the Polkadot network, Moonbeam will benefit from the shared security of the Polkadot relay chain and integrations with other chains that are connected to Polkadot. 
 
-Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
+George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 
-“Bitcoin continues to be the highest valued asset in the digital asset ecosystem by a wide margin but,  compared to other base-layer blockchains, it is lacking on-chain opportunities to engage in, such as decentralised finance. interBTC is going to unlock a new wave of innovation for Bitcoin holders across multiple blockchains and serves as a prime example of decentralisation working to provide services that anyone can use without worrying about trust.”
+“We’re very excited to follow on our initial investment, as Derek and the whole Moonbeam team have shown huge progress. Moonbeam is now well positioned to come to market as one of the most anticipated networks building on Polkadot. Another major indicator of their success is the number of other projects integrating with Moonbeam already, including some of the best-known platforms in DeFi.”
+
+#### my comments
+
+Invested in moonbeam.
+https://moonbeam.foundation/
 
 ### Redstone
 
@@ -123,7 +216,16 @@ George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 
 “RedStone stands out in the crowded world of blockchain oracle solutions in providing a real edge with regards to cost savings, latency, auditability and insurance. We are already seeing the project starting to gain traction and we are thrilled to fund Jakub and his team in his new endeavour.”
 
-### DIVER divergence
+#### My notes
+
+Polish, supplies data in oracles.
+Lots of crypto prices, some stocks.
+No crowdloan
+https://redstone.finance/index.html
+
+### Divergence (DIVER)
+
+https://www.divergence-protocol.com/
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that the Company has invested a total of US$400,000  into Divergence (“DIVER”) in return for 20,666,666.67 DIVER tokens. KR1 led the seed and private funding round, together with Mechanism Capital, with participation from other notable funds including P2P Capital, Arrington Capital and Digital Finance Group.
 
@@ -137,7 +239,15 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “One of crypto’s big problems is extreme volatility and Divergence offers an innovative solution for liquidity providers, market makers and enthused community members, to allow them to profit from volatility with higher capital efficiency. With an impressive team, solid incentivisation mechanisms and a great mission, Divergence is a key part of the new era of the DeFi movement.”
 
+#### My notes
+
+Interesting application.
+Release not until 2022.
+Possible engagement via testing / LQ?
+
 ### ITG iTrust
+
+https://www.itrust.finance/
 
 The Company is pleased to announce that the Company has invested a total of US$100,000 in the iTrust seed funding round in return for a yet-to-be-determined amount of iTrust (“ITG”) tokens.
 
@@ -145,11 +255,15 @@ iTrust is a yield optimisation platform for supplying smart contract cover to th
 
 The iTrust team have many years of experience across a wide range of sectors and, although a nascent area of growth within the Blockchain world, the team have been involved in the decentralised insurance space since its inception. iTrust is also the first official cover supply partner of Nexus Mutual and Tidal Finance, also KR1 investments.
 
-### CLV Clover
+#### My notes
+
+Lots of opportunities to make money from interacting.
+
+### Clover (CLV)
 
 The Company is also pleased to announce that it has invested a total of US$50,000 in the Clover project in return for 625,000 Clover (“CLV”) tokens.
 
-Clover is a smart contract platform that enables Ethereum developers to easily migrate their decentralised applications onto Polkadot by minimizing the changes required to run existing Solidity smart contracts on the new network. 
+Clover is a smart contract platform that enables Ethereum developers to easily migrate their decentralised applications onto Polkadot by minimizing the changes required to run existing Solidity smart contracts on the new network.
 
 The platform offers some novel innovations, including a ‘smart relayer’ that allows users to cover gas fees with any token, removing the dependence on a base currency like Ether. Clover has also created a cross-chain explorer covering Ethereum, Polkadot and Binance Smart Chain as well as an innovative incentivisation layer, allowing dApp builders to automatically gain a percentage share of the transaction fees running through the network. This redistribution of fees is designed to ensure a vibrant developer community and foster an innovative DeFi ecosystem.
 
@@ -157,7 +271,52 @@ George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 
 “We are very pleased to support these two projects and we look forward to helping them bring their platforms to the ever-expanding decentralised finance ecosystem. Building a product on top of Nexus Mutual among others, enables iTrust to make the most of the composability effects of DeFi and in turn pushes the growth of the entire decentralised insurance vertical. With Clover, many new key innovations will be brought to market, not only ensuring a strong link between Ethereum and Polkadot but also bringing much needed choice and flexibility to developers and users alike.”
 
-### Shiden SDN
+#### My notes
+
+only on 7% raise so far so could be lucrative. Technically interesting.
+KR1 invested.
+Good chain interoperability.
+Need to invest
+Good infrastructure for DOT.
+
+### Parallel
+
+Dead confusing!
+Basically if you use them to contribute to parachain loan, you get more bonuses.
+
+Defi, leveraged staking!
+Liquid loans.
+lots of maths equations. 
+20% of crowdloans for other chains are going this route
+lots of good backers.
+
+1.25bn para distributed amoungst crowdloan contributors
+
+https://parallel.fi/
+
+### AStar (Astar on Polkadot, Shiden SDN on Kusama)
+
+now called astar network. Was called plasm.
+
+#### Astar
+
+Dec 21
+
+KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Astar (“ASTR”) crowdloan and Polkadot (“DOT”) parachain auction. KR1 contributed a total of 350,000.00 DOT to the Astar crowdloan campaign, which successfully secured the third parachain slot in the ongoing round of Polkadot parachain auctions.
+
+Astar is a Polkadot-native, highly scalable decentralised application (“dApp”) platform that allows developers to build secure and scalable applications, supporting the Ethereum Virtual Machine and WebAssembly. A core feature of Astar includes ‘dApps staking’, an innovative and blockchain-specific ‘Build-to-Earn’ monetisation model for Web3 developers, aiming to attract talented teams and prominent DeFi, DAO and NFT projects.
+
+The contributed DOT will be time-locked on the Polkadot blockchain for 96 weeks and will be returned to the Company following the completion of the respective Astar parachain lease. Following the successful Astar parachain auction bid, KR1 is going to receive a to-be-determined amount of Astar (“ASTR”) tokens over a time period of 96 weeks in return for supporting the Astar crowdloan campaign.
+
+This method of token distribution involves no direct investment of capital, instead, it is an indirect investment with the opportunity costs being the inaccessibility of the locked DOT funds as well as foregoing any staking yields on the contributed DOT for the time period.
+
+In addition, following Astar’s token redenomination, the Company will receive a total of  31,428,565.2 ASTR tokens in line with KR1 plc’s previous participations in Astar’s lockdrop token distribution events.
+
+Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
+
+“Astar winning the third Polkadot parachain slot is a big achievement and speaks to the quality of the project and their continuous inclusion of the community since the first lockdrop campaign before Polkadot even launched. Astar joining the ranks of Acala and Moonbeam allows them to execute on their vision of a multi chain world for developers and users and we are excited to support Sota and his team with our contribution.”
+
+#### Shiden
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Shiden crowdloan and upcoming Kusama (“KSM”) parachain auction. KR1 contributed a total of 10,000 KSM, equivalent to US$4,449,700 at the time of the contribution, to the Shiden crowdloan campaign.
 
@@ -175,7 +334,26 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “Plasm’s Shiden Network on Kusama offers developers an improved scalability model, high transaction throughput, cross-chain interoperability, and considerably less time to market to deploy their decentralised applications. Sota, Founder of Plasm, and his team are standout entrepreneurs in the blockchain world and we are honoured to continue to back them and their vision.”
 
-### Karura
+#### my notes
+
+Astar part of shiden network. KR1 contributed.
+Connects layer 1 blockchains to Polkadot.
+https://astar.network/
+Community rewards available
+
+contributing via Equilibrium for better rewards and liquid xDOT
+https://medium.com/equilibrium-eosdt/introducing-equilibriums-revolutionary-fluid-xdot-staking-599a846f8e5a
+
+https://xdot.equilibrium.io/en
+
+Crowdloan participants can:
+Receive xDOT tokens on Equilibrium or Genshiro once their favorite project wins the slot
+Claim project tokens on the respective parachain, proven an xDOT balance
+Sell xDOT tokens or provide liquidity by putting them into the corresponding Balancer pool
+Use the Balancer LP token in Equilibrium’s parachain or on the Genshiro DeFi platform
+Use xDOT/DOT tokens inside Equilibrium’s parachain or on the Genshiro DeFi platform
+
+### Acala / Karura
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce the Company’s participation in the Karura crowdloan and upcoming Kusama (“KSM”) parachain auction. KR1 contributed a total of 10,000 KSM, equivalent to US$4,169,500 at the time of the contribution, to the Karura crowdloan campaign.
 
@@ -193,7 +371,15 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “This participation shows our strength of conviction with Bette, Ruitao and the whole Acala team to execute on the vision of Karura. Karura is set to become the primary DeFi hub for the Kusama ecosystem, creating a new platform for innovation and limitless potential for new cross-chain decentralised financial services. This could be the big bang event for cross-chain DeFi.”
 
+#### My notes
+
+Looks good roadmap.
+Lots of docs.
+quite near the end of the roadmap.
+
 ### ATA Automata
+
+https://www.ata.network/
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that Automata (“ATA”), a portfolio project of KR1, has completed a successful US$2.4 million strategic funding round that included participation from IOSG Ventures and Jump Trading.
 
@@ -211,8 +397,14 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 The Directors of KR1 plc accept responsibility for this announcement.
 
-### EQ Equilibrium 
+#### my notes
 
+Really low level. Privacy in the CPU and memory!
+Unintelligible
+
+### Equilibrium (EQ)
+
+https://equilibrium.io/en
 Investment: Equilibrium
 
 KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that the Company has invested a total of US$250,000 into Equilibrium (“EQ”), in return for 595,238  EQ tokens. KR1 invested alongside respected investors such as Hypersphere Ventures and CMS Holdings.
@@ -227,27 +419,9 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “Equilibrium has a bold vision of how a next generation DeFi platform should look like. Using Polkadot as its base layer, we are excited about Equilibrium’s potential to unlock and expand DeFi to an as yet untapped range of digital assets. As a new place to lend, borrow, trade and stake digital assets, it is going to be a major player in the ecosystem, and we are very excited to support Alex and his team on their journey.”
 
-### GLMR Moonbeam network
+### Unique network
 
-KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that Moonbeam (“GLMR”), a portfolio project of KR1 and one of the most prominent projects building on Polkadot, has completed a successful US$6 million strategic funding round led by CoinFund alongside Binance Labs and ParaFi Capital. The round included participation from Coinbase Ventures, Fenbushi Capital, IOSG Ventures, and all previous seed investors.
-
-KR1 is pleased to announce the Company’s participation in this recent funding round, investing a further US$150,000 into Moonbeam in exchange for 30,000.00 GLMR tokens. This investment comes in addition to KR1’s seed round participation, announced in October 2020. Across both funding rounds, the Company now holds a total of 130,000.00 GLMR.
-
-Moonbeam is an Ethereum-compatible smart contract platform on the Polkadot network that makes it easy to build natively interoperable applications. This Ethereum compatibility allows developers to deploy existing Solidity smart contracts and dApp frontends to Moonbeam with minimal changes. As a parachain on the Polkadot network, Moonbeam will benefit from the shared security of the Polkadot relay chain and integrations with other chains that are connected to Polkadot. 
-
-George McDonaugh, Managing Director and Co-Founder of KR1, commented:
-
-“We’re very excited to follow on our initial investment, as Derek and the whole Moonbeam team have shown huge progress. Moonbeam is now well positioned to come to market as one of the most anticipated networks building on Polkadot. Another major indicator of their success is the number of other projects integrating with Moonbeam already, including some of the best-known platforms in DeFi.”
-
-### Vega protocol VEGA
-
-KR1 plc (KR1:AQSE), a leading digital asset investment company, is pleased to announce that Vega Protocol (“VEGA”), a portfolio project of KR1, has completed a successful US$5 million funding round led by Arrington Capital and Cumberland DRW. The funding round included participation from previous backers, as well as new backers like Coinbase Ventures and ParaFi Capital.
-
-KR1 is also pleased to announce the Company’s participation in the recent funding round,  investing a further US$150,000 in exchange for 194,999.17 VEGA tokens at a price of US$0.77 per token. This investment comes in addition to KR1’s seed round participation, announced in October 2019. Across both funding rounds, the Company now holds a total of 842,493.91 VEGA tokens.
-
-Vega is a decentralised derivatives protocol that allows anyone to launch markets and eliminates centralised gatekeepers to provide high throughput, low-fee trading in a capital efficient way. In doing so, the protocol bridges the immense industry of derivatives in traditional finance with the still nascent and rapidly evolving world of decentralised finance. Vega is currently advancing towards its mainnet release, with future plans including self-custodied cross-chain collateral, a trustless bridge into the Ethereum ecosystem, as well as bridges into other major blockchains such as Bitcoin, Polkadot and Cosmos.
-
-George McDonaugh, Managing Director and Co-Founder of KR1, commented:
-
-“Vega is one of the most anticipated projects in our portfolio and we are very happy to be able to support the team again in this latest round, especially considering the incredible progress they have made. A core excitement of the blossoming decentralised finance ecosystem has always been about the potential to open up financial infrastructure for everyone in a fair way and Vega will prove to be a major step change towards this becoming a mainstream reality.”
-
+invested small in the crowdloan on Kusama.
+https://unique.network/
+NFT issuing blockchain.
+QTZ token
