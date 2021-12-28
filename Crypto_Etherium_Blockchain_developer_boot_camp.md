@@ -1,5 +1,33 @@
 # Etherium Blockchain developer boot camp
 
+- [Etherium Blockchain developer boot camp](#etherium-blockchain-developer-boot-camp)
+  - [Basics](#basics)
+    - [Metamask setup for developer](#metamask-setup-for-developer)
+    - [Transaction details](#transaction-details)
+    - [Transaction Signatures](#transaction-signatures)
+    - [Cryptographic hashing](#cryptographic-hashing)
+    - [lab info](#lab-info)
+    - [1st smart contract](#1st-smart-contract)
+  - [Solidity](#solidity)
+    - [Language Structure](#language-structure)
+    - [Blockchain nodes](#blockchain-nodes)
+    - [Test networks](#test-networks)
+    - [deploy a contract with Remix](#deploy-a-contract-with-remix)
+    - [Local Javascript VM blockchain in Remix](#local-javascript-vm-blockchain-in-remix)
+    - [Ganache](#ganache)
+    - [Cheat sheets](#cheat-sheets)
+    - [variables](#variables)
+    - [Transaction vs Call](#transaction-vs-call)
+    - [Important Concepts](#important-concepts)
+    - [strings](#strings)
+    - [transferring funds](#transferring-funds)
+    - [account definitions](#account-definitions)
+    - [Start stop update smart contracts](#start-stop-update-smart-contracts)
+    - [immutable blocks and lifecycle](#immutable-blocks-and-lifecycle)
+    - [Mappings](#mappings)
+    - [checks/effects/interaction pattern](#checkseffectsinteraction-pattern)
+    - [Variable types](#variable-types)
+
 ## Basics
 
 ### Metamask setup for developer
@@ -38,10 +66,10 @@ Needs an unlocked account.
 e.g. web3.signTransaction(transactionObject, address)
 creates transaction signature using the private keys, get output with v, r, s fields included. These 3 are used to verify the signature.
 
-Private key is 32 bytes, made up of 64 hex characters. 
+Private key is 32 bytes, made up of 64 hex characters.  
 Can create a public key from a private key using elliptic process (ECDSA).  
 Public key used to create Etherium account (using last 20 bytes of the keccak hash of the public key).  
-One way, can't go back
+One way, can't go back  
 Transaction signed with private key generating v, r, s fields.  
 With the r and s you can use ECrecover to recreate the public key and the account number.  
 This makes it easy to verify that the transaction is valid to come from the account.  
@@ -72,15 +100,15 @@ https://ethereum-blockchain-developer.com/
 
 Can use various envs, but remix is online smart contract dev environment. https://remix.ethereum.org  
 Activate debugger and compiler plugins  
-Create new solidity text file, myContract.sol
+Create new solidity text file, myContract.sol  
 1st line is pragma line with target version info
 
 HTTP vs HTTPS: Be careful with the https vs http domain. Remix stores edited files in local storage of the browser. If your smart contracts are suddenly gone, look at the protocol. In this course we work with http, not https. This is especially important later when we do private blockchains which require CORS to be setup correctly.
 
-SPDX License identifier: license under which smart contract published.
+SPDX License identifier: license under which smart contract published.  
 pragma: tells the compiler which version of solidity (pre-compiler statement).
 
-### Solidity
+## Solidity
 
 - derived from ECMA script, javascript.  
 - changes in smart contracts need to be mined before they take effect.  
@@ -102,7 +130,7 @@ pragma: tells the compiler which version of solidity (pre-compiler statement).
 
 Don't want to wait for full deployment to blockchain in a development environment. 2 solutions:
 
-1. use local javascript VM (environment dropdown on deloy and rum)
+1. use local javascript VM (environment dropdown on deploy and run)
 2. connect to web3 provider in external blockchain. e.g. Ganache truffle suite. Install for windows. It's a local app, runs RPC server.  
 
 Multiple implementations of Etherium nodes, e.g. Parity, GoEtherium are 2 implementations, both know how to talk the Etherium protocol to other nodes.  
@@ -117,7 +145,7 @@ Slight differences, so you should test on a real network after developing on Gan
 Test network transactions can be deleted.  
 
 - Ropstan is a clone of the real network.
-- Girly, kovan beta testing
+- Gorly, kovan for beta testing
 - Ganache is a developer network, more for unit testing. Fast mining, not persistent.  
 - Private, run your own chain.
 
@@ -173,7 +201,7 @@ uint256 public myInt;
 # uint is a unit256
 
 function setMyUint(uint _myUint) public {
-    myUint = -myUint
+    myUint = _myUint
 }
 
 bool public myBool;
@@ -323,7 +351,7 @@ A function can't receive either unless
 
 check for owner permissions:
 
-constructor() - called only during contract deployment. Good to save msg.sender to variable owner, then check operations with require statement. 
+constructor() - called only during contract deployment. Good to save msg.sender to variable owner, then check operations with require statement.  
 Require checks if a specific state is met at a specific point
 e.g. require(msg.sender == owner, "you are not the owner")
 
@@ -391,21 +419,20 @@ Lifecycle: start, gets address, running, stop.
 
 - deploy: sendTransaction(from.., to: (empty), data: contract byte code)
 - interact: sendTransaction(to: smart contract address, data: encoded interaction with function calls and arguments, value: amount in Wei)
-- destroy: call selfDestruct(address to send funds) in a solidity function
-- then not available for interaction
+- destroy: call selfDestruct(address to send funds) in a solidity function, then not available for interaction
 
-smart contracts compiled and sent to the blockchain as a transaction
+smart contracts compiled and sent to the blockchain as a transaction  
 once mined transactions are immutable.  
 
 ### Mappings
 
-store value lke key map or array.
-mapping(key type => value type) myMapping
-e.g. mapping(uint => bool) public MyMapping
-automatically initialized with default values.
-index can be e.g. address
+store value like key map or array.  
+mapping(key type => value type) myMapping  
+e.g. mapping(uint => bool) public MyMapping  
+automatically initialized with default values.  
+index can be e.g. address  
 Access with e.g. address[123], no out of bounds exceptions as all possible key/values pairs are default initialized.  
-can do mappings of mappings: mapping (uint => mapping(uint => bool)) uintUintBoolMapping;
+can do mappings of mappings: mapping (uint => mapping(uint => bool)) uintUintBoolMapping;  
 good for e.g. storing balance for each address.  
 
 ```solidity
@@ -437,7 +464,7 @@ contract SimpleMappingExample {
 }
 ```
 
-### checks effects interaction pattern
+### checks/effects/interaction pattern
 
 1. check you are ok to do the transaction
 2. make the effects
@@ -460,7 +487,7 @@ contract SimpleMappingExample {
   - member can't be same type of struct iteslf, but can be another struct
 - Arrays
   - Fixed or dynamic size
-  - T[k] : fixed size of typer T, k elements
+  - T[k] : fixed size of type T, k elements
   - T[] : dynamic of T
   - T[][5] : 5 dynamic arrays.
   - be careful of gas costs, mappings are cheaper

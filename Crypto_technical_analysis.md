@@ -1,3 +1,5 @@
+<LINK href="jb1.css" rel="stylesheet" type="text/css">
+
 # Technical analysis
 
 Based on human emotion.

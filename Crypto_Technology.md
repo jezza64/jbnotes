@@ -1,3 +1,5 @@
+<LINK href="jb1.css" rel="stylesheet" type="text/css">
+
 # Crypto Technology
 
 - [Crypto Technology](#crypto-technology)
