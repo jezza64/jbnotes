@@ -26,7 +26,8 @@
   - [Jupyter extensions](#jupyter-extensions)
   - [Google docs](#google-docs)
   - [Node.js on windows](#nodejs-on-windows)
-  - [MySQL](#mysql)
+  - [MySQL installation](#mysql-installation)
+  - [MySQL Updated Oct 2022](#mysql-updated-oct-2022)
 
 ## git
 
@@ -295,7 +296,7 @@ gulp installed for VS code automation:
 >`npm install -g gulp`
 in C:\Users\jerem\AppData\Roaming\npm\node_modules\gulp\bin\gulp.js  
 
-## MySQL
+## MySQL installation
 
 Installed 8.022 to Program files\MySQL
 Root is Bj7
@@ -311,3 +312,18 @@ MySQLShell: command line interface, connect from PS termial with
 MySQLWorkbench
 
 Connect to localhost, 3306
+
+## MySQL Updated Oct 2022
+It runs as a service automatically.
+
+To connect:
+run the program for the command line client
+password is Bj7, seems to work ok
+show databases
+
+To connect in MySQLWorkbench
+Connect to localhost, 3306
+
+seems to work ok.
+
+

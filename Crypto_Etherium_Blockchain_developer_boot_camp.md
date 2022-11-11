@@ -24,9 +24,33 @@
     - [account definitions](#account-definitions)
     - [Start stop update smart contracts](#start-stop-update-smart-contracts)
     - [immutable blocks and lifecycle](#immutable-blocks-and-lifecycle)
+    - [redeployment](#redeployment)
     - [Mappings](#mappings)
     - [checks/effects/interaction pattern](#checkseffectsinteraction-pattern)
     - [Variable types](#variable-types)
+    - [structs](#structs)
+    - [Exception handling](#exception-handling)
+      - [try / catch](#try--catch)
+    - [Transactions](#transactions)
+    - [function types](#function-types)
+      - [Constructor](#constructor)
+      - [fallback function](#fallback-function)
+      - [view functions](#view-functions)
+      - [pure functions](#pure-functions)
+      - [function execution](#function-execution)
+      - [Function visibility](#function-visibility)
+      - [Function modifier](#function-modifier)
+      - [Functions in files](#functions-in-files)
+      - [class inheritance](#class-inheritance)
+      - [usage](#usage)
+      - [return variables](#return-variables)
+      - [events and return values](#events-and-return-values)
+  - [Internals and Debugging](#internals-and-debugging)
+    - [ABI array](#abi-array)
+    - [Compilation details](#compilation-details)
+    - [Deployment](#deployment)
+    - [Gas and operational cost](#gas-and-operational-cost)
+  - [Libraries](#libraries)
 
 ## Basics
 
@@ -106,7 +130,7 @@ Create new solidity text file, myContract.sol
 HTTP vs HTTPS: Be careful with the https vs http domain. Remix stores edited files in local storage of the browser. If your smart contracts are suddenly gone, look at the protocol. In this course we work with http, not https. This is especially important later when we do private blockchains which require CORS to be setup correctly.
 
 SPDX License identifier: license under which smart contract published.  
-pragma: tells the compiler which version of solidity (pre-compiler statement).
+pragma: tells the compiler which version of solidity (pre-compiler statement). It follows the SemVer versioning standard. ^0.8.1 means >=0.8.1 and <0.9.0.
 
 ## Solidity
 
@@ -424,6 +448,12 @@ Lifecycle: start, gets address, running, stop.
 smart contracts compiled and sent to the blockchain as a transaction  
 once mined transactions are immutable.  
 
+### redeployment
+
+With new function CREATE2, can put the smart contract at a specific address.  
+Without, goes to new address every time.  
+so can call selfDestruct, then redeply to same address.  
+
 ### Mappings
 
 store value like key map or array.  
@@ -470,6 +500,9 @@ contract SimpleMappingExample {
 2. make the effects
 3. do interactions with other accounts (interaction needs to come last, prevents re-entry bug)
 
+
+a rule of thumb is: Do only the most necessary functions on the blockchain, and everything else off-chain. But for sake of explaining Structs, we will track every single payment in the greatest detail possible with our Smart Contract.  
+
 ### Variable types
 
 - Mappings.
@@ -479,12 +512,14 @@ contract SimpleMappingExample {
   - value type can be any type, including mappings.
   - all values initialized by default.
   - don't have a length, unless you implement it separately
+  - all possible members are already initialized with the default value
   - generally can't iterate because no length, but external library has iterable mappings
   - access with map[key]
 - Structs
   - custom variable types
   - access with struct.member
   - member can't be same type of struct iteslf, but can be another struct
+  - initialized with a default value, like everything else, so you get no errors when you access but could accidentally access the wrong value.
 - Arrays
   - Fixed or dynamic size
   - T[k] : fixed size of type T, k elements
@@ -494,8 +529,311 @@ contract SimpleMappingExample {
   - members to array.push(element), array.length
 - Enums
   - Another way to get user defined types
-  - e.g. enum ActionChoices { left, right, up, down}
+  - e.g. enum allowancePeriod [days, weeks, months};
+
   - converts and stores as uint8, or more if > 256 values.
 
 Mappings are better then arrays.
+
+### structs
+
+- Bit like calss variables
+- access with . notation
+- all initialized
+
+```solidity
+//SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.4;
+
+contract MappingsStructExample {
+
+    struct Payment {
+        uint amount;
+        uint timestamp;
+    }
+
+    struct Balance {
+        uint totalBalance;
+        uint numPayments;
+        mapping(uint => Payment) payments;
+    }
+
+    /*
+    one contract for all addresses
+    each address has a balance
+    each balance has totalBlaance, number of payments, and an array of all the payments
+    */
+
+    mapping(address => Balance) public balanceReceived;
+
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
+    }
+
+    /// deposits money into the smart contract for the calling address
+    function sendMoney() public payable {
+        balanceReceived[msg.sender].totalBalance += msg.value;
+        balanceReceived[msg.sender].numPayments ++;
+
+        Payment memory payment = Payment(msg.value, block.timestamp);
+
+        /// difficult here to get the index for the new member of the payments
+        /// cant just use the current length of the array, need to have another helper variable 
+        balanceReceived[msg.sender].payments[balanceReceived[msg.sender].numPayments] = payment;
+
+    }
+
+    function withdrawMoney(address payable _to, uint _amount) public {
+        require(balanceReceived[msg.sender].totalBalance < _amount, "negative balance");
+        balanceReceived[msg.sender].totalBalance -= _amount;
+        _to.transfer(_amount);
+    }
+
+    function withdrawAllMoney(address payable _to) public {
+        balanceReceived[_to].totalBalance = 0;
+        _to.transfer(balanceReceived[_to].totalBalance);
+    }
+}
+```
+
+### Exception handling
+
+- Can use if  {}
+- better to use require, which returns the error message and exits. Good for checking user entry.
+- Can also use assert - this is good for checking conditions on internal states, e.g. check for wrap around in old versions
+- revert: like a require which evaluates to false
+- asset uses all remaining gas
+- require returns remaining gas.
+- some system errors raise an assert, e.g. division by zero
+- some system errors raise a require, e.g. external function contains no code
+
+```soilidity
+require(_amount <= balanceReceived[msg.sender], "Not Enough Funds, aborting");
+
+assert(balanceReceived[msg.sender] >= uint64(msg.value));
+
+```
+
+#### try / catch
+
+It will catch the error, and instead of unsuccessfully showing an error, it will successfully mine the transaction. During the transaction it will emit an event that shows the error message. You can see it later in the transaction logs.
+
+```solidity
+//SPDX-License-Idenfitier: MIT
+pragma solidity 0.8.4;
+
+contract WillThrow {
+    function aFunction() public {
+        require(false, "Error message");
+    }
+}
+
+contract ErrorHandling {
+    event ErrorLogging(string reason);
+    function catchError() public {
+        WillThrow will = new WillThrow();
+        try will.aFunction() {
+            //here we could do something if it works
+        }  catch Error(string memory reason) {
+            emit ErrorLogging(reason);
+        }
+    }
+}
+```
+
+### Transactions
+
+- Transactions are atomic. Whole transactions.
+- errors are "state reverting".
+- require, assert, revert to control this, 
+- old mechanism was "throw" - but now depricated.
+- errors cascade, but only for high level functions (e.g. transfer, with other contracts) but not for low level e.g. address.send
+- catching errors not possible inside solidity, so can't react to an error thrown
+- revert like a require(false)
+
+### function types
+
+#### Constructor
+
+Called once and only once  
+called during deployment  
+In old versions, had a function with the same name as the contract.  
+
+#### fallback function
+
+function with no args. takes data as input.  
+Here to receive Ether as a simple transaction.  
+used to be function(), but now it's receive(), fallback()  
+called when transaction without a function call sent to smart contract, or function name wrong.  
+Always only external.  
+If no fallback function and name wrong, it throws an error.  
+
+Good to process Ether receipt without a function call.  
+You can't avoid receiving ether. Could be :
+
+- miner rewards or self destruct
+- gas refund
+- etc, so don't assume the sum of variables = amount of ether in contact. 
+
+Can have a fallback function, and in it check the data length is zero: then it's just a money receipt, not a mis-specified function call.  
+
+#### view functions
+
+can return something without being a transaction, without interacting with the state.  
+instant.  
+can read local variables.  
+
+#### pure functions
+
+no interaction with storage variables. Like a class variable.
+pure keyword in function line  
+not interacting with any storage variables  
+just like a utility function with no data access  
+
+e.g.
+function convertWeiToEither(uint _amountWEI) public pure returns(uint) {
+    return _amountWEI / 1 ether;
+}
+
+Pure functions can call pure functions
+Pure can't call view function or regular function
+
+regular -> view -> pure
+
+#### function execution
+
+deploy: needs to be mined. SHows in log with a VW tick. Gas costs. 
+call to local variable: just a call, instant.  Just accesses local data. virtually free: gas mechanism but paid back to yourself.
+Both view and pure functions used to be called constant functions.
+
+#### Function visibility
+
+- Public: called internally / externally
+- Private: only within the contract
+- External: cab be called from other contacts
+- Internal: only from the contract itself or derived contracts. Can't be invoked by transaction.  
+
+#### Function modifier
+
+set up a modifier (bit like a function) and can then reference it in another function heater. The second function will import the code from the modifier function. 
+
+works in derived contracts below in the class structure.
+
+#### Functions in files
+
+import "./owned.sol";  
+this copies content and compiles.  
+./ means same folder.  
+can import all file: import "filename"  
+can import all members of a file: import * as symbolName from "filename"  
+can import specific members of a file: import {symbol1 as alias, symbol2} from "filename"  
+
+#### class inheritance
+
+Multiple inheritance
+Polymorphism
+Uses the "is" keyword
+
+- A is X, Y, Z
+- Z is the most derived contract
+- use "super." to access the base contract
+
+Inherited contracts are deployed as a single contract, not separate ones.  
+
+#### usage
+
+Modifiers great was yo check preconditions, but confusing to read.  
+Can put modifiers into other smart contracts.  
+Can have multiple contracts in one file, names don't need to match. But good to organise property.
+
+#### return variables
+
+Can't return anothing outside the contract as a returen variable.  
+But can return values from a function inside the contract.  
+When you do this in the Java VM, it works - but not on e.g. web 3 deployment,
+Use events to get around this. 
+
+e.g. event TokensSent(address _from, address _to, uint _amount);  
+trigger the event with:  
+emit TokensSent(msg.sender, _to, _amount);  
+
+#### events and return values
+
+EVM stores Logs and events in side chain,.  
+Can make an event arg indexed, then its quick to search  
+Use events for return values  
+use to externally trigger functionality  
+use as cheap storage  
+better than returning transaction hash, because transaction can take a long time, can be in e.g. pending state.  
+Can listen for events in e.g. metamask.  
+
+Storing data on chain is very expensive so can
+
+- store data off chain 
+- store in other chain e.g. IPFS
+- if data not needed directly by smart contract then put it on the log.
+
+Applications can subscribe and listen to these events through RPC interface of an etherium client.  
+Events cant be used in solidity, but you can access it outside.  
+indexed events can be searched.  
+
+## Internals and Debugging
+
+### ABI array
+
+Application binary interface  
+Gives you a function description as parameters.  
+json array describing interface for smart contract
+
+### Compilation details
+
+shows bytecode  
+shows ABI  
+function hashes: signature for a function. how the BC interacts with the function. Converts function name to a hash. Useful in debugger.  
+op codes show the low level interactions with the stack.  
+Can see the function hash.  
+
+### Deployment
+
+Smart contracts compiled to bytecode  
+similar to assembler  
+ABI array application binary interface contains the functions / parameters / return values used to interact with the smart contract.  
+JSON file.  
+Client software doesn't know the interfaces from teh comp[iled code, it needs to be told via the ABI.  
+
+Debugger no breakpoints, just sept into after it executes.  
+
+### Gas and operational cost
+
+Gas to detach execution cost form the money being passed around.  
+Like a car, it needs an amount of petrol, but easier to measure in volume than in price as the price changes.  
+Gas price isn't always the same, but the amount the contract uses is constant.  
+Different assembler steps cost different amounts, schedule is set.  
+Determined by operational complexity.  
+
+transactions have a specific base fee, no matter what happens in the transaction.  
+you can vary how much you want to pay per gas unit to change the speed of execution  
+Loops use lots of gas!  
+
+## Libraries
+
+import file directly from github  
+Access functions in library with using keyword
+Keyword library, but rest of file is like a contract.  
+Executed in context of calling contract.  
+libraries are stateless. Write back to local state.  
+just a toolset of functions  
+
+- no state variables
+- can't inherit or be inherited.
+- cant receive ether
+
+execute a bit like copying code into contract.  
+Good way to extend functionality.  
+Not a good way to give future upgradeability: instead, better to have multiple smart contracts, logic in one returning values to another.  
+
+https://openzeppelin.com/ is a good example. Lots of good quality contracts and modules for reuse.
+https://github.com/OpenZeppelin/openzeppelin-contracts  
+remix online can import directly from here
 

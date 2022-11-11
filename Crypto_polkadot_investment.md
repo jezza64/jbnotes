@@ -2,6 +2,7 @@
 
 - [Crypto DOT investment](#crypto-dot-investment)
   - [Strategy](#strategy)
+  - [info](#info)
   - [KR1 Highlights mid 2021](#kr1-highlights-mid-2021)
   - [KR1 NAV](#kr1-nav)
   - [KR1 Investments](#kr1-investments)
@@ -11,6 +12,7 @@
       - [my notes](#my-notes-1)
     - [Basilisk / Hydra DX](#basilisk--hydra-dx)
       - [my notes](#my-notes-2)
+      - [update 26/4/22](#update-26422)
     - [Interlay (InterBTC on polkadot, KINT Kintsugi on Kusama)](#interlay-interbtc-on-polkadot-kint-kintsugi-on-kusama)
       - [InterBTC](#interbtc)
       - [Kintsugi](#kintsugi)
@@ -37,7 +39,16 @@
     - [ATA Automata](#ata-automata)
       - [my notes](#my-notes-10)
     - [Equilibrium (EQ)](#equilibrium-eq)
+      - [video update pre cowdloan](#video-update-pre-cowdloan)
+      - [Genshiro](#genshiro)
     - [Unique network](#unique-network)
+    - [Composable finance](#composable-finance)
+    - [Centrifuge](#centrifuge)
+    - [Manta network](#manta-network)
+    - [Origin Trail](#origin-trail)
+    - [MangataFinance](#mangatafinance)
+    - [pendulum](#pendulum)
+    - [Ajuna Network](#ajuna-network)
 
 
 
@@ -47,6 +58,11 @@
 - APE in $KILT (First gem of the second batch) that will list ~mid-november with an INSANE hype
 - Buy $MOVR 300M$+ Defi Liq program & $SUSHI integration
 - Load up $EWT for the staking release
+
+## info
+
+https://parachains.info/
+
 
 ## KR1 Highlights mid 2021
 
@@ -73,7 +89,7 @@ Vega is a decentralised derivatives protocol that allows anyone to launch market
 
 George McDonaugh, Managing Director and Co-Founder of KR1, commented:
 
-“Vega is one of the most anticipated projects in our portfolio and we are very happy to be able to support the team again in this latest round, especially considering the incredible progress they have made. A core excitement of the blossoming decentralised finance ecosystem has always been about the potential to open up financial infrastructure for everyone in a fair way and Vega will prove to be a major step change towards this becoming a mainstream reality.”
+“Vega is one of the most anticipated projects in our portfolio and we are very happy to be able to support the team again in this latest round, especially considering the incredible progress they have ade. A core excitement of the blossoming decentralised finance ecosystem has always been about the potential to open up financial infrastructure for everyone in a fair way and Vega will prove to be a major step change towards this becoming a mainstream reality.”
 
 #### My notes
 
@@ -121,6 +137,11 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 Polkadot equivalent is Hydra DX.
 No crowdloan yet.
 https://hydradx.io/
+
+#### update 26/4/22
+
+HDX token
+Not on coinmarketcap
 
 ### Interlay (InterBTC on polkadot, KINT Kintsugi on Kusama)
 
@@ -419,9 +440,68 @@ Keld van Schreven, Managing Director and Co-Founder of KR1, commented:
 
 “Equilibrium has a bold vision of how a next generation DeFi platform should look like. Using Polkadot as its base layer, we are excited about Equilibrium’s potential to unlock and expand DeFi to an as yet untapped range of digital assets. As a new place to lend, borrow, trade and stake digital assets, it is going to be a major player in the ecosystem, and we are very excited to support Alex and his team on their journey.”
 
+#### video update pre cowdloan
+
+
+
+#### Genshiro
+
+Canary for Equilibrium.
+
 ### Unique network
 
 invested small in the crowdloan on Kusama.
 https://unique.network/
 NFT issuing blockchain.
 QTZ token
+
+### Composable finance
+
+LAYR token, not yet trading
+got parachain 7
+https://www.composable.finance/
+
+### Centrifuge
+
+Won auction 8
+Token CFG
+Token price down 50% from parachain launch
+https://centrifuge.io/
+Brings real world assets into Defi, e.g. car leased, house.  
+Asset originators put assets into pools as an NFT  
+People then buy these and get cashflows.  
+Tinlake is first app on Centrifuge  
+
+### Manta network
+
+On chain privacy. Swap e.g. DOT for private DOT.  
+MANTA token  
+
+"Do I really want Twitter to know all of the other NFTs I own, as well as all my other transactions, and ... everything? It is a huge privacy concern, and we're trying to address that on an on-chain level."
+
+### Origin Trail
+
+https://origintrail.io/  
+TRACE token  
+publishes easily verifiable claims from any system  
+worth a look, very technical.  
+https://youtu.be/OLCyZhvNgT4  
+In the current crowdloans
+
+### MangataFinance
+
+https://mangata.finance/
+MGX / MGA tokens  
+Live on Kusama, won 26  
+New type of DEX with no fees resistant to front running  
+
+### pendulum
+
+https://pendulumchain.org/  
+AMM for fiat current exchange  
+
+### Ajuna Network
+
+https://ajuna.io/  
+Ajuna Network makes the world’s leading game development engines — Unity and Unreal — fully integrated with the world of blockchain-based assets. It empowers gamers to own and control their in-game assets, trade them in community marketplaces, and bring them to new worlds.  
+Early.
