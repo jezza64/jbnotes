@@ -4,7 +4,7 @@
 
 # Statistics
 
-## Standardise
+## Standardize
 
 set the mean to zero by subtracting the mean from all
 points.
@@ -26,24 +26,28 @@ error. It tells you the uncertainty in the mean and standard deviation.
 The odd thing is that from one distribution you can get the error even
 when you are looking at one sample rather than the full distribution.
 Use SD when looking at the sample, use SE when looking at the full
-population. the standard deviation describes the spread of a sample;
+population. 
+
+The standard deviation describes the spread of a sample;
 standard error is a measure of the precision with which the sample
-statistic approximates the true population value. The STANDARD ERROR is
-the name given to the precision with which a sample estimate
+statistic approximates the true population value.  
+
+The STANDARD ERROR is the name given to the precision with which a sample estimate
 approximates the population value. The standard error is not an estimate
 of any quantity in the population, but is a measure of the uncertainty
 of a single sample value as an estimate of the population value.
 
+# Spiegelhalter Art of Statistics
 
-# Spiegelhalter Art of Statistics	
+## Getting things in proportion
 
-## Getting things in proportion	
 Communication important. E.g. positive / negative framing. Relative risks can exaggerate, absolute risks also for clarity. Expected frequencies good for importance. 	
 Graphics chosen with care: scales. 	
 
-## Summarizing and communicating numbers	
+## Summarizing and communicating numbers
 
-### Single sets of numbers	
+### Single sets of numbers
+
 Strip chart or dot diagram shows all data, offset dots vertically with a random jitter	
 Box and whisker: shows medians, interquartiles, and outliers.  	
 Histogram chart: counts observations in intervals, shows shape of distribution. 	
@@ -53,7 +57,8 @@ Wisdom of crowds can get closer to truth than the average person.
 Range includes extremes so not v uesful. IQR is better, unaffected by extremes. 25th to 75 percentiles.  	
 Standard deviation only useful for well behaved symmetric data, because heavily influenced by extreme values.   	
 
-### Pairs of numbers	
+### Pairs of numbers
+
 Show 2 numerics as scatter plots, time series as line graphs  	
 
 Correlation measures steadily increasing or decreasing relationship between a pair of numbers: Pearson correlation coefficient most common. -1 to +1. Measures how close to straight line. Spearman rank correlation is alternate, uses ranks, allows for value closer to 1 on e.g. curve upwards. Generally x is independent variable, y is dependent. But this is difficult, relationship could be non causal or the other way around.  	
@@ -69,6 +74,7 @@ Historically tried to be completely objective - but not possible. Good to try an
 ## Populations and Measurement	
 
 ### Surveys	
+
 1. raw data in survey participants	
 2. then infer something about true numbers in the sample (could be lying)	
 3. then infer something about study population (could have been included in survey, people who take part could not be representative)	
@@ -80,6 +86,7 @@ Going from 2 to 3: random sampling is best.
 3 to 4 could be e.g. testing drug on men then give to women.  	
 
 ### Normal distribution 
+
 expected for phenomena driven by a large number of small influences. Set mean and sd, and get the shape of the normal curve. e.g. birth weights. Other less natural phenomena could have non normal curve, e.g. incomes have a fat tail on rhs. Normal good to summarize large population in 2 numbers. 95% of the population in 1.645 sd either side of the mean. Get to lots of stats easily. 	
 
 Now more common to have all the data in a population. 

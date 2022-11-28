@@ -22,9 +22,9 @@
     - [Linear classifiers: support vector machines](#linear-classifiers-support-vector-machines)
     - [Multi Class classifiers](#multi-class-classifiers)
     - [Kernelised support vector machines](#kernelised-support-vector-machines)
-    - [Cross Validation](#cross-validation)
-    - [Decision trees](#decision-trees)
-    - [Useful things to know](#useful-things-to-know)
+  - [Cross Validation](#cross-validation)
+  - [Decision trees](#decision-trees)
+  - [Useful things to know](#useful-things-to-know)
 
 ## Key concepts
 
@@ -168,8 +168,8 @@ generalize well.
 Underfit: don't match the complexity of the data well. Linear model on a
 curve.
 
-Overfit: too much memorising, doesn't generalise well. E.g. Highly
-polynomial for smooth curve. Not enough data to regognise the global
+Overfit: too much memorizing, doesn't generalize well. E.g. Highly
+polynomial for smooth curve. Not enough data to recognise the global
 trend. Captures too many fluctuations in the training data.
 
 Knn: with a low value of K, get highly granular decision boundaries, so
@@ -477,7 +477,7 @@ Kernel type defaults to RBF. Kernel has specific parameters, RBF very
 sensitive to gamma. C regularisation applies to all, typically tuned
 together with gamma.
 
-### Cross Validation
+## Cross Validation
 
 Used to evaluate model, not tune.
 
@@ -522,7 +522,7 @@ height="3.55in"}
 ![](./jbnotes_images/image46.png){width="6.268055555555556in"
 height="3.5284722222222222in"}
 
-### Decision trees
+## Decision trees
 
 Regression and classification
 
@@ -597,7 +597,7 @@ Key parameters. Generally adjusting one is enough.
 ![](./jbnotes_images/image57.png){width="6.268055555555556in"
 height="3.529166666666667in"}
 
-### Useful things to know
+## Useful things to know
 
 Domingos, P. (2012). [A few useful things to know about machine
 learning](https://homes.cs.washington.edu/~pedrod/papers/cacm12.pdf). *Communications

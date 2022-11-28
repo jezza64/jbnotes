@@ -29,7 +29,7 @@
 3. Evaluation
 
     a.  Train test split at random assumes data is homogenous. Probably
-        not. Mayb slpit by time instead.
+        not. Maybe split by time instead.
 
     b.  Baseline model
 
@@ -41,7 +41,7 @@
 
 5. Modelling
 
-    a.  Does it need to be interperable?
+    a.  Does it need to be interoperable?
 
     b.  How to tune
 

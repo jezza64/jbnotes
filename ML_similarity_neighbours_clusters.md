@@ -51,13 +51,13 @@ Use odd for majority. Knn. When k = full data set, you get the average of the da
 
 ## Clustering
 
-### Heirarchical clustering
+### Hierarchical clustering
 
 use distance function, start with one cluster, then remove one point and find the new cluster for n-1 points. Get a dendogram showing the distance between clusters, and which points are in each cluster. Good for e.g. gene clusters.
 
-### Clustering around centriods
+### Clustering around centroids
 
-k-means clustering starts with desired number, and choose starting points. Each data item assigned to nearest point, then average of points for each cluster taken to get the new centroid for the cluster. Then repeat, gradually stabilising.
+k-means clustering starts with desired number, and choose starting points. Each data item assigned to nearest point, then average of points for each cluster taken to get the new centroid for the cluster. Then repeat, gradually stabilizing.
 
 ### Interpretation
 
