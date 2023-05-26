@@ -2,9 +2,9 @@
 
 #### [Back to index](index.html)
 
-# Machine Setup on M700
+# Machine Setup on surfacebook 2
 
-- [Machine Setup on M700](#machine-setup-on-m700)
+- [Machine Setup on surfacebook 2](#machine-setup-on-surfacebook-2)
   - [git](#git)
     - [Repositories](#repositories)
     - [Github config](#github-config)
@@ -66,7 +66,7 @@ git remote add <name> https://github.com/jezza64/Education <branch>
 ### Basics
 
 Switch on WSL
-Install Ubuntu 18.04 on levono 400 from app store
+Install Ubuntu 18.04 on surfacebook 2 from app store
 user name jezza64
 pwd same as the machine pin
 
