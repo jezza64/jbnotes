@@ -28,6 +28,7 @@
   - [Node.js on windows](#nodejs-on-windows)
   - [MySQL installation](#mysql-installation)
   - [MySQL Updated Oct 2022](#mysql-updated-oct-2022)
+  - [Remix](#remix)
 
 ## git
 
@@ -77,13 +78,17 @@ updated with:
 sudo apt update
 sudo apt upgrade
 
+May 2023: updated to ubuntu 22 via the command line >`sudo do-release-upgrade`
+
 installation is at:
 C:\Users\jerem\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc
 
 WSL ububtu file system is at 
 C:\Users\jerem\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\rootfs
 
-wsl -l to get list of wsl distributions
+to get list of wsl distributions >`wsl -l `
+to get Ubuntu version, >`lsb_release -a`
+
 
 python is installed, run with
 > python3
@@ -101,6 +106,8 @@ To open explorer from ubuntu
 >`explorer.exe .`
 
 Windows path to ubuntu files: \\wsl$\Ubuntu\home\jezza64
+
+explorer, type in $wsl to access the system
 
 Don't use command line to copy between windows and WSL, use explorer.
 
@@ -206,7 +213,7 @@ check with:
 
 [miniconda installation article](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart)
 
-## 13/11/2020 conda on ubuntu setup on book2: 
+## 13/11/2020 conda on ubuntu setup on book2:
 
 installed miniconda with pythion 3.8 to /home/jezza64/miniconda3
 
@@ -234,22 +241,23 @@ Had to edit the enrironment_thakur-modified.yml file to remove packages which co
 
 ## Docker
 
-Installing docker desktop for windows 2.2.3.0, "desktop edge"
-Use WSL to connect to this.
-Changed bios to enable virtual machines. Hyper-v
+Installed docker windows app
+this set to connect to WSL2, not virtual hardware setting for hopefully less impact
+sample apps in linux jbblock conda env, git/welcome to docker
+All runs ok, able to clone image code to WSL, compile in VScode, run in docker desktop, connect in windows.
+
 
 ## Windows terminal
 
 Download from app store
-Install chocolaty to get the firacode font
-customize settings.json to add fonts, colours etc.
+settings just in the menu.
 
 set up menu dropdown for miniconda on windows, added:
 ```
 "commandline": "powershell.exe -ExecutionPolicy ByPass -NoExit  -Command C:\\development\\miniconda3\\shell\\condabin\\conda-hook.ps1 ; conda activate 'C:\\development\\miniconda3'"
 ```
 
-This gets you into the base conda environment, then use `conda env list`or `conda activate jbconda1`
+This gets you into the base conda environment, then use `conda env list` or `conda activate jbconda1`
 
 In terminal, choose Ububtu to go into there, and conda activate jbconda2wsl
 
@@ -257,8 +265,6 @@ Terminal copy is ctrl+shift +c
 right click to paste
 
 using bash shell by default. echo $SHELL
-
-install Cascadia code pl font, right click on the one file to use, add to font family in VsCode
 
 ## Jupyter extensions
 
@@ -281,7 +287,6 @@ credentials.json downloaded to C:\\Users\\Jeremy Bates\\development\\python
 install google client library
 
 <https://github.com/googleapis/google-api-python-client>
-
 
 ## Node.js on windows
 
@@ -326,4 +331,7 @@ Connect to localhost, 3306
 
 seems to work ok.
 
+## Remix
 
+Connected to Git with DGit
+cloned a repository to a workspace in Remix

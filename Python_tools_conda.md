@@ -44,6 +44,9 @@ Can set the folder on creation. This is good because have it under your project 
 List environments:  
 >`conda env list`
 
+update conda:
+>`conda update -n base -c defaults conda`
+
 ## Installing packages
 
 Can do this
